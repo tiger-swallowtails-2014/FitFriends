@@ -1,4 +1,4 @@
 FitNasty
 ========
 
-<img src='FitNastySchema.png'/>
+<img src='http://imgur.com/n3dZalN'/>
