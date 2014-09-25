@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20140925223625) do
 
   create_table "challenges", force: true do |t|
     t.integer  "user_id"
-    t.string   "title",       null: false
-    t.string   "location",    null: false
-    t.string   "description", null: false
+    t.string   "title"
+    t.string   "location"
+    t.string   "description"
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
