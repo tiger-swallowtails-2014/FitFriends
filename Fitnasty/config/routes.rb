@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :challenges
   end
 
+  get "/home" => "home#index", as: :home
   get "/log_in" => "sessions#new"
   post "/log_in" => "sessions#create"
   get "/log_out" => "sessions#destroy", as: :log_out
