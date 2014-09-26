@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :challenges
   end
 
+  get 'challenges/search/:keyword', to: 'challenges#search'
+
   # Example of regular route:
     get 'users/:user_id/accepted' => 'challenges#accepted', as: :accepted
 
