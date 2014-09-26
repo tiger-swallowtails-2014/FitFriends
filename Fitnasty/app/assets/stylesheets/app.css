@@ -17,10 +17,6 @@ textarea {
   resize: none;
 }
 
-ul {
-  padding: 0;
-}
-
 li {
   list-style-type: none;
 }
@@ -124,6 +120,9 @@ p {
   padding: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  background-color: gray;
+  border: 1px solid black;
 }
 
 .challenge-content {

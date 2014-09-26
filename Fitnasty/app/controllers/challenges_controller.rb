@@ -20,7 +20,6 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    p params
     challenge = Challenge.find(params[:id])
     render json: challenge
   end
