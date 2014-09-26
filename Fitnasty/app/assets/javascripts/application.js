@@ -19,5 +19,6 @@
 
 
 $(document).ready(function(){
-	new AcceptedChallengesController(AcceptedChallengesView, AcceptedChallengesFetcher)
+	acceptedChallengesFetcher = new AcceptedChallengesFetcher
+	new AcceptedChallengesController(AcceptedChallengesView, acceptedChallengesFetcher)
 });
