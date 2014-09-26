@@ -15,5 +15,6 @@ $(document).ready(function() {
   // Controller
   hide_lightboxes()
   $('.signup_button').click(showSignupLightbox)
+  $('.login_button').click(showLoginLightbox)
   $('.lightbox_background').click(hide_lightboxes)
 })
