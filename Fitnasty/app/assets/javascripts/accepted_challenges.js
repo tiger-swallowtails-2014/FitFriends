@@ -25,7 +25,7 @@ AcceptedChallengesController.prototype = {
 AcceptedChallengesView.prototype = {
 	buildHtmlChallenges: function(challenges){
 		$.each(challenges, function( index, value ) {
-		  this.appendHtmlChallenges("<li>"+value.title+"</li>");
+		  this.appendHtmlChallenges(renderChallenge(value));
 		}.bind(this))
 	},
 	appendHtmlChallenges: function(HtmlChallenge){
