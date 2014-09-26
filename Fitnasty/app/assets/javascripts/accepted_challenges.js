@@ -1,10 +1,10 @@
 // USER ID IS CURRENTLY HARDCODED IN - NEEDS TO BE CHANGED TO BE PULLED FROM SESSION
 // NEED TO USE GARY'S HTML TEMPLATE FOR CHALLENGE IN VIEW.BUILDHTMLCHALLENGES
 
-var AcceptedChallengesController = function(view, model){
+var AcceptedChallengesController = function(view, fetcher){
 	this.view = new view(this);
-	this.model = new model(this);
-	this.model.getChallenges();
+	this.fetcher = new fetcher(this);
+	this.fetcher.fetch('users/5/accepted');
 
 }
 
@@ -12,7 +12,7 @@ var AcceptedChallengesView = function(controller){
 	this.controller = controller
 }
 
-var AcceptedChallengesModel = function(controller){
+var AcceptedChallengesFetcher = function(controller){
 	this.controller = controller
 }
 
@@ -33,9 +33,9 @@ AcceptedChallengesView.prototype = {
 	}
 }
 
-AcceptedChallengesModel.prototype = {
-	getChallenges: function(){
-		$.getJSON('users/5/accepted', function(acceptedChallenges){
+AcceptedChallengesFetcher.prototype = {
+	fetch: function(url, callback){
+		$.getJSON(url, function(acceptedChallenges){
 			this.controller.passAcceptedChallengesToView(acceptedChallenges)
 	}.bind(this))
 	}
