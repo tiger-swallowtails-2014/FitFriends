@@ -19,5 +19,5 @@
 
 
 $(document).ready(function(){
-	new AcceptedChallengesController(AcceptedChallengesView, AcceptedChallengesModel)
+	new AcceptedChallengesController(AcceptedChallengesView, AcceptedChallengesFetcher)
 });
