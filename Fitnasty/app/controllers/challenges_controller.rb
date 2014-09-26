@@ -26,7 +26,6 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    p params
     challenge = Challenge.find(params[:id])
     render json: challenge
   end
@@ -35,5 +34,12 @@ class ChallengesController < ApplicationController
 
   end
 
-
+  def search
+    tag = Tag.where(name: params[:keyword]).first
+    if tag
+      render json: tag.challenges
+    else
+      render json: {warning: "No challenge tags match that keyword."}
+    end
+  end
 end
