@@ -1,0 +1,19 @@
+<section class="signup_lightbox">
+
+  <%=form_for User.new do |f| %>
+    <%=f.label "First Name" %>&nbsp;&nbsp;
+    <%=f.text_field :first_name %><br>
+
+    <%=f.label "Last Name" %>&nbsp;&nbsp;
+    <%=f.text_field :last_name %><br>
+
+    <%=f.label "Email Address" %>&nbsp;&nbsp;
+    <%=f.text_field :email %><br>
+
+    <%=f.label :password %>&nbsp;&nbsp;
+    <%=f.password_field :password %><br>
+
+    <%=f.submit "Sign Up" , class:"button" %>
+  <%end%>
+
+</section>
