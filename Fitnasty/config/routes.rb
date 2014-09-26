@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   get "/log_in" => "sessions#new"
   post "/log_in" => "sessions#create"
   get "/log_out" => "sessions#destroy", as: :log_out
+
+  get 'challenges/search/:keyword', to: 'challenges#search'
+
+  # Example of regular route:
+  get 'users/:user_id/accepted' => 'challenges#accepted', as: :accepted
 end
