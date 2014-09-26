@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require underscore-min
+//= require handlebars-min
+//= require backbone
 //= require_tree .
