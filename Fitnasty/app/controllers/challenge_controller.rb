@@ -1,5 +1,0 @@
-class ChallengeController < ApplicationController
-
-
-
-end
