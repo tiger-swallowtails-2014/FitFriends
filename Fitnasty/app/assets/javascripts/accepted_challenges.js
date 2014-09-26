@@ -4,7 +4,7 @@
 var AcceptedChallengesController = function(view, fetcher){
 	this.view = new view(this);
 	this.fetcher = new fetcher(this);
-	this.fetcher.fetch('users/5/accepted');
+	this.fetcher.fetch('users/5/accepted', function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
 
 }
 
@@ -35,9 +35,7 @@ AcceptedChallengesView.prototype = {
 
 AcceptedChallengesFetcher.prototype = {
 	fetch: function(url, callback){
-		$.getJSON(url, function(acceptedChallenges){
-			this.controller.passAcceptedChallengesToView(acceptedChallenges)
-	}.bind(this))
+		$.getJSON(url, callback)
 	}
 
 }
