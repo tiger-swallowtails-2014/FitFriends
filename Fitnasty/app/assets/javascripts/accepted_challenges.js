@@ -29,7 +29,7 @@ AcceptedChallengesView.prototype = {
 		}.bind(this))
 	},
 	appendHtmlChallenges: function(HtmlChallenge){
-		$('#challenges-container ul').append(HtmlChallenge)
+		$('#challenges-container').append(HtmlChallenge)
 	}
 }
 
