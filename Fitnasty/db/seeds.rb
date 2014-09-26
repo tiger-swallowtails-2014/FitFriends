@@ -9,7 +9,7 @@ end
 class ChallengeSeeder
   def self.seed
     40.times do
-      challenge = User.find(rand(10) + 1).challenges.create(title: Faker::App.name, location: Faker::Address.street_address, description: Faker::Lorem.sentence(15), image_url: Faker::Internet.url)
+      challenge = User.find(rand(10) + 1).challenges.create(title: Faker::App.name, location: Faker::Address.street_address, description: Faker::Lorem.sentence(15), image_url: "http://upload.wikimedia.org/wikipedia/commons/a/a4/Ggb_by_night.jpg")
       2.times do
         challenge.tags.create(name: Faker::App.name)
       end

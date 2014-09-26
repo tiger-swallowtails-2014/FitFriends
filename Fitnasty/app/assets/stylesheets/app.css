@@ -78,7 +78,7 @@ p {
 .container {
   position: relative;
   margin: 70px auto;
-  width: 768px;
+  width: 80%;
 }
 
 #challenge-box {
@@ -107,7 +107,7 @@ p {
 #challenges-container {
   position: absolute;
   left: 260px;
-  width: 500px;
+  width: 75%;
   border-radius: 6px;
   border: 1px solid #000;
 }
@@ -154,3 +154,8 @@ p {
   height: 50%;
   width: 10%;
 }
+
+.challenge_image {
+  width: 50%;
+}
+

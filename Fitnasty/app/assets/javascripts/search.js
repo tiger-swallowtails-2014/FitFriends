@@ -12,7 +12,8 @@ var bindSearchEvent = function() {
       data: keyword
     })
     .done(function(data) {
-      if (data.warning != null) {
+      console.log(data.length)
+      if (data.length === 0) {
         $('#challenges-container .challenge').remove()
         $('#challenges-container .warning').remove()
         var warning = renderWarning(data)
@@ -22,7 +23,8 @@ var bindSearchEvent = function() {
         $('#challenges-container .challenge').remove()
         $('#challenges-container .warning').remove()
         $(data).each(function(index, object){
-          var challenge = renderChallenge(object)
+          var user = object.user
+          var challenge = renderChallenge(object, user)
           appendObject('#challenges-container', challenge)
         })
       }
@@ -39,27 +41,27 @@ var appendObject = function(container, element) {
 }
 
 
-var renderChallenge = function(element) {
-  console.log(element)
+var renderChallenge = function(challenge, user) {
+  console.log(challenge)
   var MustacheChallengeTemplate =
     "<div class='challenge'>" +
       "<img class='challenge_image' src={{image_url}} alt=''>" +
       "<h1 class='challenge_title'>{{title}}</h1>" +
       "<span class='challenge_location'>{{location}}</span>" +
       "<p class='challenge_description'>{{description}}</p>" +
-      "<span class='created_by'>posted by " + element.user_id + "</span>" +
-      "<div class='tags'>Tags: " + element.tags + "</div>" +
+      "<span class='created_by'>posted by " + user + "</span>" +
+      "<div class='tags'>Tags: " + challenge.tags + "</div>" +
     "</div>"
 
-  return Mustache.to_html(MustacheChallengeTemplate, element)
+  return Mustache.to_html(MustacheChallengeTemplate, challenge)
 }
 
 
-var renderWarning = function(element) {
+var renderWarning = function() {
   var MustacheWarningTemplate =
     "<div class='warning'>" +
-      "<p>{{warning}}</p>" +
+      "<p>There are no challenges that match that keyword.</p>" +
     "</div>"
 
-  return Mustache.to_html(MustacheWarningTemplate, element)
+  return Mustache.to_html(MustacheWarningTemplate)
 }

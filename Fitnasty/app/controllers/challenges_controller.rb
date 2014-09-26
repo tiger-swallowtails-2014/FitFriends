@@ -35,11 +35,19 @@ class ChallengesController < ApplicationController
   end
 
   def search
-    tag = Tag.where(name: params[:keyword]).first
-    if tag
-      render json: tag.challenges
-    else
-      render json: {warning: "No challenge tags match that keyword."}
-    end
+    keyword = params[:keyword]
+    matched_challenges = match_challenges(keyword)
+
+    render json: matched_challenges.flatten
+  end
+
+  private
+  def match_challenges(keyword)
+    tag = Tag.where(name: keyword).first
+    challenges = []
+    challenges << tag.challenges unless tag == nil
+    challenges << Challenge.where('description LIKE ?', "%#{keyword}%")
+    challenges << Challenge.where('title LIKE ?', "%#{keyword}%")
+    challenges << Challenge.where('location LIKE ?', "%#{keyword}%")
   end
 end
