@@ -7,6 +7,12 @@ class ChallengesController < ApplicationController
     render json: challenges
   end
 
+  def accepted
+    user_challenges = User.find(params[:user_id]).user_challenges.where(accepted?: true)
+    accepted_challenges = user_challenges.map do |user_challenge| Challenge.find(user_challenge.challenge_id) end
+    render json: accepted_challenges
+  end
+
   def create
 
   end
