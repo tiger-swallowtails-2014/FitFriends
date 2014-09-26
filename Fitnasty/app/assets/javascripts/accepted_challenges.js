@@ -2,14 +2,13 @@
 // NEED TO USE GARY'S HTML TEMPLATE FOR CHALLENGE IN VIEW.BUILDHTMLCHALLENGES
 
 var AcceptedChallengesController = function(view, fetcher){
-	this.view = new view(this);
+	this.view = view;
 	this.fetcher = fetcher;
 	this.fetcher.fetch('users/5/accepted', function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
 
 }
 
-var AcceptedChallengesView = function(controller){
-	this.controller = controller
+var AcceptedChallengesView = function(){
 }
 
 var AcceptedChallengesFetcher = function(){
