@@ -148,3 +148,9 @@ p {
 .timestamp {
   color: #B1BEC8;
 }
+
+.signout_button {
+  float: left;
+  height: 50%;
+  width: 10%;
+}
