@@ -16,3 +16,8 @@
 //= require handlebars-min
 //= require backbone
 //= require_tree .
+
+
+$(document).ready(function(){
+	new AcceptedChallengesController(AcceptedChallengesView, AcceptedChallengesModel)
+});
