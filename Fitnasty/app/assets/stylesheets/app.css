@@ -151,5 +151,12 @@ p {
 
 
 .challenge_image {
-  width: 50%;
+  width: 30%;
+
+}
+
+.challenge_title {
+  display: inline;
+  vertical-align: top;
+  font-size: 1.5em;
 }
