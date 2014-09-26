@@ -6,6 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# if "assets" == ENV["RAILS_GROUPS"] || ["development", "test"].include?(ENV["RAILS_ENV"])
+#   HandlebarsAssets::Config.options = { data: true }
+# end
 module Fitnasty
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
