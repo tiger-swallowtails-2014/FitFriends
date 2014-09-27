@@ -17,10 +17,6 @@ textarea {
   resize: none;
 }
 
-ul {
-  padding: 0;
-}
-
 li {
   list-style-type: none;
 }
@@ -82,7 +78,7 @@ p {
 .container {
   position: relative;
   margin: 70px auto;
-  width: 768px;
+  width: 80%;
 }
 
 #challenge-box {
@@ -111,7 +107,7 @@ p {
 #challenges-container {
   position: absolute;
   left: 260px;
-  width: 500px;
+  width: 75%;
   border-radius: 6px;
   border: 1px solid #000;
 }
@@ -124,6 +120,9 @@ p {
   padding: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  background-color: gray;
+  border: 1px solid black;
 }
 
 .challenge-content {
@@ -148,4 +147,16 @@ p {
 .username,
 .timestamp {
   color: #B1BEC8;
+}
+
+
+.challenge_image {
+  width: 30%;
+
+}
+
+.challenge_title {
+  display: inline;
+  vertical-align: top;
+  font-size: 1.5em;
 }
