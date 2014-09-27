@@ -8,15 +8,15 @@ class SessionsController < ApplicationController
     @user.authenticate(params[:password])
     if @user
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to root_path
     else
-      redirect_to '/'
+      redirect_to '/home'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/"
+    redirect_to '/home'
   end
 
 end
