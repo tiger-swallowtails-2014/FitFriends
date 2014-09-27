@@ -149,10 +149,14 @@ p {
   color: #B1BEC8;
 }
 
+.signout_button {
+  float: left;
+  height: 50%;
+  width: 10%;
+}
 
 .challenge_image {
   width: 30%;
-
 }
 
 .challenge_title {
