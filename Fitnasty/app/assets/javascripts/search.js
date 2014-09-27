@@ -3,7 +3,7 @@ $(document).ready(function() {
 })
 
 var bindSearchEvent = function() {
-  $("#search-form").on('submit', function(e){
+  $("#search-form").on('keyup', function(e){
     e.preventDefault()
     var keyword = $("#search").val()
     $.ajax({
@@ -13,17 +13,15 @@ var bindSearchEvent = function() {
     })
     .done(function(data) {
       if (data.length === 0) {
-        $('#challenges-container .challenge').remove()
-        $('#challenges-container .warning').remove()
-        var warning = renderWarning(data)
-        appendObject('#challenges-container', warning)
+        removeObject('#challenges-container .challenge')
+        removeObject('#challenges-container .warning')
+        appendObject('#challenges-container', renderWarning(data))
       }
       else {
-        $('#challenges-container .challenge').remove()
-        $('#challenges-container .warning').remove()
+        removeObject('#challenges-container .challenge')
+        removeObject('#challenges-container .warning')
         $(data).each(function(index, challengeHash){
-          var challenge = renderChallenge(challengeHash)
-          appendObject('#challenges-container', challenge)
+          appendObject('#challenges-container', renderChallenge(challengeHash))
         })
       }
     })
@@ -33,12 +31,17 @@ var bindSearchEvent = function() {
   })
 }
 
+// Removes html elements with a given selector
+var removeObject = function(selector) {
+  $(selector).remove()
+}
 
+// appends an element to specified container
 var appendObject = function(container, element) {
   $(container).append(element)
 }
 
-
+// Returns html elements for a challenge
 var renderChallenge = function(challengeHash) {
   var challenge = challengeHash.challenge_object
   var user = challengeHash.challenge_user
@@ -58,6 +61,8 @@ var renderChallenge = function(challengeHash) {
 }
 
 
+
+// Returns html elements for warning
 var renderWarning = function() {
   var MustacheWarningTemplate =
     "<div class='warning'>" +
