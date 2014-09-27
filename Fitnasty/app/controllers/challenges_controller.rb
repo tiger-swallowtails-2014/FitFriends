@@ -17,7 +17,13 @@ class ChallengesController < ApplicationController
   end
 
   def create
-
+    new_challenge = Challenge.new(challenge_params)
+    # render :nothing => true
+    if new_challenge.save
+      render json: new_challenge
+    else
+      render json: "There was a problem with saving your challenge."
+    end
   end
 
   def edit
@@ -37,6 +43,7 @@ class ChallengesController < ApplicationController
 
   end
 
+
   def search
     keyword = params[:keyword]
     matched_challenges = match_challenges(keyword).flatten
@@ -45,6 +52,10 @@ class ChallengesController < ApplicationController
   end
 
   private
+  def challenge_params
+    params.require(:challenge).permit(:title, :location, :description, :image_url)
+  end
+
   def match_challenges(keyword)
     tag = Tag.where(name: keyword).first
     challenges = []
