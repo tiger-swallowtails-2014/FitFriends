@@ -21,7 +21,8 @@ var bindSearchEvent = function() {
         removeObject('#challenges-container .challenge')
         removeObject('#challenges-container .warning')
         $(data).each(function(index, challengeHash){
-          appendObject('#challenges-container', renderChallenge(challengeHash))
+          challengeReturner('#challenges-container', challengeHash)
+          // appendObject('#challenges-container', renderChallenge(challengeHash))
         })
       }
     })
@@ -70,4 +71,13 @@ var renderWarning = function() {
     "</div>"
 
   return Mustache.to_html(MustacheWarningTemplate)
+}
+
+
+
+function challengeReturner(container, challengeHash){
+  var challenge = renderChallenge(challengeHash)
+  $(container).prepend(challenge)
+  $(".challenge:first").hide()
+  $(".challenge:first").fadeIn(800)
 }
