@@ -15,6 +15,8 @@
 //= require underscore-min
 //= require handlebars-min
 //= require backbone
+//= require handlebars.runtime
+//= require_tree ./templates
 //= require_tree .
 
 
