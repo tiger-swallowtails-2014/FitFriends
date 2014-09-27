@@ -3,7 +3,7 @@ $(document).ready(function() {
 })
 
 var bindSearchEvent = function() {
-  $("#search-form").on('submit', function(e){
+  $("#search-form").on('keyup', function(e){
     e.preventDefault()
     var keyword = $("#search").val()
     $.ajax({
@@ -12,18 +12,16 @@ var bindSearchEvent = function() {
       data: keyword
     })
     .done(function(data) {
-      if (data.warning != null) {
-        $('#challenges-container .challenge').remove()
-        $('#challenges-container .warning').remove()
-        var warning = renderWarning(data)
-        appendObject('#challenges-container', warning)
+      if (data.length === 0) {
+        removeObject('#challenges-container .challenge')
+        removeObject('#challenges-container .warning')
+        appendObject('#challenges-container', renderWarning(data))
       }
       else {
-        $('#challenges-container .challenge').remove()
-        $('#challenges-container .warning').remove()
-        $(data).each(function(index, object){
-          var challenge = renderChallenge(object)
-          appendObject('#challenges-container', challenge)
+        removeObject('#challenges-container .challenge')
+        removeObject('#challenges-container .warning')
+        $(data).each(function(index, challengeHash){
+          challengeReturner('#challenges-container', challengeHash)
         })
       }
     })
@@ -33,33 +31,51 @@ var bindSearchEvent = function() {
   })
 }
 
+// Removes html elements with a given selector
+var removeObject = function(selector) {
+  $(selector).remove()
+}
 
+// appends an element to specified container
 var appendObject = function(container, element) {
   $(container).append(element)
 }
 
+// Returns html elements for a challenge
+var renderChallenge = function(challengeHash) {
+  var challenge = challengeHash.challenge_object
+  var user = challengeHash.challenge_user
+  var challengeTags = challengeHash.challenge_tags
 
-var renderChallenge = function(element) {
-  console.log(element)
   var MustacheChallengeTemplate =
     "<div class='challenge'>" +
       "<img class='challenge_image' src={{image_url}} alt=''>" +
-      "<h1 class='challenge_title'>{{title}}</h1>" +
+      "<div class='challenge_title'><h1>{{title}}</h1></div>" +
       "<span class='challenge_location'>{{location}}</span>" +
       "<p class='challenge_description'>{{description}}</p>" +
-      "<span class='created_by'>posted by " + element.user_id + "</span>" +
-      "<div class='tags'>Tags: " + element.tags + "</div>" +
+      "<span class='created_by'>posted by " + user.first_name + " " + user.last_name + "</span>" +
+      "<div class='tags'>Tags: " + challengeTags + "</div>" +
     "</div>"
 
-  return Mustache.to_html(MustacheChallengeTemplate, element)
+  return Mustache.to_html(MustacheChallengeTemplate, challenge)
 }
 
 
-var renderWarning = function(element) {
+
+// Returns html elements for warning
+var renderWarning = function() {
   var MustacheWarningTemplate =
     "<div class='warning'>" +
-      "<p>{{warning}}</p>" +
+      "<p>There are no challenges that match that keyword.</p>" +
     "</div>"
 
-  return Mustache.to_html(MustacheWarningTemplate, element)
+  return Mustache.to_html(MustacheWarningTemplate)
+}
+
+
+function challengeReturner(container, challengeHash){
+  var challenge = renderChallenge(challengeHash)
+  $(container).prepend(challenge)
+  $(".challenge:first").hide()
+  $(".challenge:first").fadeIn(800)
 }

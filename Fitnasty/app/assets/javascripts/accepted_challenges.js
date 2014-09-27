@@ -1,19 +1,17 @@
 // USER ID IS CURRENTLY HARDCODED IN - NEEDS TO BE CHANGED TO BE PULLED FROM SESSION
 // NEED TO USE GARY'S HTML TEMPLATE FOR CHALLENGE IN VIEW.BUILDHTMLCHALLENGES
 
-var AcceptedChallengesController = function(view, model){
-	this.view = new view(this);
-	this.model = new model(this);
-	this.model.getChallenges();
+var AcceptedChallengesController = function(view, fetcher){
+	this.view = view;
+	this.fetcher = fetcher;
+	this.fetcher.fetch('users/5/accepted', function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
 
 }
 
-var AcceptedChallengesView = function(controller){
-	this.controller = controller
+var AcceptedChallengesView = function(){
 }
 
-var AcceptedChallengesModel = function(controller){
-	this.controller = controller
+var AcceptedChallengesFetcher = function(){
 }
 
 AcceptedChallengesController.prototype = {
@@ -25,19 +23,17 @@ AcceptedChallengesController.prototype = {
 AcceptedChallengesView.prototype = {
 	buildHtmlChallenges: function(challenges){
 		$.each(challenges, function( index, value ) {
-		  this.appendHtmlChallenges("<li>"+value.title+"</li>");
+		  this.appendHtmlChallenges(renderChallenge(value));
 		}.bind(this))
 	},
 	appendHtmlChallenges: function(HtmlChallenge){
-		$('#challenges-container ul').append(HtmlChallenge)
+		$('#challenges-container').append(HtmlChallenge)
 	}
 }
 
-AcceptedChallengesModel.prototype = {
-	getChallenges: function(){
-		$.getJSON('users/5/accepted', function(acceptedChallenges){
-			this.controller.passAcceptedChallengesToView(acceptedChallenges)
-	}.bind(this))
+AcceptedChallengesFetcher.prototype = {
+	fetch: function(url, callback){
+		$.getJSON(url, callback)
 	}
 
 }
