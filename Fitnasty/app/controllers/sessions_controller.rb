@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user.authenticate(params[:password])
     if @user
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to root_path
     else
       redirect_to '/home'
     end
