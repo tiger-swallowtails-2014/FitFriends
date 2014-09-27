@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'static#index'
+  resources :challenges
 
   resources :users do
-    resources :challenges
+    resources :challenges, only: :index
   end
 
   # Example of regular route:
