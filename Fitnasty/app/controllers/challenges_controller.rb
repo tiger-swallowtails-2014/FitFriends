@@ -16,7 +16,8 @@ class ChallengesController < ApplicationController
 
   def create
     new_challenge = Challenge.new(challenge_params)
-    # render :nothing => true
+    p "here is the challenge"
+    p new_challenge
     if new_challenge.save
       render json: new_challenge
     else

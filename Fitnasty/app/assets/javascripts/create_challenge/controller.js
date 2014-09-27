@@ -14,6 +14,7 @@ function ChallengeController() {
         ajaxObject.data = $(this).serialize();
 
         self.ajaxCall(ajaxObject).done(function(data){
+          console.log("type")
           console.log(data)
         })
       })
