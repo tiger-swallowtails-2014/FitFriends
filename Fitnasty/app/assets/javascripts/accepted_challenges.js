@@ -35,6 +35,6 @@ AcceptedChallengesView.prototype = {
 		}.bind(this))
 	},
 	appendHtmlChallenges: function(HtmlChallenge){
-		$('#challenges-container').append(HtmlChallenge)
+		$('#accepted').append(HtmlChallenge)
 	}
 }
