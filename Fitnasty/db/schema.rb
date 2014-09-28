@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20140928073736) do
     t.datetime "updated_at"
   end
 
-  create_table "friendships", force: true do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+  create_table "follows", force: true do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
   end
 
   create_table "tags", force: true do |t|

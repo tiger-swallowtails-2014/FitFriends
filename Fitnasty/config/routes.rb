@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/trends' => "tags#trends", as: :trends
   resources :challenges
-  get 'users/current' => "users#current", as: :current
+  get '/users/current' => "users#current", as: :current
 
-  resources :users do
-    resources :challenges, only: :index
-  end
+
 
   get "/home" => "home#index", as: :home
   get "/log_in" => "sessions#new"
@@ -25,8 +23,13 @@ Rails.application.routes.draw do
   get 'challenges/recent', to: 'challenges#recent'
   get 'challenges/trending', to: 'challenges#trending'
 
+
   get '/map' => "home#map"
 
+  resources :users do
+    resources :challenges, only: :index
+  end
+
   # Example of regular route:
-  get 'users/:user_id/accepted' => 'challenges#accepted', as: :accepted
+  get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
 end

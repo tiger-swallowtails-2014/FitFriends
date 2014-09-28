@@ -25,6 +25,16 @@ class AcceptedSeeder
   end
 end
 
+class FollowSeeder
+  def self.seed
+    20.times do
+      User.find(rand(10) + 1).followers << User.find(rand(10)+1)
+      User.find(rand(10) + 1).followees << User.find(rand(10)+1)
+    end
+  end
+end
+
 UserSeeder.seed
 ChallengeSeeder.seed
 AcceptedSeeder.seed
+FollowSeeder.seed
