@@ -20,8 +20,4 @@
 //= require_tree .
 
 
-$(document).ready(function(){
-	acceptedChallengesFetcher = new AcceptedChallengesFetcher;
-	acceptedChallengesView = new AcceptedChallengesView;
-	new AcceptedChallengesController(acceptedChallengesView, acceptedChallengesFetcher)
-});
+
