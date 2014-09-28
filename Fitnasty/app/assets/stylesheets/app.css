@@ -7,10 +7,6 @@ textarea {
   resize: none;
 }
 
-a {
-  color: #FF0057;
-}
-
 h3 {
   color: #66757F;
 }
@@ -20,7 +16,7 @@ p {
 }
 
 #top-nav {
-  background: #55ACEE;
+  background: radial-gradient(#f27c32, #ff6b3f);
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   z-index: 2;
@@ -30,16 +26,18 @@ p {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 3em;
   color: white;
+  width: 20%;
+  margin-left: 5%;
 }
 
 #search {
-  position:absolute;
-  top:0;
-  right:0;
+  position:relative;
   width: 15%;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 1%;
   font-size: 1vw;
+  float: right;
+  margin: .25% 5%;
 }
 
 .fa-search {
@@ -48,19 +46,15 @@ p {
   right: 24px;
 }
 
-.container {
-  position: relative;
-  margin: 2%;
-}
-
 .left-nav {
   float:left;
   width: 15%;
+  margin: 3% 0 0 10%;
 }
 
 #profile-image-container {
   text-align: center;
-  background: #00A5D5;
+  background: radial-gradient(#f27c32, #ff6b3f);
   border-radius: 6px
 }
 
@@ -82,8 +76,6 @@ p {
 }
 
 #challenges-container {
-  float: left;
-  left: 260px;
   width: 75%;
   border-radius: 6px;
   border: 1px solid #000;
@@ -134,7 +126,8 @@ p {
 }
 
 .sign_out_div {
-
+  position: relative;
+  float: right;
 }
 
 .challenge_image {
