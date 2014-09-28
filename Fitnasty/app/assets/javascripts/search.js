@@ -13,15 +13,15 @@ var bindSearchEvent = function() {
     })
     .done(function(data) {
       if (data.length === 0) {
-        removeObject('#challenges-container .challenge')
-        removeObject('#challenges-container .warning')
-        appendObject('#challenges-container', renderWarning(data))
+        removeObject('#accepted .challenge')
+        removeObject('#accepted .warning')
+        appendObject('#accepted', renderWarning(data))
       }
       else {
-        removeObject('#challenges-container .challenge')
-        removeObject('#challenges-container .warning')
+        removeObject('#accepted .challenge')
+        removeObject('#accepted .warning')
         $(data).each(function(index, challengeHash){
-          challengeReturner('#challenges-container', challengeHash)
+          challengeReturner('#accepted', challengeHash)
         })
       }
     })
@@ -75,7 +75,7 @@ var renderWarning = function() {
 
 function challengeReturner(container, challengeHash){
   var challenge = renderChallenge(challengeHash)
-  $(container).prepend(challenge)
+  $(container).append(challenge)
   $(".challenge:first").hide()
   $(".challenge:first").fadeIn(800)
 }
