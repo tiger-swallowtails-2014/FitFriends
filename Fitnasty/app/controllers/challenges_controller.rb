@@ -10,7 +10,6 @@ class ChallengesController < ApplicationController
   def accepted
     #returns specific users accepted challenges
     accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-
     render json: add_challenge_info(accepted_challenges.flatten)
   end
 
@@ -26,11 +25,9 @@ class ChallengesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
   end
 
   def show
@@ -39,7 +36,6 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
-
   end
 
 
