@@ -11,7 +11,7 @@ var UserFactory = (function(holder) {
   return {
     createUsers: function(arrayOfUsers) {
       for (var i = 0; i < arrayOfUsers.length; i++) {
-        user = new user(arrayOfUsers[i])
+        user = new User(arrayOfUsers[i])
         holder.addUser(user)
       }
     }
