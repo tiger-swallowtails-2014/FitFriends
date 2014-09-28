@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'home#index'
+  get '/trends' => "tags#trends", as: :trends
   resources :challenges
-
   get 'users/current' => "users#current", as: :current
+
   resources :users do
     resources :challenges, only: :index
   end
@@ -18,8 +19,11 @@ Rails.application.routes.draw do
   get "/log_out" => "sessions#destroy", as: :log_out
   get '/profile' => "static#index", as: :profile
   get "/tabs" => "home#tabs"
+  post "/accept_challenge" => "challenges#accept_challenge", as: :accept_challenge
 
   get 'challenges/search/:keyword', to: 'challenges#search'
+
+  get '/map' => "home#map"
 
   # Example of regular route:
   get 'users/:user_id/accepted' => 'challenges#accepted', as: :accepted

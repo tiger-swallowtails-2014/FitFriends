@@ -13,6 +13,13 @@ class ChallengesController < ApplicationController
     render json: add_challenge_info(accepted_challenges.flatten)
   end
 
+  def accept_challenge
+    user = User.find(session[:user_id])
+    user.user_challenges.create(challenge_id: params[:challenge_id], accepted?: true)
+
+    render :nothing => true
+  end
+
   def create
     new_challenge = Challenge.new(challenge_params)
     p "here is the challenge"
