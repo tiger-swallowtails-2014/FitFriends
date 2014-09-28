@@ -52,6 +52,9 @@
     </div>
     <div class="tab_area" id="users">
       <div class="followers">
+        <form id="user_search">
+          <input type="search", placeholder="search for users">
+        </form>
         <p>followers</p>
         <% @user.followers.each do |follower| %>
           <%= render partial: 'user', locals: {user: follower} %>
