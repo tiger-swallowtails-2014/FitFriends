@@ -1,7 +1,3 @@
-$(document).ready(function() {
-  bindSearchEvent();
-})
-
 var bindSearchEvent = function() {
   $("#search-form").on('submit', function(e){
     e.preventDefault()
@@ -13,16 +9,17 @@ var bindSearchEvent = function() {
     })
     .done(function(data) {
       if (data.length === 0) {
-        removeObject('#challenges-container .challenge')
-        removeObject('#challenges-container .warning')
-        appendObject('#challenges-container', renderWarning(data))
+        removeObject('#accepted .challenge')
+        removeObject('#accepted .warning')
+        appendObject('#accepted', renderWarning(data))
       }
       else {
-        removeObject('#challenges-container .challenge')
-        removeObject('#challenges-container .warning')
+        removeObject('#accepted .challenge')
+        removeObject('#accepted .warning')
+        clearHolder()
         ChallengeFactory.createChallenges(data)
         $(challengeHolder.challenges).each(function(index, challenge) {
-          challengeReturner('#challenges-container', challenge)
+          challengeReturner('#accepted', challenge)
         })
       }
     })
@@ -58,9 +55,9 @@ var renderWarning = function() {
 
 
 // Appends challenges to the page
-function challengeReturner(container, challenge){
-  var challenge = renderChallenge(challenge)
-  $(container).prepend(challenge)
+function challengeReturner(container, challengeHash){
+  var challenge = renderChallenge(challengeHash)
+  $(container).append(challenge)
   $(".challenge:first").hide()
   $(".challenge:first").fadeIn(800)
 }
@@ -70,7 +67,7 @@ function challengeReturner(container, challenge){
 var renderChallenge = function(challenge) {
   var MustacheChallengeTemplate =
     "<div class='challenge'>" +
-      "<img class='challenge_image' src={{image_url}} alt=''>" +
+      "<img class='challenge_image' src={{image_url}}>" +
       "<div class='challenge_title'><h1>{{title}}</h1></div>" +
       "<span class='challenge_location'>{{location}}</span>" +
       "<p class='challenge_description'>{{description}}</p>" +

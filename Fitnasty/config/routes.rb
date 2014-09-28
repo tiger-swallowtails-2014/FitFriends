@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "/log_in" => "sessions#create"
   get "/log_out" => "sessions#destroy", as: :log_out
   get '/profile' => "static#index", as: :profile
+  get "/tabs" => "home#tabs"
 
   get 'challenges/search/:keyword', to: 'challenges#search'
 

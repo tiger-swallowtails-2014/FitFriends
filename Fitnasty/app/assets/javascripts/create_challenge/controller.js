@@ -24,12 +24,4 @@ function ChallengeController() {
       var ajax = $.ajax(args)
       return ajax
     }
-
 }
-
-
-
-$(document).ready(function() {
-  var controller = new ChallengeController
-  controller.challengeFormCreate('.test_show', 'ul')
-});

@@ -1,0 +1,40 @@
+$dark_orange: #f27c32;
+$more_dark_orange: #ff6b3f;
+$grey: #66757F;
+
+#tabs {
+  width: 60%;
+  height: 50em;
+  float: right;
+  margin-right: 10%;
+
+  .tabs_list {
+    box-sizing: border-box;
+    margin: 5% auto;
+    width: 90%;
+    padding: 0;
+
+    .tab {
+      width: 22%;
+      height: 4em;
+      background: radial-gradient($dark_orange, $more_dark_orange);
+      text-align: center;
+      display: inline-block;
+      border-radius: 4px;
+      margin-left: 2%;
+
+      a {
+        position: relative;
+        top: 32%;
+        color: white;
+        text-decoration: none;
+        font-size: 1.25em;
+      }
+    }
+  }
+
+  .tab_area {
+    border-radius: 4px;
+    min-height: 40em;
+  }
+}
