@@ -3,22 +3,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
-input[type=submit] {
-  float: right;
-  padding: 8px 15px;
-  background: #ccc;
-  border: 0 none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
 textarea {
   resize: none;
-}
-
-li {
-  list-style-type: none;
 }
 
 a {
@@ -34,39 +20,26 @@ p {
 }
 
 #top-nav {
-  position: fixed;
   background: #55ACEE;
-  height: 50px;
   width: 100%;
-  min-width: 768px;
-  top: 0;
-  left: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  text-align: center;
   z-index: 2;
 }
 
 #brand {
-  text-align: center;
-  line-height: 50px;
-  font-family: 'Lobster', cursive;
-  font-size: 24px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 3em;
   color: white;
-  display: inline-block;
 }
 
 #search {
-  position: absolute;
-  height: 24px;
-  top: 7px;
-  right: 10px;
-  width: 200px;
-  border-radius: 24px;
-  padding: 4px;
-  padding-left: 10px;
-  padding-right: 36px;
-  font-size: 14px;
-  outline: none;
+  position:absolute;
+  top:0;
+  right:0;
+  width: 15%;
+  border-radius: 5px;
+  padding: 1%;
+  font-size: 1vw;
 }
 
 .fa-search {
@@ -77,39 +50,44 @@ p {
 
 .container {
   position: relative;
-  margin: 70px auto;
-  width: 80%;
+  margin: 2%;
 }
 
-#challenge-box {
-  position: absolute;
-  height: 160px;
-  width: 232px;
-  max-width: 232px;
+.left-nav {
+  float:left;
+  width: 15%;
+}
+
+#profile-image-container {
   text-align: center;
   background: #00A5D5;
-  padding: 6px;
   border-radius: 6px
 }
 
+.profile_image {
+  height: 100%;
+  width:100%;
+}
+
 #trends-container {
-  position: absolute;
-  top: 180px;
-  height: 258px;
-  width: 210px;
+  padding: 10px;
   max-width: 210px;
   border: 1px solid #000;
-  padding: 15px;
   border-radius: 6px;
   margin-top: 10px;
 }
 
+#trends-container h3 {
+  margin: 0;
+}
+
 #challenges-container {
-  position: absolute;
+  float: left;
   left: 260px;
   width: 75%;
   border-radius: 6px;
   border: 1px solid #000;
+  margin: 0 2%;
 }
 
 #challenges-container h3 {
@@ -150,9 +128,13 @@ p {
 }
 
 .signout_button {
-  float: left;
   height: 50%;
   width: 10%;
+  float:right;
+}
+
+.sign_out_div {
+
 }
 
 .challenge_image {

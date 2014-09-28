@@ -1,31 +1,35 @@
-<script type="text/javascript">
-// auth_token = "<%= @auth_token -%>"
-</script>
 <header id="top-nav">
   <div id="brand">FitNasty</div>
   <form id="search-form">
-    <input id="search" type="text" name="query">
+    <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
-  <i class="fa fa-search"></i>
-  <a href="/log_out" class="signout_button">Sign Out</a>
+  <div class="sign_out_div">
+    <a href="/log_out" class="signout_button">Sign Out</a>
+  </div>
 </header>
-<section class="container">
-  <section id="challenge-box">
-    <p id="challenge-box-title">Compose New challenge</p>
-    <form id="challenge-form">
-      <textarea id="new-challenge" cols="30" rows="5" maxlength="140" name="challenge"></textarea>
-      <input type="submit" value="challenge">
-    </form>
-  </section>
-  <section id="trends-container">
-    <h3>Trends</h3>
-    <button class = "test_show">Show</button>
-    <ul>
 
-    </ul>
-  </section>
+
+<section class="container">
+  <div class="left-nav">
+    <section id="profile-image-container">
+      <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
+    </section>
+
+    <section id="trends-container">
+      <h3>Trends</h3>
+      <button class = "test_show">Show</button>
+      <ul>
+
+      </ul>
+    </section>
+  </div>
+
   <section id="challenges-container">
     <h3>challenges</h3>
 
   </section>
+
+
+
+
 </section>

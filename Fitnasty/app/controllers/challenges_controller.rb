@@ -1,24 +1,23 @@
 class ChallengesController < ApplicationController
 
   def index
-    #returns specific users accepted challenges
+    #returns specific users created challenges
     challenges = User.find(params[:user_id]).challenges
 
     render json: challenges
   end
 
   def accepted
-    user_challenges = User.find(params[:user_id]).user_challenges.where(accepted?: true)
-    accepted_challenges = user_challenges.map do |user_challenge|
-      Challenge.find(user_challenge.challenge_id)
-    end
+    #returns specific users accepted challenges
+    accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
 
     render json: add_challenge_info(accepted_challenges.flatten)
   end
 
   def create
     new_challenge = Challenge.new(challenge_params)
-    # render :nothing => true
+    p "here is the challenge"
+    p new_challenge
     if new_challenge.save
       render json: new_challenge
     else

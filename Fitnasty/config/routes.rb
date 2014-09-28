@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'static#index'
   resources :challenges
 
+  get 'users/current' => "users#current", as: :current
   resources :users do
     resources :challenges, only: :index
   end
