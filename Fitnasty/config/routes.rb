@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post "/accept_challenge" => "challenges#accept_challenge", as: :accept_challenge
 
   get 'challenges/search/:keyword', to: 'challenges#search'
+  get 'challenges/recent', to: 'challenges#recent'
+  get 'challenges/trending', to: 'challenges#trending'
 
   get '/map' => "home#map"
 

@@ -3,7 +3,6 @@ class ChallengesController < ApplicationController
   def index
     #returns specific users created challenges
     challenges = User.find(params[:user_id]).challenges
-
     render json: challenges
   end
 
