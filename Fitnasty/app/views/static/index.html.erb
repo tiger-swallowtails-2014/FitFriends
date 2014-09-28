@@ -1,15 +1,15 @@
-  <header id="top-nav">
-  <div id="brand">FitNasty</div>
+<header id="top-nav">
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
   <div class="sign_out_div">
     <a href="/log_out" class="signout_button">Sign Out</a>
   </div>
+  <div id="brand">FitNasty</div>
 </header>
 
 
-<section class="container">
+<main class="container">
   <div class="left-nav">
     <section id="profile-image-container">
       <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
@@ -17,19 +17,35 @@
 
     <section id="trends-container">
       <h3>Trends</h3>
-      <button class = "test_show">Show</button>
+      <button class="test_show">Show</button>
       <ul>
 
       </ul>
     </section>
   </div>
 
-  <section id="challenges-container">
-    <h3>challenges</h3>
+  <!-- Tabs -->
+  <div id="tabs">
+    <ul class="tabs_list">
+      <li class="tab"><a href="#accepted">accepted</a></li>
+      <li class="tab"><a href="#challenges">challenges</a></li>
+      <li class="tab"><a href="#users">users</a></li>
+      <li class="tab"><a href="#profile">profile</a></li>
+    </ul>
+    <div class="tab_area" id="accepted">
+      <p>accepted</p>
+    </div>
+    <div class="tab_area" id="challenges">
+      <section id="challenges-container">
+        <h3>challenges</h3>
 
-  </section>
-
-
-
-
-</section>
+      </section>
+    </div>
+    <div class="tab_area" id="users">
+      <p>users</p>
+    </div>
+    <div class="tab_area" id="profile">
+      <p>profile</p>
+    </div>
+  </div>
+</main>
