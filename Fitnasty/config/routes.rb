@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'challenges/search/:keyword', to: 'challenges#search'
 
+  get '/map' => "home#map"
+
   # Example of regular route:
   get 'users/:user_id/accepted' => 'challenges#accepted', as: :accepted
 end

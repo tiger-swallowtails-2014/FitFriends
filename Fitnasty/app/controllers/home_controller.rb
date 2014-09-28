@@ -6,4 +6,8 @@ class HomeController < ApplicationController
   def tabs
   end
 
+  def map
+
+  end
+
 end
