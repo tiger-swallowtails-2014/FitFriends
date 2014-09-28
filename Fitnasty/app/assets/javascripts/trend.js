@@ -7,6 +7,7 @@ $(document).ready(function(){
 var TrendController = function(view, fetcher){
 	this.view = view;
 	this.fetcher = fetcher;
+	this.view.bindHtmlTag()
 	this.fetcher.fetch('/trends', function(trendingTags){
 		this.passTrendingTags(trendingTags)
 	}.bind(this))
@@ -24,11 +25,18 @@ var TrendView = function(){
 TrendView.prototype = {
 	buildHtmlTags: function(trendingTags){
 		$.each(trendingTags, function(index, value){
-			this.appendHtmlTag("<li><a href=''>"+value["name"]+"</a></li>")
+			console.log(value);
+			this.appendHtmlTag("<li id="+value["id"]+"><a>"+value["name"]+"</a></li>")
 		}.bind(this))
 	},
 
 	appendHtmlTag: function(HtmlTrendingTag){
-		$('#trends-container ul').append(HtmlTrendingTag)
+		$('#trends-container ul').append(HtmlTrendingTag);
+	},
+
+	bindHtmlTag: function(){
+		document.getElementById('tag').addEventListener("click", function(e){
+		    console.log(e.target)
+		});
 	}
 }

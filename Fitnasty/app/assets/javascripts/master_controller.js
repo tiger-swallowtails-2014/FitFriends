@@ -17,4 +17,6 @@ $(document).ready(function() {
 
   // from search.js
   bindSearchEvent();
+
+  
 });
