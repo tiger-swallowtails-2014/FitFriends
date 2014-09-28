@@ -5,7 +5,6 @@ var AcceptedChallengesController = function(view, fetcher){
 	this.view = view;
 	this.fetcher = fetcher;
 	this.fetcher.fetch('users/' + currentUser.id +' /accepted', function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
-
 }
 
 var AcceptedChallengesView = function(){
