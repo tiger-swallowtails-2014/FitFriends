@@ -24,8 +24,11 @@ var TrendView = function(){
 TrendView.prototype = {
 	buildHtmlTags: function(trendingTags){
 		$.each(trendingTags, function(index, value){
-			
-			console.log(value["name"])
-		})
+			this.appendHtmlTag("<a href=''>"+value["name"]+"</a>")
+		}.bind(this))
+	},
+
+	appendHtmlTag: function(HtmlTrendingTag){
+		$('#trends-container').append(HtmlTrendingTag)
 	}
 }
