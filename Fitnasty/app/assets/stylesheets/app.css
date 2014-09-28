@@ -94,6 +94,15 @@ p {
   margin: 2.5% 0;
 }
 
+.challenge:hover {
+  box-shadow: 2px 2px 2px orange;
+  cursor: pointer;
+}
+
+.challenge:active{
+  background-color: orange;
+}
+
 .challenge-content {
   display: inline-block;
   vertical-align: top;
