@@ -18,16 +18,36 @@ var bindSearchEvent = function() {
         removeObject('#accepted .warning')
         clearHolder()
         ChallengeFactory.createChallenges(data)
-        console.log(challengeHolder)
-        $(challengeHolder.challenges).each(function(index, challenge) {
-          challengeReturner('#accepted', challenge)
+        $(challengeHolder.challenges).each(function(index, challengeHash) {
+          challengeReturner('#accepted', challengeHash)
         })
+        $('.challenge').addClass("result")
       }
     })
     .fail(function(data) {
       console.log("fail")
     })
   })
+
+  $("#accepted").on('click', '.result', function(e){
+    e.preventDefault()
+    challenge = $(this)
+    challenge_num = challenge.attr("id").replace("challenge_", "")
+    $.ajax({
+      url: '/accept_challenge',
+      method: 'POST',
+      data: {challenge_id: challenge_num}
+    })
+    .done(function(){
+      challenge.css("background", "orange")
+    })
+    .fail(function(data) {
+      console.log("fail")
+    })
+  })
+
+
+
 }
 
 
@@ -67,7 +87,7 @@ function challengeReturner(container, challengeHash){
 // Returns html elements for a challenge
 var renderChallenge = function(challenge) {
   var MustacheChallengeTemplate =
-    "<div class='challenge'>" +
+    "<div class='challenge' id='challenge_{{id}}''>" +
       "<img class='challenge_image' src={{image_url}}>" +
       "<div class='challenge_title'><h1>{{title}}</h1></div>" +
       "<span class='challenge_location'>{{location}}</span>" +
