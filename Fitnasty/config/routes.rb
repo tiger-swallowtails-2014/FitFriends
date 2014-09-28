@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'static#index'
+  get '/trends' => "tags#trends", as: :trends  
   resources :challenges
-
   get 'users/current' => "users#current", as: :current
   resources :users do
     resources :challenges, only: :index
