@@ -1,20 +1,27 @@
 // USER ID IS CURRENTLY HARDCODED IN - NEEDS TO BE CHANGED TO BE PULLED FROM SESSION
-// NEED TO USE GARY'S HTML TEMPLATE FOR CHALLENGE IN VIEW.BUILDHTMLCHALLENGES
 
 var AcceptedChallengesController = function(view, fetcher){
 	this.view = view;
 	this.fetcher = fetcher;
-	this.fetcher.fetch('users/5/accepted', function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
+
+	this.fetcher.fetch('users/current', function(currentUser){this.getAcceptedChallenges(new User(currentUser));
+	}.bind(this));
 
 }
 
 var AcceptedChallengesView = function(){
 }
 
-var AcceptedChallengesFetcher = function(){
-}
-
 AcceptedChallengesController.prototype = {
+	getAcceptedChallenges: function(currentUser){
+		this.fetcher.fetch("users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){
+
+			//GARY MADE UPDATES HERE
+
+			clearHolder()
+			ChallengeFactory.createChallenges(acceptedChallenges)
+			this.passAcceptedChallengesToView(challengeHolder.challenges)}.bind(this));
+	},
 	passAcceptedChallengesToView: function(acceptedChallenges){
 		this.view.buildHtmlChallenges(acceptedChallenges);
 	}
@@ -27,13 +34,6 @@ AcceptedChallengesView.prototype = {
 		}.bind(this))
 	},
 	appendHtmlChallenges: function(HtmlChallenge){
-		$('#challenges-container').append(HtmlChallenge)
+		$('#accepted').append(HtmlChallenge)
 	}
-}
-
-AcceptedChallengesFetcher.prototype = {
-	fetch: function(url, callback){
-		$.getJSON(url, callback)
-	}
-
 }
