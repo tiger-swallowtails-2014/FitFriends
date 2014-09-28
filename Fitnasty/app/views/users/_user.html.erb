@@ -1,0 +1,9 @@
+<div class="user">
+  <div class="profile_pic_thumbnail_container">
+    <img class="profile_pic_thumbnail" src="http://simpleicon.com/wp-content/uploads/user1.png">
+  </div>
+  <%= link_to "#{user.first_name} #{user.last_name}", user %></a><br>
+  <span>Challenges completed: <%= user.user_challenges.where(completed?: true).count %></span><br>
+  <span>Accepted challenges: <%= user.user_challenges.where(accepted?: true, completed?: false).count %>
+  </span>
+</div>

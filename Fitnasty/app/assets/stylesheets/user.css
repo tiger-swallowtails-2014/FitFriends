@@ -1,0 +1,28 @@
+#users {
+  padding: 2%;
+}
+
+.followers {
+  width: 30%;
+  float: left;
+}
+
+.followees {
+  width: 30%;
+  float: right;
+}
+
+.user {
+  width:100%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.profile_pic_thumbnail_container {
+  width: 50%;
+  margin:0 auto;
+}
+
+.profile_pic_thumbnail {
+  width: 100%;
+}
