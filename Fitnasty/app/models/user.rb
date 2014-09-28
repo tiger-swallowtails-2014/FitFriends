@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   has_many :challenges, through: :user_challenges
   has_many :challenges
 
-  has_many :friendships
-  has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
+  has_many :followers, through: :follower_follows, source: :follower
+  has_many :follower_follows, foreign_key: :followee_id, class_name: "Follow"
+
+  has_many :followees, through: :followee_follows, source: :followee
+  has_many :followee_follows, foreign_key: :follower_id, class_name: "Follow"
 
   validates :first_name, :last_name, :email, :password, presence: true
   validates :email, uniqueness: true

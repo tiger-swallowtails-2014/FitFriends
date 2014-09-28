@@ -4,7 +4,7 @@ var AcceptedChallengesController = function(view, fetcher){
 	this.view = view;
 	this.fetcher = fetcher;
 
-	this.fetcher.fetch('users/current', function(currentUser){this.getAcceptedChallenges(new User(currentUser));
+	this.fetcher.fetch('/users/current', function(currentUser){this.getAcceptedChallenges(new User(currentUser));
 	}.bind(this));
 
 }
@@ -14,7 +14,7 @@ var AcceptedChallengesView = function(){
 
 AcceptedChallengesController.prototype = {
 	getAcceptedChallenges: function(currentUser){
-		this.fetcher.fetch("users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){
+		this.fetcher.fetch("/users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){
 
 			//GARY MADE UPDATES HERE
 

@@ -3,7 +3,7 @@ var bindSearchEvent = function() {
     e.preventDefault()
     var keyword = $("#search").val()
     $.ajax({
-      url: 'challenges/search/' + keyword,
+      url: '/challenges/search/' + keyword,
       method: 'GET',
       data: keyword
     })
