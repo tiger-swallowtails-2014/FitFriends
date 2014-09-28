@@ -1,11 +1,4 @@
 // USER ID IS CURRENTLY HARDCODED IN - NEEDS TO BE CHANGED TO BE PULLED FROM SESSION
-$(document).ready(function(){
-	fetcher = new Fetcher;
-	acceptedChallengesView = new AcceptedChallengesView;
-	new AcceptedChallengesController(acceptedChallengesView, fetcher)
-});
-
-
 
 var AcceptedChallengesController = function(view, fetcher){
 	this.view = view;
@@ -21,7 +14,13 @@ var AcceptedChallengesView = function(){
 
 AcceptedChallengesController.prototype = {
 	getAcceptedChallenges: function(currentUser){
-		this.fetcher.fetch("users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){this.passAcceptedChallengesToView(acceptedChallenges)}.bind(this));
+		this.fetcher.fetch("users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){
+
+			//GARY MADE UPDATES HERE
+
+			clearHolder()
+			ChallengeFactory.createChallenges(acceptedChallenges)
+			this.passAcceptedChallengesToView(challengeHolder.challenges)}.bind(this));
 	},
 	passAcceptedChallengesToView: function(acceptedChallenges){
 		this.view.buildHtmlChallenges(acceptedChallenges);

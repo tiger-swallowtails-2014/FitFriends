@@ -21,11 +21,17 @@ describe UsersController do
               }
       end
 
-      it "redirects to the root_path" do
+      it "redirects to the user's profile page" do
         expect {
                 post :create, user: {first_name: "Gary", last_name: "H", email: "gar_bear@gmail.com", password: "Pass1"}
-                should redirect_to root_path
+                should redirect_to user_path(user)
               }
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does NOT save a new user" do
+        expect {post :create, user: {email: "who_cares@gmail.com", password: "Pass1"}}.to change {User.count}.by(0)
       end
     end
   end

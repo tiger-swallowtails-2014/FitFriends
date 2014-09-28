@@ -8,6 +8,6 @@ SessionsController.prototype = {
 		this.fetcher.fetch('users/current', function(currentUser){
 		var user = new User(currentUser);
 		return user;
-	})
-}
+	 })
+  }
 }
