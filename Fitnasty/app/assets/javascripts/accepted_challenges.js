@@ -14,7 +14,7 @@ var AcceptedChallengesView = function(){
 
 AcceptedChallengesController.prototype = {
 	getAcceptedChallenges: function(currentUser){
-		this.fetcher.fetch("/users/"+currentUser["id"]+"/accepted", function(acceptedChallenges){
+		this.fetcher.fetch(document.URL + "/accepted", function(acceptedChallenges){
 
 			//GARY MADE UPDATES HERE
 
