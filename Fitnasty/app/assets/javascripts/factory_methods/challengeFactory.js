@@ -5,7 +5,6 @@ var challengeHolder = {
   }
 }
 
-// challenge Factory
 var ChallengeFactory = (function(holder) {
 
   return {
