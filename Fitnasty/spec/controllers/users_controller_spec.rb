@@ -21,7 +21,7 @@ describe UsersController do
               }
       end
 
-      it "redirects to the root_path" do
+      it "redirects to the user's profile page" do
         expect {
                 post :create, user: {first_name: "Gary", last_name: "H", email: "gar_bear@gmail.com", password: "Pass1"}
                 should redirect_to user_path(user)
