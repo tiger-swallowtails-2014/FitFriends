@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       p 'Session id from session controller:'
       p session[:user_id]
-      redirect_to profile_path
+      redirect_to @user
     else
       redirect_to root_path
     end
@@ -20,5 +20,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-
 end
