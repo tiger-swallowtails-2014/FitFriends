@@ -76,10 +76,7 @@ p {
 }
 
 #challenges-container {
-  width: 75%;
-  border-radius: 6px;
-  border: 1px solid #000;
-  margin: 0 2%;
+  width: 100%;
 }
 
 #challenges-container h3 {
@@ -87,12 +84,11 @@ p {
 }
 
 .challenge {
-  padding: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  margin: 10px;
-  background-color: gray;
-  border: 1px solid black;
+  padding-bottom: 2.5%;
+  background: white;
+  border-radius: 4px;
+  margin: 2.5% 0;
 }
 
 .challenge-content {
