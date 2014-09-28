@@ -18,6 +18,7 @@ var bindSearchEvent = function() {
         removeObject('#accepted .warning')
         clearHolder()
         ChallengeFactory.createChallenges(data)
+        console.log(challengeHolder)
         $(challengeHolder.challenges).each(function(index, challenge) {
           challengeReturner('#accepted', challenge)
         })
