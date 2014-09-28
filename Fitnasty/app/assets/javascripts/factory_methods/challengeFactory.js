@@ -9,9 +9,9 @@ var challengeHolder = {
 var ChallengeFactory = (function(holder) {
 
   return {
-    createChallenges: function(arrayOfChallenges) {
-      for (var i = 0; i < arrayOfChallenges.length; i++) {
-        challenge = new challenge(arrayOfChallenges[i])
+    createChallenges: function(arrayOfChallengeHashes) {
+      for (var i = 0; i < arrayOfChallengeHashes.length; i++) {
+        challenge = new Challenge(arrayOfChallengeHashes[i])
         holder.addChallenge(challenge)
       }
     }

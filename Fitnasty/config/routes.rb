@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'static#index'
+  root 'home#index'
   resources :challenges
 
   get 'users/current' => "users#current", as: :current
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/log_in" => "sessions#new"
   post "/log_in" => "sessions#create"
   get "/log_out" => "sessions#destroy", as: :log_out
+  get '/profile' => "static#index", as: :profile
 
   get 'challenges/search/:keyword', to: 'challenges#search'
 

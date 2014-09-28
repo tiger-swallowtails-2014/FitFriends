@@ -3,7 +3,7 @@ $(document).ready(function() {
 })
 
 var bindSearchEvent = function() {
-  $("#search-form").on('keyup', function(e){
+  $("#search-form").on('submit', function(e){
     e.preventDefault()
     var keyword = $("#search").val()
     $.ajax({
@@ -20,8 +20,9 @@ var bindSearchEvent = function() {
       else {
         removeObject('#challenges-container .challenge')
         removeObject('#challenges-container .warning')
-        $(data).each(function(index, challengeHash){
-          challengeReturner('#challenges-container', challengeHash)
+        ChallengeFactory.createChallenges(data)
+        $(challengeHolder.challenges).each(function(index, challenge) {
+          challengeReturner('#challenges-container', challenge)
         })
       }
     })
@@ -31,33 +32,16 @@ var bindSearchEvent = function() {
   })
 }
 
+
 // Removes html elements with a given selector
 var removeObject = function(selector) {
   $(selector).remove()
 }
 
+
 // appends an element to specified container
 var appendObject = function(container, element) {
   $(container).append(element)
-}
-
-// Returns html elements for a challenge
-var renderChallenge = function(challengeHash) {
-  var challenge = challengeHash.challenge_object
-  var user = challengeHash.challenge_user
-  var challengeTags = challengeHash.challenge_tags
-
-  var MustacheChallengeTemplate =
-    "<div class='challenge'>" +
-      "<img class='challenge_image' src={{image_url}} alt=''>" +
-      "<div class='challenge_title'><h1>{{title}}</h1></div>" +
-      "<span class='challenge_location'>{{location}}</span>" +
-      "<p class='challenge_description'>{{description}}</p>" +
-      "<span class='created_by'>posted by " + user.first_name + " " + user.last_name + "</span>" +
-      "<div class='tags'>Tags: " + challengeTags + "</div>" +
-    "</div>"
-
-  return Mustache.to_html(MustacheChallengeTemplate, challenge)
 }
 
 
@@ -73,9 +57,26 @@ var renderWarning = function() {
 }
 
 
-function challengeReturner(container, challengeHash){
-  var challenge = renderChallenge(challengeHash)
+// Appends challenges to the page
+function challengeReturner(container, challenge){
+  var challenge = renderChallenge(challenge)
   $(container).prepend(challenge)
   $(".challenge:first").hide()
   $(".challenge:first").fadeIn(800)
+}
+
+
+// Returns html elements for a challenge
+var renderChallenge = function(challenge) {
+  var MustacheChallengeTemplate =
+    "<div class='challenge'>" +
+      "<img class='challenge_image' src={{image_url}} alt=''>" +
+      "<div class='challenge_title'><h1>{{title}}</h1></div>" +
+      "<span class='challenge_location'>{{location}}</span>" +
+      "<p class='challenge_description'>{{description}}</p>" +
+      "<span class='created_by'>posted by {{user.first_name}} {{user.last_name}}</span>" +
+      "<div class='tags'>Tags: {{tags}}</div>" +
+    "</div>"
+
+  return Mustache.to_html(MustacheChallengeTemplate, challenge)
 }
