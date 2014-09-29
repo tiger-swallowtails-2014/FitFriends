@@ -12,15 +12,9 @@
 <main class="profile_container">
   <div class="left-nav">
     <section id="avatar">
-    <img src="thumb.png" width="80" height="80"/>
-  </section>
-   
-  <form class="gravatar">
-  <input type="text" onFocus="if(this.value=='Email Address') this.value='';" onBlur="if(this.value=='') this.value='Email Address';" value="Email Address" name="s" id="email" />
-  </form>
+      <img src="thumb.png" width="80" height="80"/>
+    </section> 
     <h1><%="#{@user.first_name} #{@user.last_name}" %></h1>
-
-
     <section id="friends-container">
       <h3>Friends</h3>
       <ul>
@@ -40,21 +34,34 @@
   <!-- Tabs -->
   <div id="tabs">
     <ul class="tabs_list">
-      <li class="tab"><a href="#accepted">accepted</a></li>
       <li class="tab"><a href="#challenges">challenges</a></li>
       <li class="tab"><a href="#users">users</a></li>
     </ul>
-    <div class="tab_area" id="accepted">
-      <p>accepted</p>
-    </div>
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
-        <h3>challenges</h3>
+        <h3>CHALLENGES</h3>
 
       </section>
     </div>
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
+        <h3>USERS</h3>
+      <div class="followers">
+        <form id="user_search">
+          <input type="search", placeholder="search for users">
+        </form>
+        <p>followers</p>
+        <% @user.followers.each do |follower| %>
+          <%= render partial: 'user', locals: {user: follower} %>
+        <% end %>
+      </div>
+      <div class="followees">
+        <p>following</p>
+        <% @user.followees.each do |followee| %>
+          <%= render partial: 'user', locals: {user: followee} %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </main>
