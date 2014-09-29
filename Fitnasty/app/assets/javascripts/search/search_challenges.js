@@ -45,9 +45,6 @@ var bindSearchEvent = function() {
       console.log("fail")
     })
   })
-
-
-
 }
 
 

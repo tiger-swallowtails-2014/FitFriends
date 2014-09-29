@@ -10,13 +10,12 @@ Rails.application.routes.draw do
   get 'challenges/recent', to: 'challenges#recent'
   get 'challenges/trending', to: 'challenges#trending'
   get '/users/search/:keyword', to: 'users#search'
+  get '/users/show_follow', to: 'users#show_follow'
 
 
   get '/trends' => "tags#trends", as: :trends
   resources :challenges
   get '/users/current' => "users#current", as: :current
-
-
 
   get "/home" => "home#index", as: :home
   get "/log_in" => "sessions#new"
@@ -26,8 +25,6 @@ Rails.application.routes.draw do
   get "/tabs" => "home#tabs"
   post "/accept_challenge" => "challenges#accept_challenge", as: :accept_challenge
 
-
-
   get '/map' => "home#map"
 
   resources :users do
@@ -36,4 +33,6 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
+
+  get '/all_challenges' => 'challenges#all'
 end

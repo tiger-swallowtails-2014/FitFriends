@@ -35,4 +35,6 @@ $(document).ready(function() {
   bindSearchEvent();
   bindSearchUserEvent();
 
+  // from tabs.js
+  bindUsersTabEvent()
 });

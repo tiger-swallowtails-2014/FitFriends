@@ -45,7 +45,6 @@ class ChallengesController < ApplicationController
   def destroy
   end
 
-
   def search
     keyword = params[:keyword]
     matched_challenges = match_challenges(keyword).flatten
@@ -59,7 +58,10 @@ class ChallengesController < ApplicationController
   end
 
   def trending
+  end
 
+  def all
+    render json: Challenge.all
   end
 
   private
