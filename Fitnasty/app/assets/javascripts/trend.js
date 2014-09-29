@@ -40,8 +40,8 @@ TrendView.prototype = {
 
 	appendHtmlChallenges: function(HtmlChallenge){
 		var element = document.getElementById("challenges");
-		$('#challenges-container div').empty();
-		$('#challenges-container div').append(HtmlChallenge);
+		$('#challenges-container .challenges_river').empty();
+		$('#challenges-container .challenges_river').append(HtmlChallenge);
 	},
 
 	buildHtmlTags: function(trendingTags){
