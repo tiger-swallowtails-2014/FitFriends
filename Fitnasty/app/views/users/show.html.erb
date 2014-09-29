@@ -41,11 +41,12 @@
         <button id = "trending"> Trending </button>
         <button id = "completed"> Completed </button>
         <button id = "pending"> Pending </button>
-        <div>
+        <div id="map-canvas">
+        </div>
+        <div class="challenges_river">
         </div>
       </section>
     </div>
-
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
     </div>
@@ -53,8 +54,6 @@
 
     <div class="tab_area" id="friend_activity">
     </div>
-
-
   </div>
 </main>
 
