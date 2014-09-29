@@ -31,6 +31,8 @@ $(document).ready(function() {
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
 
-  // from search.js
+  // from search
   bindSearchEvent();
+  bindSearchUserEvent();
+
 });

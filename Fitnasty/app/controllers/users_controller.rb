@@ -20,18 +20,27 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		user = User.find(params[:id])
-
+		@user = User.find(params[:id])
 	end
 
-	# def follows
-	# 	user = User.find
-	# 	followers =
+	def search
+		p "SEARCH PARAMS:"
+		p params
+		keyword = params[:keyword]
+		matched_users = match_users(keyword).flatten
 
-	# end
+		render :partial => 'user_results', locals: {users: matched_users}
+	end
 
 	private
 	def user_params
 	  params.require(:user).permit(:first_name, :last_name, :email, :password)
+	end
+
+	def match_users(keyword)
+		users = []
+		users << User.where('first_name LIKE ?', "%#{keyword}%")
+		users << User.where('last_name LIKE ?', "%#{keyword}%")
+		users << User.where('email LIKE ?', "%#{keyword}%")
 	end
 end

@@ -5,7 +5,7 @@ var SessionsController = function(fetcher){
 
 SessionsController.prototype = {
 	returnCurrentUser: function(){
-		this.fetcher.fetch('users/current', function(currentUser){
+		this.fetcher.fetch('/users/current', function(currentUser){
 		var user = new User(currentUser);
 		return user;
 	 })
