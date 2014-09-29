@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/send_challenge" => 'challenges#send_challenge'
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/challenges/recent', to: 'challenges#recent'
   get '/challenges/trending', to: 'challenges#trending'
