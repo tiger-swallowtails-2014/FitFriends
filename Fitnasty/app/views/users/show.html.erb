@@ -24,7 +24,6 @@
 
     <section id="trends-container">
       <h3>Trends</h3>
-      <button class="test_show">Show</button>
       <ul>
 
       </ul>
@@ -34,22 +33,21 @@
   <!-- Tabs -->
   <div id="tabs">
     <ul class="tabs_list">
-      <li class="tab" id = "accepted_tab"><a href="#accepted">accepted</a></li>
       <li class="tab" id = "challenges_tab"><a href="/users/<%= params[:id] %>/accepted">challenges</a></li>
       <li class="tab" id = "users_tab"><a href="#users">users</a></li>
       <li class="tab" id = "profile_tab"><a href="#profile">profile</a></li>
     </ul>
-    <div class="tab_area" id="accepted">
-      <p>accepted</p>
-    </div>
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
         <h3>challenges</h3>
-
+        <button class="test_show">Show</button>
+        <button id = "most_recent"> Most Recent </button>
+        <button id = "trending"> Trending </button>
       </section>
     </div>
     <div class="tab_area" id="users">
       <p>users</p>
+      sup dawg
     </div>
     <div class="tab_area" id="profile">
       <p>profile</p>

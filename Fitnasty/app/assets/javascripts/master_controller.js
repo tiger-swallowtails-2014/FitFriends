@@ -7,10 +7,37 @@ $(document).ready(function() {
       type: "GET",
       url: this.getElementsByTagName('a')[0].href
     }).done(function(data){
+      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
   })
+
+  $('#most_recent').on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: '/challenges/recent'
+    }).done(function(data){
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
+  $('#trending').on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: '/challenges/trending'
+    }).done(function(data){
+      console.log(data)
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 

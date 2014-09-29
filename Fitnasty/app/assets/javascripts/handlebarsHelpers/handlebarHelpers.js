@@ -7,7 +7,6 @@ Handlebars.registerHelper('tagsHelper', function(options){
   for(var i = 0; i < options.data.root.challenges[$(options.data.root.challenges).index(this)].tagged.length; i++) {
         var tag_word = options.data.root.challenges[$(options.data.root.challenges).index(this)].tagged[i].name
         var link = "/challenges/search/" + tag_word
-        console.log(link)
         ret = ret + "<a href = " + link + ">" + tag_word + "</a>" + " ";
   }
     return ret + "</div>"

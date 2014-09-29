@@ -14,4 +14,10 @@ class Challenge < ActiveRecord::Base
   		return accepted_challenges
   end
 
+  def self.top_ten_challenges
+    challenges = UserChallenge.select('challenge_id, count(id) as "count"').group("challenge_id").order('count desc').limit(10)
+    trending_challenges = []
+    challenges.each { |challenge| trending_challenges << Challenge.find(challenge.challenge_id) }
+    return trending_challenges
+  end
 end

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  get '/challenges/search/:keyword', to: 'challenges#search'
+  get '/challenges/recent', to: 'challenges#recent'
+  get '/challenges/trending', to: 'challenges#trending'
 
   root 'home#index'
   get '/trends' => "tags#trends", as: :trends
@@ -19,9 +22,6 @@ Rails.application.routes.draw do
   get "/tabs" => "home#tabs"
   post "/accept_challenge" => "challenges#accept_challenge", as: :accept_challenge
 
-  get 'challenges/search/:keyword', to: 'challenges#search'
-  get 'challenges/recent', to: 'challenges#recent'
-  get 'challenges/trending', to: 'challenges#trending'
 
 
   get '/map' => "home#map"
