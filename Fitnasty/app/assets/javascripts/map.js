@@ -67,6 +67,7 @@ $(document).ready(function() {
     }
   }
 
+  // Updates the form fields in the view so they can be submitted with the challenge.
   var updateFormFields = function() {
     latitude = markers[markers.length - 1].position.k
     longitude = markers[markers.length - 1].position.B
@@ -88,9 +89,10 @@ $(document).ready(function() {
     });
   }
 
-  // Place Geoloacted Pin
+  // Place Geoloacted Pin upon button panel click
   $('.map_button').click(function() {
     codeAddress();
+    updateFormFields();
   });
 
   // if (document.URL == "http://localhost:3000/map") {
