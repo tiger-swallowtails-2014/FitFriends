@@ -1,9 +1,10 @@
 class ChallengesController < ApplicationController
 
   def index
-    #returns specific users created challenges
-    challenges = User.find(params[:user_id]).challenges
-    render json: challenges
+    # returns specific users created challenges
+    accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
+    p accepted_challenges
+    render json: add_challenge_info(accepted_challenges.flatten)
   end
 
   def accepted
@@ -50,6 +51,15 @@ class ChallengesController < ApplicationController
     matched_challenges = match_challenges(keyword).flatten
 
     render json: add_challenge_info(matched_challenges)
+  end
+
+  def recent
+    ordered_date = Challenge.order(:created_at)
+    render json: ordered_date
+  end
+
+  def trending
+
   end
 
   private

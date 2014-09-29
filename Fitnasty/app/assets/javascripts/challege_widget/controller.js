@@ -6,6 +6,17 @@
 function ChallengeWidget() {
   this.whenDone = function(data) {
     ChallengeFactory.createChallenges(data)
-    ChallengeWidgetView('#challenges-container', data_style)
+    var formatted_data = {
+      challenges: [],
+      users: []
+    }
+
+      for(var i = 0; i < data.length; i++){
+        data[i].challenge_object.tagged = data[i].challenge_tags
+        formatted_data.challenges.push(data[i].challenge_object)
+        formatted_data.users.push(data[i].challenge_user)
+      }
+
+    ChallengeWidgetView('#challenges-container', formatted_data)
   }
 }

@@ -1,6 +1,16 @@
 $(document).ready(function() {
   $('#tabs').tabs();
 
+  $('#challenges_tab').on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: this.getElementsByTagName('a')[0].href
+    }).done(function(data){
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
