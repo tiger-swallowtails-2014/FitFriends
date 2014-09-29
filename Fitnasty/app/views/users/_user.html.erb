@@ -6,14 +6,13 @@
   <span>Challenges completed: <%= user.user_challenges.where(completed?: true).count %></span><br>
   <span>Accepted challenges: <%= user.user_challenges.where(accepted?: true, completed?: false).count %>
   </span>
+  <br>
 
   <% @follower_ids = user.followers.select(:id).map(&:id) %>
   <% if @follower_ids.include?(current_user.id) %>
     <%= link_to 'unfollow', "/users/unfollow/#{user.id}" %>
-    <p>unfollow</p>
     <% else %>
     <%= link_to 'follow', "/users/follow/#{user.id}" %>
   <% end %>
-
 
 </div>
