@@ -11,7 +11,7 @@ class Challenge < ActiveRecord::Base
   	accepted_user_challenges.each do |user_challenge|
   		accepted_challenges << self.find(user_challenge.challenge_id)
   	end
-  		return accepted_challenges
+  	return accepted_challenges
   end
 
 end

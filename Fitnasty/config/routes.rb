@@ -31,4 +31,6 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
+
+  get '/all_challenges' => 'challenges#all'
 end
