@@ -17,7 +17,7 @@ TrendController.prototype = {
 		this.view.buildHtmlTags(trendingTags);
 	},
 	filterChallengesByKeyword: function(keyword){
-		this.fetcher.fetch('challenges/search/' + keyword, function(searchedChallenges){
+		this.fetcher.fetch('/challenges/search/' + keyword, function(searchedChallenges){
 			clearHolder()
 			ChallengeFactory.createChallenges(searchedChallenges)
 			this.passSearchedChallengesToView(challengeHolder.challenges)}.bind(this));
@@ -57,7 +57,8 @@ TrendView.prototype = {
 	},
 
 	bindHtmlTag: function(){
-		document.getElementById('tag').addEventListener("click", function(e){
+		var tagElement = $('#trends-container ul')[0]
+		tagElement.addEventListener("click", function(e){
 		    var keyword = e.target.innerHTML;
 		    this.controller.filterChallengesByKeyword(keyword);
 		}.bind(this));
