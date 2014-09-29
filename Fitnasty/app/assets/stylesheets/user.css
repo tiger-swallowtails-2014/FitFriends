@@ -1,3 +1,9 @@
+.signout_button {
+  margin-top: 1.5em;
+  width: 6em;
+  height: 2em;
+}
+
 #users {
   padding: 2%;
 }

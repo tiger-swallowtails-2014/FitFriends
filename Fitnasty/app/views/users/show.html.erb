@@ -1,10 +1,10 @@
 <header id="top-nav">
-  <div class="sign_out_div">
-    <a href="<%=log_out_path%>" class="signout_button">Sign Out</a>
-  </div>
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
+  <div class="sign_out_div">
+    <a href="<%=log_out_path%>" class="signout_button">Sign Out</a>
+  </div>
   <div id="brand"><%= link_to 'FitFriends', @signed_in_user %></div>
 </header>
 
@@ -13,7 +13,7 @@
   <section id="profile-image-container avatar">
     <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
   </section>
-    <h1><%="#{@user.first_name} #{@user.last_name}" %></h1>
+    <h3><%="#{@user.first_name} #{@user.last_name}" %></h3>
 
     <section id="trends-container">
       <h3>Trends</h3>
@@ -32,8 +32,7 @@
 
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
-        <h3>challenges</h3>
-        <button class="test_show">Create Challenge</button>
+        <button id = "create_challenge" class="test_show">Create Challenge</button>
         <button id = "most_recent"> Most Recent </button>
         <button id = "trending"> Trending </button>
         <div>
