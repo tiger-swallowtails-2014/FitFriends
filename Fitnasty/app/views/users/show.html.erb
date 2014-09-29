@@ -1,4 +1,4 @@
-<header id="top-nav">
+  <header id="top-nav">
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
@@ -28,13 +28,17 @@
     <ul class="tabs_list">
       <li class="tab" id="challenges_tab"><a href="#challenges">challenges</a></li>
       <li class="tab" id="users_tab"><a id="user_tab" href="#users">users</a></li>
+      <li class="tab" id="friend_activity_tab"><a id="friend_activity_tab" href="#friend_activity">Friend Activity</a></li>
     </ul>
 
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
         <button id = "create_challenge" class="test_show">Create</button>
+        <button id = "accepted">Accepted</button>
         <button id = "most_recent"> Recent </button>
         <button id = "trending"> Trending </button>
+        <button id = "completed"> Completed </button>
+        <button id = "pending"> Pending </button>
         <div>
         </div>
       </section>
@@ -43,6 +47,12 @@
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
     </div>
+
+
+    <div class="tab_area" id="friend_activity">
+    </div>
+
+
   </div>
 </main>
 
