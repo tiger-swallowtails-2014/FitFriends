@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@signed_in_user = User.find(session[:user_id])
 	end
 
 	def single_user
@@ -37,6 +38,20 @@ class UsersController < ApplicationController
 	def show_follow
 		user = User.find(params[:user_id])
 		render :partial => 'follow', locals: {user: user}
+	end
+
+	def unfollow
+		user = User.find(session[:user_id])
+		followee = User.find(params[:followee_id])
+		Follow.find_by(follower_id: user.id, followee_id: followee.id).delete
+		redirect_to user
+	end
+
+	def follow
+		user = User.find(session[:user_id])
+		followee = User.find(params[:followee_id])
+		user.followees << followee
+		redirect_to user
 	end
 
 	private

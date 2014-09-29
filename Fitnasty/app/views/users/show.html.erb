@@ -5,7 +5,7 @@
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
-  <div id="brand">FitNasty</div>
+  <div id="brand"><%= link_to 'FitFriends', @signed_in_user %></div>
 </header>
 
 
@@ -44,24 +44,7 @@
 
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
-      <section id="users-container">
-        <h3>USERS</h3>
-      </section>
-      <div class="followers">
-        <form id="user_search">
-          <input type="search", placeholder="search for users">
-        </form>
-        <p>followers</p>
-        <% @user.followers.each do |follower| %>
-          <%= render partial: 'user', locals: {user: follower} %>
-        <% end %>
-      </div>
-      <div class="followees">
-        <p>following</p>
-        <% @user.followees.each do |followee| %>
-          <%= render partial: 'user', locals: {user: followee} %>
-        <% end %>
-      </div>
     </div>
   </div>
 </main>
+
