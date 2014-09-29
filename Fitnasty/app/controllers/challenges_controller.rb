@@ -67,7 +67,7 @@ class ChallengesController < ApplicationController
 
   private
   def challenge_params
-    params.require(:challenge).permit(:title, :location, :description, :image_url)
+    params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
   end
 
   def match_challenges(keyword)

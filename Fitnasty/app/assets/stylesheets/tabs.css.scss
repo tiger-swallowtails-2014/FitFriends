@@ -1,6 +1,6 @@
-$dark_orange: #f27c32;
-$more_dark_orange: #ff6b3f;
-$grey: #66757F;
+$red: #d74136;
+$blue: #4486f7;
+$green: #0aa25a;
 
 #tabs {
   width: 60%;
@@ -17,7 +17,6 @@ $grey: #66757F;
     .tab {
       width: 25%;
       height: 4em;
-      background: radial-gradient($dark_orange, $more_dark_orange);
       text-align: center;
       display: inline-block;
       border-radius: 4px;
@@ -30,6 +29,18 @@ $grey: #66757F;
         text-decoration: none;
         font-size: 1.25em;
       }
+    }
+
+    .tab:nth-child(1) {
+      background: $green;
+    }
+
+    .tab:nth-child(2) {
+      background: $blue;
+    }
+
+    .tab:nth-child(3) {
+      background: $red;
     }
   }
 

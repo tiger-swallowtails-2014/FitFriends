@@ -20,10 +20,15 @@ p {
 }
 
 #top-nav {
-  background: radial-gradient(#f27c32, #ff6b3f);
+  background: #444444;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   z-index: 2;
+}
+
+#top-nav a {
+  color: white;
+  text-decoration: none;
 }
 
 #brand {
@@ -58,7 +63,7 @@ p {
 
 #profile-image-container {
   text-align: center;
-  background: radial-gradient(#f27c32, #ff6b3f);
+  background: #f6f6f6;
   border-radius: 6px;
 }
 
