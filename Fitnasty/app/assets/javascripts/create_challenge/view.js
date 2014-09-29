@@ -2,11 +2,14 @@
 var CreateChallengeView = {
   showForm: function(whereToShow) {
     $(whereToShow).append(HandlebarsTemplates['challenges/new'])
+    var formElement = $(whereToShow).children();
+    formElement.submit(function(){$('#create-challenge').empty()})
   },
 
   addNewChallenge: function(whereToAdd, data) {
     var html = Mustache.to_html(template, tweet);
     var formatted = {challenge: data}
     $(whereToAdd).prepend(HandlebarsTemplates['challenges/show'](formatted));
+    console.log($(whereToAdd));
   }
 }
