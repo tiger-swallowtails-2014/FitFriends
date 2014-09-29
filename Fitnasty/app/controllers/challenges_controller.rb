@@ -45,12 +45,15 @@ class ChallengesController < ApplicationController
   def destroy
   end
 
-
   def search
     keyword = params[:keyword]
     matched_challenges = match_challenges(keyword).flatten
 
     render json: add_challenge_info(matched_challenges)
+  end
+
+  def all
+    render json: Challenge.all
   end
 
   private
