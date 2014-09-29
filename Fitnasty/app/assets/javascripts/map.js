@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var geocoder;
   var map;
+  var infowindow = new google.maps.InfoWindow();
   var markers = [];
   var challenges = [];
 
@@ -19,7 +20,6 @@ $(document).ready(function() {
     // This event listener will call addMarker() when the map is clicked.
     google.maps.event.addListener(map, 'click', function(event) {
       position = new google.maps.LatLng(event.latLng.k, event.latLng.B);
-      console.log(event.latLng.k, event.latLng.B)
       addMarker(position);
       updateFormFields()
     });
@@ -73,6 +73,7 @@ $(document).ready(function() {
     longitude = markers[markers.length - 1].position.B
     $('.lat').val(latitude)
     $('.long').val(longitude)
+    reverseGeocode(latitude, longitude)
   }
 
   // Geocoding an address
@@ -94,6 +95,30 @@ $(document).ready(function() {
     codeAddress();
     updateFormFields();
   });
+
+  // Reverse Geocode
+  function reverseGeocode(lat, lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+      geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[1]) {
+            map.setZoom(14);
+            marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+            infowindow.setContent(results[1].formatted_address);
+            infowindow.open(map, marker);
+            $('#challenge_location').val(results[1].formatted_address)
+          } else {
+            alert('No results found');
+          }
+        } else {
+          alert('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+
 
   // if (document.URL == "http://localhost:3000/map") {
     google.maps.event.addDomListener(window, 'load', initialize);
