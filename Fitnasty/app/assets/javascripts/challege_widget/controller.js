@@ -20,3 +20,4 @@ function ChallengeWidget() {
     ChallengeWidgetView('#challenges-container div', formatted_data)
   }
 }
+
