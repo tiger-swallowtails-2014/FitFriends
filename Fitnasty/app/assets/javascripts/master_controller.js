@@ -15,8 +15,8 @@ $(document).ready(function() {
   controller.challengeFormCreate('.test_show', 'ul')
 
 
-  // from search.js
+  // from search
   bindSearchEvent();
+  bindSearchUserEvent();
 
-  
 });
