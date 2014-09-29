@@ -68,8 +68,10 @@ class ChallengesController < ApplicationController
   def send_challenge
     friends = params[:user_ids]
     friends.map do |friend|
-      User.find(friend).user_challenges.create(:challenge_id => 2)
+      sent_challenges = User.find(friend).user_challenges.create(:challenge_id => params[:challenge_id])
     end
+    user = User.find(session[:user_id])
+    redirect_to user
   end
 
   private

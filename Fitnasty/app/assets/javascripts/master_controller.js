@@ -71,4 +71,6 @@ $(document).ready(function() {
 
   // for gravatar
   new GravatarController(fetcher);
+
+
 });
