@@ -11,9 +11,13 @@
 
 <main class="profile_container">
   <div class="left-nav">
-    <section id="profile-image-container">
-      <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
-    </section>
+    <section id="avatar">
+    <img src="thumb.png" width="80" height="80"/>
+  </section>
+   
+  <form class="gravatar">
+  <input type="text" onFocus="if(this.value=='Email Address') this.value='';" onBlur="if(this.value=='') this.value='Email Address';" value="Email Address" name="s" id="email" />
+  </form>
     <h1><%="#{@user.first_name} #{@user.last_name}" %></h1>
 
 
