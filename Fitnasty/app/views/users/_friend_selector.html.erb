@@ -2,7 +2,7 @@
   <h2 class="form_header">Choose Friends</h2>
   <form action="/send_challenge" method="post">
 	  <%User.all.each do |user|%>
-	  <input type="checkbox" id="<%=user.id%>"> <%=user.first_name%> <%=user.last_name%><br>
+	  <input type="checkbox" name="user_id" value="<%=user.id%>" id="<%=user.id%>"> <%=user.first_name%> <%=user.last_name%><br>
 	  <%end%>
   <input type="submit" value="Send Challenge!">
 </form>
