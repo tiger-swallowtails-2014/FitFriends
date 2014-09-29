@@ -1,10 +1,12 @@
 $(document).ready(function() {
+  var geocoder;
   var map;
   var markers = [];
   var challenges = [];
 
 
   function initialize() {
+    geocoder = new google.maps.Geocoder();
     var haightAshbury = new google.maps.LatLng(37.7699298, -122.4469157);
     var mapOptions = {
       zoom: 14,
@@ -71,6 +73,25 @@ $(document).ready(function() {
     $('.lat').val(latitude)
     $('.long').val(longitude)
   }
+
+  // Geocoding an address
+  function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        console.log(results)
+        map.setCenter(results[0].geometry.location);
+        addMarker(results[0].geometry.location)
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+  // Place Geoloacted Pin
+  $('.map_button').click(function() {
+    codeAddress();
+  });
 
   // if (document.URL == "http://localhost:3000/map") {
     google.maps.event.addDomListener(window, 'load', initialize);
