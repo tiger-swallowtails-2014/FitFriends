@@ -3,7 +3,6 @@ class ChallengesController < ApplicationController
   def index
     # returns specific users created challenges
     accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    p accepted_challenges
     render json: add_challenge_info(accepted_challenges.flatten)
   end
 

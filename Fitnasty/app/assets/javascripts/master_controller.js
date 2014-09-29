@@ -1,17 +1,20 @@
 $(document).ready(function() {
   $('#tabs').tabs();
 
-  $(document).on("click", '#challenges_tab', function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "GET",
-      url: this.getElementsByTagName('a')[0].href
-    }).done(function(data){
-      $('.challenge').remove();
-      var testWidget = new ChallengeWidget();
-      testWidget.whenDone(data)
-    })
-  })
+
+  // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
+
+  // $(document).on("click", '#challenges_tab', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "GET",
+  //     url: this.getElementsByTagName('a')[0].href
+  //   }).done(function(data){
+  //     $('.challenge').remove();
+  //     var testWidget = new ChallengeWidget();
+  //     testWidget.whenDone(data)
+  //   })
+  // })
 
   $('#most_recent').on("click", function(e){
     e.preventDefault();
@@ -64,8 +67,8 @@ $(document).ready(function() {
 
   // from tabs.js
   bindUsersTabEvent()
+  bindChallengesTabEvent()
 
   // for gravatar
   new GravatarController(fetcher);
-
 });
