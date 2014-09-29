@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  get '/challenges/search/:keyword', to: 'challenges#search'
+  get '/challenges/recent', to: 'challenges#recent'
+  get '/challenges/trending', to: 'challenges#trending'
 
   root 'home#index'
 
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   get '/trends' => "tags#trends", as: :trends
   resources :challenges
   get '/users/current' => "users#current", as: :current
+  get '/users/single_user/:id' => "users#single_user", as: :single_user
 
   get "/home" => "home#index", as: :home
   get "/log_in" => "sessions#new"

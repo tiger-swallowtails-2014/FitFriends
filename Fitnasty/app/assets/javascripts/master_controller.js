@@ -7,10 +7,37 @@ $(document).ready(function() {
       type: "GET",
       url: this.getElementsByTagName('a')[0].href
     }).done(function(data){
+      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
   })
+
+  $('#most_recent').on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: '/challenges/recent'
+    }).done(function(data){
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
+  $('#trending').on("click", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: '/challenges/trending'
+    }).done(function(data){
+      console.log(data)
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
@@ -26,7 +53,7 @@ $(document).ready(function() {
 
   // from create_challenge/controller.js
   var controller = new ChallengeController
-  controller.challengeFormCreate('.test_show', 'ul')
+  controller.challengeFormCreate('.test_show', '#challenges-container')
 
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
@@ -37,4 +64,8 @@ $(document).ready(function() {
 
   // from tabs.js
   bindUsersTabEvent()
+
+  // for gravatar
+  new GravatarController(fetcher);
+
 });

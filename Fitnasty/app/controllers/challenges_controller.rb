@@ -21,10 +21,10 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    new_challenge = Challenge.new(challenge_params)
-    p "here is the challenge"
-    p new_challenge
+    user = User.find(session[:user_id])
+    new_challenge = user.challenges.new(challenge_params)
     if new_challenge.save
+      user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
       render json: new_challenge
     else
       render json: "There was a problem with saving your challenge."
@@ -35,6 +35,11 @@ class ChallengesController < ApplicationController
   end
 
   def update
+  end
+
+  def recent
+    ordered_date = Challenge.order(:created_at).limit(10).flatten
+    render json: add_challenge_info(ordered_date)
   end
 
   def show
@@ -52,12 +57,9 @@ class ChallengesController < ApplicationController
     render json: add_challenge_info(matched_challenges)
   end
 
-  def recent
-    ordered_date = Challenge.order(:created_at)
-    render json: ordered_date
-  end
 
   def trending
+    render json: add_challenge_info(Challenge.top_ten_challenges)
   end
 
   def all
