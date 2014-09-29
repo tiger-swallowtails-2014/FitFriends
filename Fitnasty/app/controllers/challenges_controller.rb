@@ -37,6 +37,11 @@ class ChallengesController < ApplicationController
   def update
   end
 
+  def recent
+    ordered_date = Challenge.order(:created_at).limit(10).flatten
+    render json: add_challenge_info(ordered_date)
+  end
+
   def show
     challenge = Challenge.find(params[:id])
     render json: challenge
@@ -52,12 +57,9 @@ class ChallengesController < ApplicationController
     render json: add_challenge_info(matched_challenges)
   end
 
-  def recent
-    ordered_date = Challenge.order(:created_at)
-    render json: ordered_date
-  end
 
   def trending
+    render json: add_challenge_info(Challenge.top_ten_challenges)
   end
 
   def all
