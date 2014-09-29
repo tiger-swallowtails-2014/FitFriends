@@ -1,7 +1,7 @@
 // need a button to work
 var CreateChallengeView = {
   showForm: function(whereToShow) {
-    $(whereToShow).append(HandlebarsTemplates['challenges/new'])
+    $(whereToShow).prepend(HandlebarsTemplates['challenges/new'])
   },
 
   addNewChallenge: function(whereToAdd, data) {
