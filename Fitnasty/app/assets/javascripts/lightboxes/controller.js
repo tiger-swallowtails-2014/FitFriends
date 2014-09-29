@@ -1,5 +1,3 @@
-console.log("LOAD")
-
 function LightBoxController() {
   this.listenForCommands = function() {
     var boxView = new LightBoxView()
