@@ -86,6 +86,7 @@ class ChallengesController < ApplicationController
       matched_challenge = UserChallenge.where(challenge_id: challenge.id, user_id: user.id)
       if matched_challenge.length == 0
         accepted = false
+        completed = false
       else
         accepted = true
         completed = matched_challenge.first.completed?

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#tabs').tabs();
 
-  $('#challenges_tab').on("click", function(e){
+  $(document).on("click", '#challenges_tab', function(e){
     e.preventDefault();
     $.ajax({
       type: "GET",
