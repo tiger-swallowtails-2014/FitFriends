@@ -21,4 +21,8 @@ $(document).ready(function() {
 
   // from tabs.js
   bindUsersTabEvent()
+
+  // for gravatar
+  new GravatarController(fetcher);
+
 });
