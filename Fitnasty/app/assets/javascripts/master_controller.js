@@ -26,7 +26,8 @@ $(document).ready(function() {
 
   // from create_challenge/controller.js
   var controller = new ChallengeController
-  controller.challengeFormCreate('.test_show', 'ul')
+  controller.challengeFormCreate('.test_show', '#create-challenge')
+  
 
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
