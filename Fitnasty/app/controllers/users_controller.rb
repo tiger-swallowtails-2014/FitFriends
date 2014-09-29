@@ -23,10 +23,14 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
+	def single_user
+		user = User.find(params[:id])
+		render json: user
+	end
+
 	def search
 		keyword = params[:keyword]
 		matched_users = match_users(keyword).flatten
-
 		render :partial => 'user_results', locals: {users: matched_users}
 	end
 
