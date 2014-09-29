@@ -64,6 +64,14 @@ $(document).ready(function() {
     }
   }
 
+  // test method for creating marker with new challenge
+  $('.new_challenge_test').click(function() {
+    latitude = markers[markers.length - 1].position.k
+    longitude = markers[markers.length - 1].position.B
+    $('.lat').val(latitude)
+    $('.long').val(longitude)
+  })
+
   if (document.URL == "http://localhost:3000/map") {
     google.maps.event.addDomListener(window, 'load', initialize);
   }
