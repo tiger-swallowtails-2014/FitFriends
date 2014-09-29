@@ -1,9 +1,13 @@
 <section class="friend_selector_lightbox">
   <h2 class="form_header">Choose Friends</h2>
   <form action="/send_challenge" method="post">
-	  <%User.all.each do |user|%>
-	  <input type="checkbox" name="user_id" value="<%=user.id%>" id="<%=user.id%>"> <%=user.first_name%> <%=user.last_name%><br>
-	  <%end%>
-  <input type="submit" value="Send Challenge!">
-</form>
+		<% User.all.each do |user| %>
+		    <li>
+		      <%= check_box_tag 'user_ids[]', user.id -%>
+		      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+		      <%= h user.first_name -%>
+		    </li>
+		<% end %>
+		<input type="submit" value="Send Challenge!">
+	</form>
 </section>

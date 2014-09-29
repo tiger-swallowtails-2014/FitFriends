@@ -65,6 +65,13 @@ class ChallengesController < ApplicationController
     render json: Challenge.all
   end
 
+  def send_challenge
+    friends = params[:user_ids]
+    friends.map do |friend|
+      User.find(friend).user_challenges.create(:challenge_id => 2)
+    end
+  end
+
   private
   def challenge_params
     params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
