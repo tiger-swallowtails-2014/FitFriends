@@ -24,12 +24,15 @@ class UsersController < ApplicationController
 	end
 
 	def search
-		p "SEARCH PARAMS:"
-		p params
 		keyword = params[:keyword]
 		matched_users = match_users(keyword).flatten
 
 		render :partial => 'user_results', locals: {users: matched_users}
+	end
+
+	def show_follow
+		user = User.find(params[:user_id])
+		render :partial => 'follow', locals: {user: user}
 	end
 
 	private
