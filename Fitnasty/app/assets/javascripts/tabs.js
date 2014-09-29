@@ -25,7 +25,6 @@ var bindChallengesTabEvent = function() {
       data: {user_id: shownUser}
     })
     .done( function(data) {
-      console.log(data)
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
