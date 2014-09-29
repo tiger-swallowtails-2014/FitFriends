@@ -9,4 +9,6 @@ var Challenge = function(challengeHash){
 	this.updated_at = challengeHash.challenge_object.updated_at;
   this.user = challengeHash.challenge_user
   this.tags = challengeHash.challenge_tags
+  this.completed = challengeHash.completed
+  this.accepted = challengeHash.accepted
 }
