@@ -21,10 +21,10 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    new_challenge = Challenge.new(challenge_params)
-    p "here is the challenge"
-    p new_challenge
+    user = User.find(session[:user_id])
+    new_challenge = user.challenges.new(challenge_params)
     if new_challenge.save
+      user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
       render json: new_challenge
     else
       render json: "There was a problem with saving your challenge."
