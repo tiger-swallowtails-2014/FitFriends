@@ -7,6 +7,6 @@ var CreateChallengeView = {
   addNewChallenge: function(whereToAdd, data) {
     var html = Mustache.to_html(template, tweet);
     var formatted = {challenge: data}
-    $(whereToAdd).prepend(HandlebarsTemplates['challenges/show'](formatted))
+    $(whereToAdd).prepend(HandlebarsTemplates['challenges/show'](formatted));
   }
 }
