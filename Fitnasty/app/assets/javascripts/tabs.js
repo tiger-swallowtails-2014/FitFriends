@@ -1,6 +1,6 @@
 var bindUsersTabEvent = function() {
   var shownUser = $(document.URL.split('/')).last()[0]
-  $('#ui-id-3').on('click', function(e){
+  $('#user_tab').on('click', function(e){
     $.ajax({
       url: "/users/show_follow",
       method: "GET",
