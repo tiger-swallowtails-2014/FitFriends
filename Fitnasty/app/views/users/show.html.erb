@@ -1,10 +1,10 @@
 <header id="top-nav">
+  <div class="sign_out_div">
+    <a href="<%=log_out_path%>" class="signout_button">Sign Out</a>
+  </div>
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
-  <div class="sign_out_div">
-    <a href="/log_out" class="signout_button">Sign Out</a>
-  </div>
   <div id="brand">FitNasty</div>
 </header>
 
@@ -40,12 +40,13 @@
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
         <h3>CHALLENGES</h3>
-
       </section>
     </div>
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
+      <section id="users-container">
         <h3>USERS</h3>
+      </section>
       <div class="followers">
         <form id="user_search">
           <input type="search", placeholder="search for users">
