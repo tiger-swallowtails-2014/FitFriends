@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/challenges/recent', to: 'challenges#recent'
   get '/challenges/trending', to: 'challenges#trending'
+  get '/users/unfollow/:followee_id', to: 'users#unfollow'
+  get '/users/follow/:followee_id', to: 'users#follow'
 
   root 'home#index'
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   get 'challenges/trending', to: 'challenges#trending'
   get '/users/search/:keyword', to: 'users#search'
   get '/users/show_follow', to: 'users#show_follow'
+
 
 
   get '/trends' => "tags#trends", as: :trends

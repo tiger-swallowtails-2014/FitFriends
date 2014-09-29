@@ -40,6 +40,20 @@ class UsersController < ApplicationController
 		render :partial => 'follow', locals: {user: user}
 	end
 
+	def unfollow
+		user = User.find(session[:user_id])
+		followee = User.find(params[:followee_id])
+		Follow.find_by(follower_id: user.id, followee_id: followee.id).delete
+		redirect_to user
+	end
+
+	def follow
+		user = User.find(session[:user_id])
+		followee = User.find(params[:followee_id])
+		user.followees << followee
+		redirect_to user
+	end
+
 	private
 	def user_params
 	  params.require(:user).permit(:first_name, :last_name, :email, :password)
