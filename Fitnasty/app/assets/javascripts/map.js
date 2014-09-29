@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var map;
-  var markers = []
+  var markers = [];
   var challenges = [];
 
 
@@ -17,6 +17,7 @@ $(document).ready(function() {
     // This event listener will call addMarker() when the map is clicked.
     google.maps.event.addListener(map, 'click', function(event) {
       position = new google.maps.LatLng(event.latLng.k, event.latLng.B);
+      console.log(event.latLng.k, event.latLng.B)
       addMarker(position);
     });
 
@@ -55,6 +56,7 @@ $(document).ready(function() {
     })
   }
 
+  // sets coordinates for an array of challenges
   var setMarkers = function(array) {
     for (var i = 0; i < array.length; i++) {
       position = new google.maps.LatLng(array[i].latitude, array[i].longitude);
