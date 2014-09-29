@@ -58,6 +58,14 @@ $(document).ready(function() {
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
 
-  // from search.js
+  // from search
   bindSearchEvent();
+  bindSearchUserEvent();
+
+  // from tabs.js
+  bindUsersTabEvent()
+
+  // for gravatar
+  new GravatarController(fetcher);
+
 });

@@ -9,17 +9,17 @@ var bindSearchEvent = function() {
     })
     .done(function(data) {
       if (data.length === 0) {
-        removeObject('#accepted .challenge')
-        removeObject('#accepted .warning')
-        appendObject('#accepted', renderWarning(data))
+        removeObject('#challenges .challenge')
+        removeObject('#challenges .warning')
+        appendObject('#challenges', renderWarning(data))
       }
       else {
-        removeObject('#accepted .challenge')
-        removeObject('#accepted .warning')
+        removeObject('#challenges .challenge')
+        removeObject('#challenges .warning')
         clearHolder()
         ChallengeFactory.createChallenges(data)
         $(challengeHolder.challenges).each(function(index, challengeHash) {
-          challengeReturner('#accepted', challengeHash)
+          challengeReturner('#challenges', challengeHash)
         })
         $('.challenge').addClass("result")
       }
@@ -29,7 +29,7 @@ var bindSearchEvent = function() {
     })
   })
 
-  $("#accepted").on('click', '.result', function(e){
+  $("#challenges").on('click', '.result', function(e){
     e.preventDefault()
     challenge = $(this)
     challenge_num = challenge.attr("id").replace("challenge_", "")
@@ -45,9 +45,6 @@ var bindSearchEvent = function() {
       console.log("fail")
     })
   })
-
-
-
 }
 
 
@@ -79,8 +76,6 @@ var renderWarning = function() {
 function challengeReturner(container, challengeHash){
   var challenge = renderChallenge(challengeHash)
   $(container).append(challenge)
-  $(".challenge:first").hide()
-  $(".challenge:first").fadeIn(800)
 }
 
 
