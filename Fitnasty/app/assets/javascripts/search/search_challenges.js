@@ -89,6 +89,8 @@ var renderChallenge = function(challenge) {
       "<p class='challenge_description'>{{description}}</p>" +
       "<span class='created_by'>posted by {{user.first_name}} {{user.last_name}}</span>" +
       "<div class='tags'>Tags: {{tags}}</div>" +
+      "<span>Completed: {{completed}}</span><br>" +
+      "<span>Accepted: {{accepted}}</span>" +
     "</div>"
 
   return Mustache.to_html(MustacheChallengeTemplate, challenge)

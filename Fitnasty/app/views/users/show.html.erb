@@ -5,7 +5,7 @@
   <form id="search-form">
     <input id="search" type="text" name="query" placeholder="Search for challenges">
   </form>
-  <a href="/"><div id="brand">Fit Friends</div></a>
+  <div id="brand"><%= link_to 'FitFriends', @signed_in_user %></div>
 </header>
 
 <main class="profile_container">
@@ -26,7 +26,7 @@
   <!-- Tabs -->
   <div id="tabs">
     <ul class="tabs_list">
-      <li class="tab" id = "challenges_tab"><a href="/users/<%= params[:id] %>/accepted">challenges</a></li>
+      <li class="tab" id="challenges_tab"><a href="#challenges">challenges</a></li>
       <li class="tab" id="users_tab"><a id="user_tab" href="#users">users</a></li>
     </ul>
 
@@ -36,29 +36,13 @@
         <button class="test_show">Create Challenge</button>
         <button id = "most_recent"> Most Recent </button>
         <button id = "trending"> Trending </button>
+        <div>
+        </div>
       </section>
     </div>
 
     <div class="tab_area" id="users">
       <%= render :partial => 'follow', locals: {user: @user} %>
-      <section id="users-container">
-        <h3>USERS</h3>
-      </section>
-      <div class="followers">
-        <form id="user_search">
-          <input type="search", placeholder="search for users">
-        </form>
-        <p>followers</p>
-        <% @user.followers.each do |follower| %>
-          <%= render partial: 'user', locals: {user: follower} %>
-        <% end %>
-      </div>
-      <div class="followees">
-        <p>following</p>
-        <% @user.followees.each do |followee| %>
-          <%= render partial: 'user', locals: {user: followee} %>
-        <% end %>
-      </div>
     </div>
   </div>
 </main>

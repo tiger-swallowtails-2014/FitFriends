@@ -3,7 +3,6 @@ class ChallengesController < ApplicationController
   def index
     # returns specific users created challenges
     accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    p accepted_challenges
     render json: add_challenge_info(accepted_challenges.flatten)
   end
 
@@ -81,8 +80,17 @@ class ChallengesController < ApplicationController
   end
 
   def add_challenge_info(challenge_array)
+    user = User.find(session[:user_id])
     challenge_array.map! do |challenge|
-      {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags}
+      matched_challenge = UserChallenge.where(challenge_id: challenge.id, user_id: user.id)
+      if matched_challenge.length == 0
+        accepted = false
+        completed = false
+      else
+        accepted = true
+        completed = matched_challenge.first.completed?
+      end
+      {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags, accepted: accepted, completed: completed}
     end
     challenge_array
   end
