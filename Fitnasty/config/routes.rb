@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/trends' => "tags#trends", as: :trends
   resources :challenges
   get '/users/current' => "users#current", as: :current
+  get '/users/single_user/:id' => "users#single_user", as: :single_user
 
 
 
