@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/users/search/:keyword', to: 'users#search'
+  get '/users/show_follow', to: 'users#show_follow'
 
   get '/map' => "home#map"
 
