@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'home#index'
+
+  get 'challenges/search/:keyword', to: 'challenges#search'
+  get 'challenges/recent', to: 'challenges#recent'
+  get 'challenges/trending', to: 'challenges#trending'
+  get '/users/search/:keyword', to: 'users#search'
+
+
   get '/trends' => "tags#trends", as: :trends
   resources :challenges
   get '/users/current' => "users#current", as: :current
@@ -19,8 +26,7 @@ Rails.application.routes.draw do
   get "/tabs" => "home#tabs"
   post "/accept_challenge" => "challenges#accept_challenge", as: :accept_challenge
 
-  get '/challenges/search/:keyword', to: 'challenges#search'
-  get '/users/search/:keyword', to: 'users#search'
+
 
   get '/map' => "home#map"
 

@@ -11,12 +11,11 @@
     {{description}}
   </p>
   {{#getuser}}
-    <span class="created_by">Posted By:{{first_name}}
+    <span class="created_by">Posted By: <a href = /users/{{id}}> {{first_name}} </a>
     </span>
   {{/getuser}}
-  <div class="tags">
-    Tags: {{tags}}
-  </div>
+  {{#tagsHelper}}
+  {{/tagsHelper}}
 </div>
 {{/challenges}}
 
