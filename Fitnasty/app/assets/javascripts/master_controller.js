@@ -53,7 +53,7 @@ $(document).ready(function() {
 
   // from create_challenge/controller.js
   var controller = new ChallengeController
-  controller.challengeFormCreate('.test_show', '#challenges-container')
+  controller.challengeFormCreate('.test_show', '#challenges-container div')
 
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
