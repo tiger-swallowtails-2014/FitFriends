@@ -124,3 +124,57 @@ $(document).ready(function() {
     google.maps.event.addDomListener(window, 'load', initialize);
   // }
 })
+
+
+
+
+// var MapSizer = function(widthProportion, heightProportion, mapContainer, map) {
+//   this.map = map
+//   this.mapContainer = mapContainer
+//   this.mapWidthProportion = widthProportion
+//   this.mapHeightProportion = heightProportion
+//   this.initialMapWidth = Math.round(this.mapWidthProportion * mapContainer.width()) + 'px'
+//   this.initialMapHeight = Math.round(this.mapHeightProportion * mapContainer.height()) + 'px'
+// }
+
+
+// MapSizer.prototype = {
+//   setInitialDimensions: function() {
+//     this.map.css("width", this.initialMapWidth)
+//     this.map.css("height", this.initialMapHeight)
+//   }
+
+//   adjustDimensions: function(){
+//     this.map.css("width", this.mapWidthProportion * this.mapContainer.width())
+//     this.map.css("height", this.mapHeightProportion * this.mapContainer.height())
+//   }
+// }
+
+// var mapSizerController = {
+
+// }
+
+
+
+
+var bindMapDimensionsEvent = function() {
+  var mapWidthProportion = 1
+  var mapHeightProportion = 0.7
+  var mapContainer = $('#map-canvas').parent()
+
+  var initialMapWidth = Math.round(mapWidthProportion * mapContainer.width()) + 'px'
+  var initialMapHeight = Math.round(mapHeightProportion * mapContainer.height()) + 'px'
+
+  $('#map-canvas').css("width", initialMapWidth)
+  $('#map-canvas').css("height", initialMapHeight)
+
+  $(window).resize(function(){
+    newMapWidth = mapWidthProportion * mapContainer.width()
+    newMapHeight = mapHeightProportion * mapContainer.height()
+
+    cssWidth = Math.round(newMapWidth) + 'px'
+    cssHeight = Math.round(newMapHeight) + 'px'
+    $('#map-canvas').css("width", cssWidth)
+    $('#map-canvas').css("height", cssHeight)
+  })
+}
