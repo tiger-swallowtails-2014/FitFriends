@@ -35,4 +35,9 @@ class Challenge < ActiveRecord::Base
     end
     return completed_user_challenges.flatten
   end
+
+  def self.submitted_challenges_for_user(user)
+    submitted_user_challenges = Challenge.where(user_id: user).to_a
+    return submitted_user_challenges.flatten
+  end
 end

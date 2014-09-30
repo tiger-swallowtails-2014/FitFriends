@@ -72,6 +72,10 @@ class ChallengesController < ApplicationController
     render json: add_challenge_info(Challenge.completed_challenges_for_user(params[:user_id]))
   end
 
+  def submitted
+    render json: add_challenge_info(Challenge.submitted_challenges_for_user(params[:user_id]))
+  end
+
   def edit
   end
 
