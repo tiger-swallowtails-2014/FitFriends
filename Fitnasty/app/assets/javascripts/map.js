@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 var bindMapDimensionsEvent = function() {
   var mapWidthProportion = 1
-  var mapHeightProportion = 0.7
+  var mapHeightProportion = 0.8
   var mapContainer = $('#map-canvas').parent()
 
   var initialMapWidth = Math.round(mapWidthProportion * mapContainer.width()) + 'px'
