@@ -1,21 +1,6 @@
 $(document).ready(function() {
   $('#tabs').tabs();
 
-
-  // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
-
-  // $(document).on("click", '#challenges_tab', function(e){
-  //   e.preventDefault();
-  //   $.ajax({
-  //     type: "GET",
-  //     url: this.getElementsByTagName('a')[0].href
-  //   }).done(function(data){
-  //     $('.challenge').remove();
-  //     var testWidget = new ChallengeWidget();
-  //     testWidget.whenDone(data)
-  //   })
-  // })
-
   $('#most_recent').on("click", function(e){
     e.preventDefault();
     $.ajax({
@@ -56,7 +41,7 @@ $(document).ready(function() {
 
   // from create_challenge/controller.js
   var controller = new ChallengeController
-  controller.challengeFormCreate('.test_show', '#challenges-container div')
+  controller.challengeFormCreate('.test_show', '#challenges-container .challenges_river')
 
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
@@ -73,4 +58,17 @@ $(document).ready(function() {
   new GravatarController(fetcher);
 
 
+  // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
+
+  // $(document).on("click", '#challenges_tab', function(e){
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "GET",
+  //     url: this.getElementsByTagName('a')[0].href
+  //   }).done(function(data){
+  //     $('.challenge').remove();
+  //     var testWidget = new ChallengeWidget();
+  //     testWidget.whenDone(data)
+  //   })
+  // })
 });
