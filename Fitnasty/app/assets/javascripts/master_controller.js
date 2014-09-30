@@ -9,7 +9,6 @@ $(document).ready(function() {
       type: "GET",
       url: '/challenges/recent'
     }).done(function(data){
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -22,7 +21,6 @@ $(document).ready(function() {
       url: '/challenges/trending'
     }).done(function(data){
       console.log(data)
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -36,7 +34,6 @@ $(document).ready(function() {
       url: "/users/"+currentUser+"/pending"
     }).done(function(data){
       console.log(data)
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -50,21 +47,19 @@ $(document).ready(function() {
       url: "/users/"+currentUser+"/completed"
     }).done(function(data){
       console.log(data)
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
   })
-
 
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
 
   // from accepted_challenges.js
-  fetcher = new Fetcher;
-  acceptedChallengesView = new AcceptedChallengesView;
-  new AcceptedChallengesController(acceptedChallengesView, fetcher)
+    fetcher = new Fetcher;
+    acceptedChallengesView = new AcceptedChallengesView;
+    new AcceptedChallengesController(acceptedChallengesView, fetcher)
 
 
   // from lightboxes/controller.js
