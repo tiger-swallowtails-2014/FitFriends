@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 	def search
 		keyword = params[:keyword]
 		matched_users = match_users(keyword).flatten
+		p matched_users
 		render :partial => 'user_results', locals: {users: matched_users}
 	end
 
@@ -64,5 +65,6 @@ class UsersController < ApplicationController
 		users << User.where('first_name LIKE ?', "%#{keyword}%")
 		users << User.where('last_name LIKE ?', "%#{keyword}%")
 		users << User.where('email LIKE ?', "%#{keyword}%")
+		users.flatten.uniq
 	end
 end

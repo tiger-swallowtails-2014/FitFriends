@@ -5,6 +5,12 @@ var challengeHolder = {
   }
 }
 
+
+var clearHolder = function() {
+  challengeHolder.challenges = []
+}
+
+
 var ChallengeFactory = (function(holder) {
 
   return {
