@@ -24,14 +24,11 @@ class UsersController < ApplicationController
 	end
 
 	def single_user
-		user = User.find(params[:id])
-		render json: user
+		render json: User.find(params[:id])
 	end
 
 	def search
-		keyword = params[:keyword]
-		matched_users = match_users(keyword).flatten
-		p matched_users
+		matched_users = match_users(params[:keyword])
 		render :partial => 'user_results', locals: {users: matched_users}
 	end
 
@@ -64,6 +61,10 @@ class UsersController < ApplicationController
 		users << User.where('first_name LIKE ?', "%#{keyword}%")
 		users << User.where('last_name LIKE ?', "%#{keyword}%")
 		users << User.where('email LIKE ?', "%#{keyword}%")
+<<<<<<< HEAD
 		users.flatten.uniq
+=======
+		users.flatten
+>>>>>>> Remove unnecessary var assignment in user controller
 	end
 end
