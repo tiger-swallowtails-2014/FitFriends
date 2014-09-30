@@ -29,10 +29,6 @@ class ChallengesController < ApplicationController
     end
   end
 
-  def create_challenge_tags(challenge, tags_string)
-    tags = tags_string.split(", ")
-    tags.each {|tag| challenge.tags.create(name: tag)}
-  end
 
   def edit
   end
@@ -95,6 +91,11 @@ class ChallengesController < ApplicationController
     params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
   end
 
+  def create_challenge_tags(challenge, tags_string)
+    tags = tags_string.split(", ")
+    tags.each {|tag| challenge.tags.create(name: tag)}
+  end
+  
   def match_challenges(keyword)
     tag = Tag.where(name: keyword).first
     challenges = []

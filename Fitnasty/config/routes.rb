@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
 
   get '/trends' => "tags#trends", as: :trends
+
+  post '/challenges' => "challenges#create"
   # resources :challenges
   get '/users/current' => "users#current", as: :current
   get '/users/single_user/:id' => "users#single_user", as: :single_user
@@ -32,8 +34,7 @@ Rails.application.routes.draw do
 
   get '/map' => "home#map"
 
-  resources :users do
-  end
+  resources :users
 
   get '/users/:user_id/created' => 'challenges#created', as: :created
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
