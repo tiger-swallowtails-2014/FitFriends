@@ -18,11 +18,10 @@ class ChallengesController < ApplicationController
     if comp != []
       p comp
       comp[0].update_attributes(completed?: true)
-      return render :nothing => true
+      return render json: 'completed'
     end
     user.user_challenges.create(challenge_id: params[:challenge_id], accepted?: true)
-
-    render :nothing => true
+    render json: 'accepted'
   end
 
   def create

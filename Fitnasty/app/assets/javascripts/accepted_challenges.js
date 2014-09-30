@@ -32,4 +32,3 @@
 // 		$('#challenges-container ul').append(HtmlChallenge)
 // 	}
 // }
->>>>>>> 15fa43d9fc5a59abb59c7461d6b465dfe9ef6ac4

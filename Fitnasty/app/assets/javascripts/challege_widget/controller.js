@@ -22,7 +22,7 @@ function ChallengeWidget() {
         url: "/accept_challenge",
         data: {challenge_id: challenge_num}
       }).done(function(data){
-        console.log(data)
+
       })
     })
   }
