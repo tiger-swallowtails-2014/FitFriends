@@ -24,7 +24,7 @@ function ChallengeWidget() {
         data: {challenge_id: challenge_num}
       }).done(function(data){
         console.log($(self).text(data.texts))
-        console.log($(self).attr('class', "lif  ecycle" + " " + data.answer))
+        console.log($(self).attr('class', "lifecycle" + " " + data.answer))
       })
     })
   }

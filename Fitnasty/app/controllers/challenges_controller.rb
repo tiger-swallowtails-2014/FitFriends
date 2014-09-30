@@ -11,9 +11,18 @@ class ChallengesController < ApplicationController
   end
 
   def accept_challenge
-    challenge = session_user.user_challenges.find_or_create_by(challenge_id: params[:challenge_id])
-    challenge.update_attributes(:accepted? => true)
-    render :nothing => true
+    user = User.find(session[:user_id])
+    p "challenge FUCKING id"
+    p params[:challenge_id]
+    comp = user.user_challenges.where(challenge_id: params[:challenge_id])
+    if comp != []
+      p comp
+      comp[0].update_attributes(completed?: true)
+      render json: {answer:'completed', texts: "Completed!"}
+      return
+    end
+    user.user_challenges.create(challenge_id: params[:challenge_id], accepted?: true)
+    render json: {answer: 'accepted', texts: "Challenge Accepted!"}
   end
 
   def create
