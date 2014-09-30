@@ -19,3 +19,8 @@ var bindSearchUserEvent = function(event) {
     })
   })
 }
+
+// appends an element to specified container
+var appendObject = function(container, element) {
+  $(container).append(element)
+}
