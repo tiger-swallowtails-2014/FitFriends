@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+
+  root 'home#index'
+  
   post "/send_challenge" => 'challenges#send_challenge'
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/challenges/recent', to: 'challenges#recent'
   get '/challenges/trending', to: 'challenges#trending'
   get '/users/unfollow/:followee_id', to: 'users#unfollow'
   get '/users/follow/:followee_id', to: 'users#follow'
-
-  root 'home#index'
 
   get 'challenges/search/:keyword', to: 'challenges#search'
   get 'challenges/recent', to: 'challenges#recent'

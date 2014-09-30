@@ -7,7 +7,6 @@ class HomeController < ApplicationController
   end
 
   def map
-
   end
 
 end
