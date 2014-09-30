@@ -65,6 +65,6 @@ class UsersController < ApplicationController
 		users << User.where('first_name LIKE ?', "%#{keyword}%")
 		users << User.where('last_name LIKE ?', "%#{keyword}%")
 		users << User.where('email LIKE ?', "%#{keyword}%")
-		users.flatten.uniq!
+		users.flatten.uniq
 	end
 end
