@@ -11,18 +11,16 @@ class ChallengesController < ApplicationController
   end
 
   def accept_challenge
-    user = User.find(session[:user_id])
-    challenge = user.user_challenges.find_or_create_by(challenge_id: params[:challenge_id])
+    challenge = session_user.user_challenges.find_or_create_by(challenge_id: params[:challenge_id])
     challenge.update_attributes(:accepted? => true)
     render :nothing => true
   end
 
   def create
-    user = User.find(session[:user_id])
-    new_challenge = user.challenges.new(challenge_params)
+    new_challenge = session_user.challenges.new(challenge_params)
     if new_challenge.save
       create_challenge_tags(new_challenge, params["challenge_tags"])
-      user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
+      session_user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
       render json: new_challenge
     else
       render json: "There was a problem with saving your challenge."
@@ -85,8 +83,13 @@ class ChallengesController < ApplicationController
   end
 
   private
+
   def challenge_params
     params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
+  end
+
+  def session_user
+    session_user = User.find(session[:user_id])
   end
 
   def create_challenge_tags(challenge, tags_string)
