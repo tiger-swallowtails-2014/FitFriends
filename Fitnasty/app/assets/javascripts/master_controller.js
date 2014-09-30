@@ -9,7 +9,8 @@ $(document).ready(function() {
       type: "GET",
       url: '/challenges/recent'
     }).done(function(data){
-      $('.challenge').remove();
+      clearHolder()
+      $('.challenge').fadeOut(500);
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -21,7 +22,7 @@ $(document).ready(function() {
       type: "GET",
       url: '/challenges/trending'
     }).done(function(data){
-      console.log(data)
+      clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
@@ -35,7 +36,7 @@ $(document).ready(function() {
       type: "GET",
       url: "/users/"+currentUser+"/pending"
     }).done(function(data){
-      console.log(data)
+      clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
@@ -49,7 +50,7 @@ $(document).ready(function() {
       type: "GET",
       url: "/users/"+currentUser+"/completed"
     }).done(function(data){
-      console.log(data)
+      clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
