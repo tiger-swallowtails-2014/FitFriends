@@ -1,14 +1,28 @@
+<form id="user_search">
+  <input type="search" id="user_search_input", placeholder="search for users">
+</form>
+
 <div class="followers">
-  <form id="user_search">
-    <input type="search" id="user_search_input", placeholder="search for users">
-  </form>
-  <p>followers</p>
+  <h3 class="follow_title">People following
+    <% if current_user.id == user.id %>
+      <%= "you" %>
+    <% else %>
+      <%= user.first_name %>
+    <% end %>
+  </h3>
   <% user.followers.each do |follower| %>
     <%= render partial: 'user', locals: {user: follower} %>
   <% end %>
 </div>
+
 <div class="followees">
-  <p>following</p>
+  <h3 class="follow_title">People
+    <% if current_user.id == user.id %>
+      <%= "you're following" %>
+    <% else %>
+      <%= "#{user.first_name}  is following" %>
+    <% end %>
+  </h3>
   <% user.followees.each do |followee| %>
     <%= render partial: 'user', locals: {user: followee} %>
   <% end %>
