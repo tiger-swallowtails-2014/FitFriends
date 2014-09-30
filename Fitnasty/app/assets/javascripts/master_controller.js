@@ -28,6 +28,8 @@ $(document).ready(function() {
       clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      MapView.deleteMarkers()
+      MapView.setMarkers(challengeHolder.challenges)
     })
   })
 
@@ -41,6 +43,8 @@ $(document).ready(function() {
       clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      MapView.deleteMarkers()
+      MapView.setMarkers(challengeHolder.challenges)
     })
   })
 
@@ -54,6 +58,8 @@ $(document).ready(function() {
       clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      MapView.deleteMarkers()
+      MapView.setMarkers(challengeHolder.challenges)
     })
   })
 
