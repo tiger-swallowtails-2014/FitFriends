@@ -17,7 +17,7 @@ function ChallengeWidget() {
         formatted_data.users.push(data[i].challenge_user)
       }
 
-    ChallengeWidgetView('#challenges-container div', formatted_data)
+    ChallengeWidgetView('#challenges-container .challenges_river', formatted_data)
   }
 }
 

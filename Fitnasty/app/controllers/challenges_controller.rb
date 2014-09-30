@@ -23,11 +23,17 @@ class ChallengesController < ApplicationController
     user = User.find(session[:user_id])
     new_challenge = user.challenges.new(challenge_params)
     if new_challenge.save
+      create_challenge_tags(new_challenge, params["challenge_tags"])
       user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
       render json: new_challenge
     else
       render json: "There was a problem with saving your challenge."
     end
+  end
+
+  def create_challenge_tags(challenge, tags_string)
+    tags = tags_string.split(", ")
+    tags.each {|tag| challenge.tags.create(name: tag)}
   end
 
   def edit
