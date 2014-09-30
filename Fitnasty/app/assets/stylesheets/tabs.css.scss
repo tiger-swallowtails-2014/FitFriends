@@ -3,16 +3,17 @@ $blue: #4486f7;
 $green: #0aa25a;
 
 #tabs {
-  width: 60%;
+  padding: 1%;
+  float: left;
+  width:85%;
+  display: inline;
   height: 50em;
-  float: right;
-  margin-right: 10%;
+  margin: 0 auto;
 
   .tabs_list {
     box-sizing: border-box;
-    margin: 5% auto;
     width: 90%;
-    padding: 0;
+    margin: 0 auto;
 
     .tab {
       width: 25%;
@@ -48,4 +49,11 @@ $green: #0aa25a;
     border-radius: 4px;
     min-height: 40em;
   }
+}
+
+
+#challenge_buttons {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
 }

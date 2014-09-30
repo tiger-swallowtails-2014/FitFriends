@@ -16,7 +16,7 @@ p {
 }
 
 .profile_container {
-  margin-top: 3%;
+  /*margin-top: 3%;*/
 }
 
 #top-nav {
@@ -57,8 +57,12 @@ p {
 
 .left-nav {
   float:left;
+  display:inline;
   width: 15%;
-  margin: 3% 0 0 10%;
+  padding: 1%;
+  /*height: 100%;*/
+  /*margin: 3% 0 0 10%;*/
+  border-right: 1px solid black;
 }
 
 #profile-image-container {
