@@ -27,21 +27,18 @@ class ChallengesController < ApplicationController
     end
   end
 
+  def recent
+    render json: add_challenge_info(Challenge.order(:created_at).limit(10).flatten)
+  end
+
+  def show
+    render json: add_challenge_info([Challenge.find(params[:challenge_id])].flatten)
+  end
 
   def edit
   end
 
   def update
-  end
-
-  def recent
-    ordered_date = Challenge.order(:created_at).limit(10).flatten
-    render json: add_challenge_info(ordered_date)
-  end
-
-  def show
-    challenge = Challenge.find(params[:id])
-    render json: challenge
   end
 
   def destroy
