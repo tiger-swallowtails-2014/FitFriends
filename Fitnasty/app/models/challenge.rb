@@ -6,7 +6,7 @@ class Challenge < ActiveRecord::Base
   belongs_to :user
 
   def self.accepted_challenges_for_user(user)
-  	accepted_user_challenges = UserChallenge.where(accepted?: true, user_id: user).to_a
+  	accepted_user_challenges = UserChallenge.where(accepted?: true, completed?: false, user_id: user).to_a
   	accepted_user_challenges.map! do |user_challenge|
   	 self.find(user_challenge.challenge_id)
   	end
@@ -21,7 +21,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.pending_challenges_for_user(user)
-    pending_user_challenges = UserChallenge.where(accepted?: false, user_id: user).to_a
+    pending_user_challenges = UserChallenge.where(accepted?: false, completed?: false, user_id: user).to_a
     pending_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
@@ -29,7 +29,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.completed_challenges_for_user(user)
-    completed_user_challenges = UserChallenge.where(completed?: true, user_id: user).to_a
+    completed_user_challenges = UserChallenge.where(accepted?: true, completed?: true, user_id: user).to_a
     completed_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
