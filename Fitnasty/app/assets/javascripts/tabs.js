@@ -1,12 +1,13 @@
 var bindUsersTabEvent = function() {
   var shownUser = $(document.URL.split('/')).last()[0]
-  $('#user_tab').on('click', function(e){
+  $('#users_tab').on('click', function(e){
     $.ajax({
       url: "/users/show_follow",
       method: "GET",
       data: {user_id: shownUser}
     })
     .done( function(data){
+      clearUserHolder()
       $('#users').empty()
       appendObject('#users', data)
     })
@@ -25,6 +26,7 @@ var bindChallengesTabEvent = function() {
       data: {user_id: shownUser}
     })
     .done( function(data) {
+      clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
@@ -34,3 +36,5 @@ var bindChallengesTabEvent = function() {
     })
   })
 }
+
+

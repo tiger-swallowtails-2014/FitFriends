@@ -57,7 +57,9 @@ class ChallengesController < ApplicationController
 
   def search
     keyword = params[:keyword]
-    matched_challenges = match_challenges(keyword).flatten
+    matched_challenges = match_challenges(keyword)
+    p "MATCHED CHALLENGES:"
+    p matched_challenges
 
     render json: add_challenge_info(matched_challenges)
   end
@@ -102,6 +104,11 @@ class ChallengesController < ApplicationController
     challenges << Challenge.where('description LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('title LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('location LIKE ?', "%#{keyword}%")
+    if challenges.flatten.uniq!
+      challenges.flatten.uniq!
+    else
+      []
+    end
   end
 
   def add_challenge_info(challenge_array)
