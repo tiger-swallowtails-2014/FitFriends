@@ -28,6 +28,21 @@ $(document).ready(function() {
     })
   })
 
+  $('#pending').on("click", function(e){
+    e.preventDefault();
+    var currentUser = $(document.URL.split('/')).last()[0];
+    $.ajax({
+      type: "GET",
+      url: "/users/"+currentUser+"/pending"
+    }).done(function(data){
+      console.log(data)
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
+
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 

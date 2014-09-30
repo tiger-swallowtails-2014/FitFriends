@@ -5,6 +5,7 @@
 
 function ChallengeWidget() {
   this.whenDone = function(data) {
+    console.log(data);
     ChallengeFactory.createChallenges(data)
     var formatted_data = {
       challenges: [],
