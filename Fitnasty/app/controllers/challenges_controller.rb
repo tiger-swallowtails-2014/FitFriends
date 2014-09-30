@@ -102,6 +102,7 @@ class ChallengesController < ApplicationController
     challenges << Challenge.where('description LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('title LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('location LIKE ?', "%#{keyword}%")
+    challenges.flatten.uniq!
   end
 
   def add_challenge_info(challenge_array)

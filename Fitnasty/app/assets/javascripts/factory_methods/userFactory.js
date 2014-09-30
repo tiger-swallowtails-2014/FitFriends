@@ -5,6 +5,10 @@ var userHolder = {
   }
 }
 
+var clearUserHolder = function() {
+  userHolder.users = []
+}
+
 // user Factory
 var UserFactory = (function(holder) {
 

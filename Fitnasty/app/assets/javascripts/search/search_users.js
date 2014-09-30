@@ -9,8 +9,7 @@ var bindSearchUserEvent = function() {
       data: keyword
     })
     .done(function(data) {
-      console.log(data)
-      console.log("success")
+      clearUserHolder()
       removeObject("#users .user")
       appendObject("#users", data)
     })
