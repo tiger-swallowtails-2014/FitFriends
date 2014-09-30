@@ -16,11 +16,11 @@ function ChallengeWidget() {
   this.bindListener = function(){
     $('.lifecycle').on('click', function(e){
       e.preventDefault();
-      console.log($(this).parent().attr('id'))
+      challenge_num = $(this).parent().attr('id')
       $.ajax({
         type: "POST",
         url: "/accept_challenge",
-        data: {}
+        data: {challenge_id: challenge_num}
       }).done(function(data){
         console.log(data)
       })
