@@ -1,3 +1,5 @@
+// MUST BE REFACTORED FOR MVC
+
 $(document).ready(function() {
   $('#tabs').tabs();
 
@@ -57,6 +59,8 @@ $(document).ready(function() {
   // for gravatar
   new GravatarController(fetcher);
 
+  // from map.js
+  bindMapDimensionsEvent();
 
   // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
 
