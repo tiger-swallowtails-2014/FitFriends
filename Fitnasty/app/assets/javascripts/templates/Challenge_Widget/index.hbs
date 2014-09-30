@@ -1,5 +1,5 @@
 {{#challenges}}
-<div class="challenge">
+<div class="challenge" id = "{{id}}">
   <img class="challenge_image" src="http://upload.wikimedia.org/wikipedia/commons/a/a4/Ggb_by_night.jpg">
   <div class="challenge_title">
     <h1>{{title}}</h1>
@@ -10,14 +10,11 @@
   <p class="challenge_description">
     {{description}}
   </p>
-  <button class="friend_selector_button" id={{id}} type="button">Challenge a Friend!</button>
-  <button id="accept_challenge_button" type="button">Accept Challenge!</button>
-  {{#getuser}}
-    <span class="created_by">Posted By: <a href = /users/{{id}}> {{first_name}} </a>
+    <span class="created_by">Posted By: <a href = '/users/{{user.id}}'> {{user.first_name}}</a>
     </span>
-  {{/getuser}}
-  {{#tagsHelper}}
-  {{/tagsHelper}}
+    {{#tagsHelper}}
+    {{/tagsHelper}}
+      {{#checkStatus}}
+      {{/checkStatus}}
 </div>
 {{/challenges}}
-
