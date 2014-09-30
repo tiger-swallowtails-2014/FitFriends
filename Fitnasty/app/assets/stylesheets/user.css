@@ -36,3 +36,34 @@
 .profile_pic_thumbnail {
   width: 100%;
 }
+
+.unfollow {
+  background: #d74136;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 10px;
+}
+
+.follow {
+  background: #4486f7;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 10px;
+
+}
+
+.unfollow a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.follow a {
+  text-decoration: none;
+  color: white;
+
+}

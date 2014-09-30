@@ -10,9 +10,13 @@
 
   <% @follower_ids = user.followers.select(:id).map(&:id) %>
   <% if @follower_ids.include?(current_user.id) %>
-    <%= link_to 'unfollow', "/users/unfollow/#{user.id}" %>
+    <div class='unfollow'>
+      <%= link_to 'unfollow', "/users/unfollow/#{user.id}", class: "unfollow_link" %>
+    </div>
     <% else %>
-    <%= link_to 'follow', "/users/follow/#{user.id}" %>
+    <div class='follow'>
+      <%= link_to 'follow', "/users/follow/#{user.id}", class: "follow_link"%>
+    </div>
   <% end %>
 
 </div>
