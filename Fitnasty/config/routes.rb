@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post "/send_challenge" => 'challenges#send_challenge'
+  post '/send_challenge' => 'challenges#send_challenge'
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/challenges/recent', to: 'challenges#recent'
   get '/challenges/trending', to: 'challenges#trending'
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     resources :challenges, only: :index
   end
 
-  # Example of regular route:
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
+  get '/users/:user_id/pending' => 'challenges#pending', as: :pending
 
   get '/all_challenges' => 'challenges#all'
 end
