@@ -1,5 +1,5 @@
 var bindSearchUserEvent = function() {
-  $('#users').on('submit','#user_search', function(e){
+  $('#users').on('keyup','#user_search', function(e){
     e.preventDefault()
     var keyword = $("#user_search_input").val()
     console.log(keyword)
@@ -11,6 +11,7 @@ var bindSearchUserEvent = function() {
     .done(function(data) {
       clearUserHolder()
       removeObject("#users .user")
+      removeObject("#users .follow_title")
       appendObject("#users", data)
     })
     .fail(function(){
