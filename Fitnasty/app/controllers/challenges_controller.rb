@@ -1,20 +1,19 @@
 class ChallengesController < ApplicationController
 
   def created
-    # returns specific users created challenges
-    render json: User.find(params[:user_id]).challenges
+    # returns specific user's created challenges
+    render json: add_challenge_info(User.find(params[:user_id]).challenges.to_a)
   end
 
   def accepted
-    #returns specific users accepted challenges
-    accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(accepted_challenges)
+    #returns specific user's accepted challenges
+    render json: add_challenge_info(Challenge.accepted_challenges_for_user(params[:user_id]))
   end
 
   def accept_challenge
     user = User.find(session[:user_id])
-    user.user_challenges.create(challenge_id: params[:challenge_id], accepted?: true)
-
+    challenge = user.user_challenges.find_or_create_by(challenge_id: params[:challenge_id])
+    challenge.update_attributes(:accepted? => true)
     render :nothing => true
   end
 
