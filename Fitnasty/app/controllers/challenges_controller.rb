@@ -37,7 +37,7 @@ class ChallengesController < ApplicationController
   end
 
   def recent
-    render json: add_challenge_info(Challenge.order(:created_at).limit(10).flatten)
+    render json: add_challenge_info(Challenge.order('created_at DESC').limit(10).flatten)
   end
 
   def show
