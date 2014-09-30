@@ -19,6 +19,29 @@ $(document).ready(function() {
     })
   })
 
+  var bindTagSearchEvent = function(event, selector) {
+    $(document).on(event, selector, function(e){
+      e.preventDefault();
+      keyword = $(this).text()
+      $.ajax({
+        type: "GET",
+        url: '/challenges/search/' + keyword
+      }).done(function(data){
+        clearHolder()
+        $('.challenge').fadeOut(500);
+        var testWidget = new ChallengeWidget();
+        testWidget.whenDone(data)
+        $('.challenge:first').prepend($("<h1>Challenges matching keyword '" + keyword + "'</h1>"))
+        MapView.deleteMarkers()
+        MapView.setMarkers(challengeHolder.challenges)
+      })
+    })
+  }
+
+  bindTagSearchEvent("click", '.tag')
+
+
+
   $('#submitted').on("click", function(e){
     e.preventDefault();
     var currentUser = $(document.URL.split('/')).last()[0];
@@ -114,9 +137,9 @@ $(document).ready(function() {
   // testWidget.whenDone()
 
   // from search
-  bindSearchEvent();
-  bindSearchUserEvent('keyup');
-  bindSearchUserEvent('submit');
+  // bindSearchEvent();
+  // bindSearchUserEvent('keyup');
+  // bindSearchUserEvent('submit');
 
   // from tabs.js
   bindUsersTabEvent('#users_tab')
