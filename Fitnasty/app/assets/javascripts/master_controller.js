@@ -10,7 +10,8 @@ $(document).ready(function() {
       type: "GET",
       url: '/challenges/recent'
     }).done(function(data){
-      $('.challenge').remove();
+      clearHolder()
+      $('.challenge').fadeOut(500);
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -22,8 +23,7 @@ $(document).ready(function() {
       type: "GET",
       url: '/challenges/trending'
     }).done(function(data){
-      console.log(data)
-      $('.challenge').remove();
+      clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -36,8 +36,7 @@ $(document).ready(function() {
       type: "GET",
       url: "/users/"+currentUser+"/pending"
     }).done(function(data){
-      console.log(data)
-      $('.challenge').remove();
+      clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -50,13 +49,25 @@ $(document).ready(function() {
       type: "GET",
       url: "/users/"+currentUser+"/completed"
     }).done(function(data){
-      console.log(data)
-      $('.challenge').remove();
+      clearHolder()
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
   })
 
+  $('#accepted').on("click", function(e){
+    e.preventDefault();
+    var currentUser = $(document.URL.split('/')).last()[0];
+    $.ajax({
+      type: "GET",
+      url: "/users/"+currentUser+"/accepted"
+    }).done(function(data){
+      clearHolder()
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
 
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
@@ -64,8 +75,8 @@ $(document).ready(function() {
 
   // from accepted_challenges.js
   fetcher = new Fetcher;
-  acceptedChallengesView = new AcceptedChallengesView;
-  new AcceptedChallengesController(acceptedChallengesView, fetcher)
+  // acceptedChallengesView = new AcceptedChallengesView;
+  // new AcceptedChallengesController(acceptedChallengesView, fetcher)
 
 
   // from lightboxes/controller.js
@@ -83,7 +94,7 @@ $(document).ready(function() {
   bindSearchUserEvent();
 
   // from tabs.js
-  bindUsersTabEvent()
+  bindUsersTabEvent('#users_tab')
   bindChallengesTabEvent()
 
   // for gravatar
@@ -91,6 +102,9 @@ $(document).ready(function() {
 
   // from map.js
   bindMapDimensionsEvent();
+
+  // from users/follow.js
+  bindFriendEvents();
 
   // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
 

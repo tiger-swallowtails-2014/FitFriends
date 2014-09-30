@@ -4,11 +4,26 @@ Handlebars.registerHelper('getuser', function(options) {
 
 Handlebars.registerHelper('tagsHelper', function(options){
     var ret = "<div class='tags'> Tags: "
-  for(var i = 0; i < options.data.root.challenges[$(options.data.root.challenges).index(this)].tagged.length; i++) {
-        var tag_word = options.data.root.challenges[$(options.data.root.challenges).index(this)].tagged[i].name
+  for(var i = 0; i < this.tags.length; i++) {
+        var tag_word = this.tags[i].name
         var link = "/challenges/search/" + tag_word
         ret = ret + "<a href = " + link + ">" + tag_word + "</a>" + " ";
   }
     return ret + "</div>"
 });
 
+Handlebars.registerHelper( "checkStatus", function(options) {
+  console.log(this)
+  if (this.accepted && this.completed === false)
+  {
+    console.log(this.completed)
+    return "<div class = 'lifecycle accepted'>Challenge Accepted!</div> <div class= 'friend_selector_button' id={{id}}> </div>"
+  }
+  else if (this.accepted && this.completed)
+  {
+      return "<div class = 'lifecycle completed'>Completed!</div> <div class= 'friend_selector_button' id={{id}}> </div>"
+  }
+  else if (this.accepted === false){
+      return "<div class = 'lifecycle not_accepted'>Accept?</div> <div class= 'friend_selector_button' id={{id}}> </div>"
+  }
+});
