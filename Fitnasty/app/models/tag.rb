@@ -4,7 +4,7 @@ class Tag < ActiveRecord::Base
   has_many :challenges, through: :challenge_tags
 
   def self.top_ten_tags
-  tags = ChallengeTag.select('tag_id, count(id) as "count"').group("tag_id").order('count desc').limit(10)
+    tags = ChallengeTag.includes(:tag).select('tag_id, count(challenge_tags.id) as "count"').group("tag_id").order('count desc').limit(10)
       trending_tags = []
       tags.each { |tag| trending_tags << Tag.find(tag.tag_id) }
       return trending_tags

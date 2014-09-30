@@ -60,6 +60,7 @@ class UsersController < ApplicationController
 	end
 
 	def match_users(keyword)
+    # Should be on User.
 		users = []
 		users << User.where('first_name LIKE ?', "%#{keyword}%")
 		users << User.where('last_name LIKE ?', "%#{keyword}%")

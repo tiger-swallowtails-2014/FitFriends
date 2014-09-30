@@ -1,3 +1,7 @@
+// :(
+//
+//
+// I repeat, :(
 var bindSearchEvent = function() {
   $("#search-form").on('submit', function(e){
     e.preventDefault()
@@ -79,6 +83,9 @@ function challengeReturner(container, challengeHash){
 }
 
 
+// What..you have awesome handlebars-assets fu in your Gemfile, bust that stuff
+// into a file!
+//
 // Returns html elements for a challenge
 var renderChallenge = function(challenge) {
   var MustacheChallengeTemplate =

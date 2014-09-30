@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   it "is valid with a firstname, lastname, email, and password" do
     user = User.new(
-          first_name: 'Aaron',
+          first_name: 'Aaron', # < -- hahaha
           last_name: 'Sumner',
           password: "Sup22",
           email: 'tester@example.com')

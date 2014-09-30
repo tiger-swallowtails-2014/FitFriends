@@ -10,6 +10,8 @@ describe UsersController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      # 1.  we should be using let
+      # 2.  we should be using Factory Girl to generate these params hashes.
       it "saves a new user" do
         expect {post :create, user: {first_name: "Nick", last_name: "C", email: "who_cares@gmail.com", password: "Pass1"}}.to change {User.count}.by (1)
       end
