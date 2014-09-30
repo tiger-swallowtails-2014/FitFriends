@@ -147,7 +147,7 @@ MapSizer.prototype = {
 
   adjustDimensions: function(){
     var currentHeight = parseInt(this.map.css("height").replace("px", ""))
-    if (currentHeight <= this.maxHeight) {
+    if (this.mapContainer.height() <= (this.maxHeight / this.mapHeightProportion)) {
       this.map.css("height", this.mapHeightProportion * this.mapContainer.height())
     } else {
       this.map.css("height", this.maxHeight + 'px')
