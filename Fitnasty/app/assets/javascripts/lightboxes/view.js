@@ -4,8 +4,7 @@ function LightBoxView() {
   }
 
   this.showFriendSelectorLightbox = function() {
-  	console.log("LIGHTBOX");
-    $('.lightbox_background, .friend_selector_lightbox').fadeIn('slow')
+    $('.lightbox_background, .friend_selector_lightbox').fadeIn('slow');
   }
 
   this.showLoginLightbox = function() {

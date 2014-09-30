@@ -10,14 +10,14 @@
   <p class="challenge_description">
     {{description}}
   </p>
+  <button class="friend_selector_button" id={{id}} type="button">Challenge a Friend!</button>
+  <button id="accept_challenge_button" type="button">Accept Challenge!</button>
   {{#getuser}}
     <span class="created_by">Posted By: <a href = /users/{{id}}> {{first_name}} </a>
     </span>
   {{/getuser}}
   {{#tagsHelper}}
   {{/tagsHelper}}
-  <button class="friend_selector_button" id="send_challenge_button" type="button">Challenge a Friend!</button>
-  <button id="accept_challenge_button" type="button">Accept Challenge!</button>
 </div>
 {{/challenges}}
 

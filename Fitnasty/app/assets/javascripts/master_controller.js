@@ -57,6 +57,7 @@ $(document).ready(function() {
   // for gravatar
   new GravatarController(fetcher);
 
+
   // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
 
   // $(document).on("click", '#challenges_tab', function(e){
