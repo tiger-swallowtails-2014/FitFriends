@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
   $('#tabs').tabs();
+  google.maps.event.addDomListener(window, 'load', initialize);
 
   $('#most_recent').on("click", function(e){
     e.preventDefault();
