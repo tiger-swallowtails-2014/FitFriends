@@ -23,7 +23,6 @@ $(document).ready(function() {
       url: '/challenges/trending'
     }).done(function(data){
       clearHolder()
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -37,7 +36,6 @@ $(document).ready(function() {
       url: "/users/"+currentUser+"/pending"
     }).done(function(data){
       clearHolder()
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -51,7 +49,6 @@ $(document).ready(function() {
       url: "/users/"+currentUser+"/completed"
     }).done(function(data){
       clearHolder()
-      $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
     })
@@ -70,7 +67,6 @@ $(document).ready(function() {
       testWidget.whenDone(data)
     })
   })
-
 
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
