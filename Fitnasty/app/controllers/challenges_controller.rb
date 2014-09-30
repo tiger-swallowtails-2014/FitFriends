@@ -38,7 +38,7 @@ class ChallengesController < ApplicationController
   def search
     render json: add_challenge_info(match_challenges(params[:keyword]).flatten)
   end
-  
+
   def trending
     render json: add_challenge_info(Challenge.top_ten_challenges)
   end
@@ -86,7 +86,7 @@ class ChallengesController < ApplicationController
     tags = tags_string.split(", ")
     tags.each {|tag| challenge.tags.create(name: tag)}
   end
-  
+
   def match_challenges(keyword)
     tag = Tag.where(name: keyword).first
     challenges = []

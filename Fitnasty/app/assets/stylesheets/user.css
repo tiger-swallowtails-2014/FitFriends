@@ -13,26 +13,81 @@
 }
 
 .followers {
-  width: 30%;
+  width: 45%;
   float: left;
 }
 
 .followees {
-  width: 30%;
+  width: 45%;
   float: right;
 }
 
 .user {
-  width:100%;
-  border: 1px solid black;
   text-align: center;
+  display: inline-flex;
+  font-size: 1em;
+  margin: 10px 0;
 }
 
 .profile_pic_thumbnail_container {
-  width: 50%;
-  margin:0 auto;
+  width: 30%;
+  backgroun: gray;
 }
 
 .profile_pic_thumbnail {
   width: 100%;
+}
+
+.unfollow {
+  background: #d74136;
+  /*width: 25%;*/
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 10px;
+}
+
+.follow {
+  background: #4486f7;
+  /*width: 25%;*/
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 10px;
+
+}
+
+.unfollow a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.follow a {
+  text-decoration: none;
+  color: white;
+}
+
+#user_search {
+  margin:2%;
+}
+
+#user_search_input {
+  font-size: 2vw;
+
+}
+
+.followers {
+  margin: 10px;
+  padding: 2%;
+}
+
+.followees {
+  margin: 10px;
+  padding: 2%;
+}
+
+.user_info {
+  position: relative;
+  top: 15px;
 }

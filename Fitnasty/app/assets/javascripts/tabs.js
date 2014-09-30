@@ -1,12 +1,13 @@
-var bindUsersTabEvent = function() {
+var bindUsersTabEvent = function(selector) {
   var shownUser = $(document.URL.split('/')).last()[0]
-  $('#users_tab').on('click', function(e){
+  $('#tabs').on('click', selector, function(e){
     $.ajax({
       url: "/users/show_follow",
       method: "GET",
       data: {user_id: shownUser}
     })
     .done( function(data){
+      console.log("success")
       clearUserHolder()
       $('#users').empty()
       appendObject('#users', data)

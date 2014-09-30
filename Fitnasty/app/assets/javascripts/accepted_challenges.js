@@ -1,4 +1,3 @@
-
 // var AcceptedChallengesController = function(view, fetcher){
 // 	this.view = view;
 // 	this.fetcher = fetcher;

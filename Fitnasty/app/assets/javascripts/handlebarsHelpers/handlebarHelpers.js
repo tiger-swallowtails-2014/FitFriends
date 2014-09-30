@@ -17,13 +17,13 @@ Handlebars.registerHelper( "checkStatus", function(options) {
   if (this.accepted && this.completed === false)
   {
     console.log(this.completed)
-    return "<div class = 'lifecycle accepted'> </div> <div class = 'send_to_friend'> </div>"
+    return "<div class = 'lifecycle accepted'>Challenge Accepted!</div> <div class= 'friend_selector_button' id={{id}}> </div>"
   }
   else if (this.accepted && this.completed)
   {
-      return "<div class = 'lifecycle completed'> </div> <div class = 'send_to_friend'> </div>"
+      return "<div class = 'lifecycle completed'>Completed!</div> <div class= 'friend_selector_button' id={{id}}> </div>"
   }
   else if (this.accepted === false){
-      return "<div class = 'lifecycle not_accepted'> </div> <div class = 'send_to_friend'> </div>"
+      return "<div class = 'lifecycle not_accepted'>Accept?</div> <div class= 'friend_selector_button' id={{id}}> </div>"
   }
 });
