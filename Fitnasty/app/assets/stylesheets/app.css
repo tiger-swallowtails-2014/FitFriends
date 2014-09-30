@@ -23,13 +23,6 @@ p {
   float: right;
 }
 
-.float-left {
-  float:left;
-}
-
-#followees_accepted_challenges {
-  width: 90%;
-}
 
 #top-nav {
   background: #444444;

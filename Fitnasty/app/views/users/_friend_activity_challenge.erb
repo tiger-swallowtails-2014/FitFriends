@@ -1,24 +1,27 @@
-<% if user_challenge.completed? == true %>
-		<div class="float-left">
-			<h3><%= link_to "#{user.first_name} #{user.last_name}", user %></a>
-		completed: </h3>
-			<h1><%=challenge.title%></h1>
-		</div> 
-		<div class="float-right">
-			<img class="activity_challenge_image" src="<%=challenge.image_url%>" height="150" width="150">
+<% if user_challenge.completed? %>
+
+		<div class="challenge">	
+			<div id="float-right">
+				<img class="activity_challenge_image" src="<%=challenge.image_url%>" width="20%">
+			</div>
+			<div class="float-left">	
+				<h3><%= link_to "#{user.first_name} #{user.last_name}", user %></a>
+			completed: </h3>
+				<h1><%=challenge.title%></h1>
+			</div>
 		</div>
-	</div>
 
-<% else %>
+<% elsif user_challenge.completed? == false%>
 
-	<div class="activity-challenge">
-		<div class="float-left">
+	<div class="challenge">
+		<div id="float-right"> 
+			<img class="activity_challenge_image" src="<%=challenge.image_url%>" width="20%">
+		</div>
+		<div>
 			<h3><%= link_to "#{user.first_name} #{user.last_name}", user %></a>
 		accepted: </h3>
 			<h1><%=challenge.title%></h1>
-		</div> 
-		<div class="float-right">
-			<img class="activity_challenge_image" src="<%=challenge.image_url%>" height="150" width="150">
 		</div>
+	</div>
 
 <% end %>
