@@ -104,8 +104,8 @@ class ChallengesController < ApplicationController
     challenges << Challenge.where('description LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('title LIKE ?', "%#{keyword}%")
     challenges << Challenge.where('location LIKE ?', "%#{keyword}%")
-    if challenges.flatten.uniq!
-      challenges.flatten.uniq!
+    if challenges.flatten.uniq
+      challenges.flatten.uniq
     else
       []
     end
