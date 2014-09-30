@@ -77,6 +77,21 @@ $(document).ready(function() {
     })
   })
 
+  $("#search-form").on("submit", function(e){
+    e.preventDefault();
+    var keyword = $("#search").val()
+    $.ajax({
+      type: "GET",
+      url: '/challenges/search/' + keyword,
+      data: keyword,
+    }).done(function(data){
+      clearHolder()
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
@@ -97,10 +112,6 @@ $(document).ready(function() {
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
 
-  // from search
-  bindSearchEvent();
-  bindSearchUserEvent('keyup');
-  bindSearchUserEvent('submit');
 
   // from tabs.js
   bindUsersTabEvent('#users_tab')
