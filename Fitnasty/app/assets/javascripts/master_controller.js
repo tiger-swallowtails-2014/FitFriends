@@ -134,6 +134,9 @@ $(document).ready(function() {
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
+// search for users
+  bindSearchUserEvent('keyup');    
+  bindSearchUserEvent('submit');
 
   // from accepted_challenges.js
   fetcher = new Fetcher;
