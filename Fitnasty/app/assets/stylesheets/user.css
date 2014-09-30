@@ -25,7 +25,7 @@
 .user {
   text-align: center;
   display: inline-flex;
-  font-size: 18px;
+  font-size: 1em;
   margin: 10px 0;
 }
 
