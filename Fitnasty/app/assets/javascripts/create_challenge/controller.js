@@ -14,7 +14,6 @@ function ChallengeController() {
         ajaxObject.data = $(this).serialize();
 
         self.ajaxCall(ajaxObject).done(function(data){
-          console.log(data)
           $('.new_challenge').remove()
         })
       })
