@@ -1,5 +1,5 @@
-var bindSearchUserEvent = function() {
-  $('#users').on('keyup','#user_search', function(e){
+var bindSearchUserEvent = function(event) {
+  $('#users').on(event,'#user_search', function(e){
     e.preventDefault()
     var keyword = $("#user_search_input").val()
     console.log(keyword)
