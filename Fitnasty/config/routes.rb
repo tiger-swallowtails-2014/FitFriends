@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     resources :challenges, only: :index
   end
 
-  # Example of regular route:
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
+  get '/users/:user_id/pending' => 'challenges#pending', as: :pending
 
   get '/all_challenges' => 'challenges#all'
 end

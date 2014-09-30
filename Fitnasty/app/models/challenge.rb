@@ -6,12 +6,11 @@ class Challenge < ActiveRecord::Base
   belongs_to :user
 
   def self.accepted_challenges_for_user(user)
-  	accepted_user_challenges = UserChallenge.where(accepted?: true, user_id: user)
-  	accepted_challenges = []
-  	accepted_user_challenges.each do |user_challenge|
-  		accepted_challenges << self.find(user_challenge.challenge_id)
+  	accepted_user_challenges = UserChallenge.where(accepted?: true, user_id: user).to_a
+  	accepted_user_challenges.map! do |user_challenge|
+  	 self.find(user_challenge.challenge_id)
   	end
-  	return accepted_challenges
+  	return accepted_user_challenges
   end
 
   def self.top_ten_challenges
@@ -19,5 +18,13 @@ class Challenge < ActiveRecord::Base
     trending_challenges = []
     challenges.each { |challenge| trending_challenges << Challenge.find(challenge.challenge_id) }
     return trending_challenges
+  end
+
+  def self.pending_challenges_for_user(user)
+    pending_user_challenges = UserChallenge.where(accepted?: false, user_id: user).to_a
+    pending_user_challenges.map! do |user_challenge|
+      self.find(user_challenge.challenge_id)
+    end
+    return pending_user_challenges
   end
 end

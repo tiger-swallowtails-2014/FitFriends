@@ -80,6 +80,12 @@ class ChallengesController < ApplicationController
     redirect_to user
   end
 
+  def pending
+    p params[:user_id]
+    pending_challenges = Challenge.pending_challenges_for_user(params[:user_id])
+    render json: add_challenge_info(pending_challenges.flatten)
+  end
+
   private
   def challenge_params
     params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
