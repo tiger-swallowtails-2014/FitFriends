@@ -10,7 +10,7 @@ class Challenge < ActiveRecord::Base
   	accepted_user_challenges.map! do |user_challenge|
   	 self.find(user_challenge.challenge_id)
   	end
-  	return accepted_user_challenges
+  	return accepted_user_challenges.flatten
   end
 
   def self.top_ten_challenges
@@ -25,7 +25,7 @@ class Challenge < ActiveRecord::Base
     pending_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
-    return pending_user_challenges
+    return pending_user_challenges.flatten
   end
 
   def self.completed_challenges_for_user(user)
@@ -33,6 +33,6 @@ class Challenge < ActiveRecord::Base
     completed_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
-    return completed_user_challenges
+    return completed_user_challenges.flatten
   end
 end
