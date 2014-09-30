@@ -56,6 +56,20 @@ $(document).ready(function() {
     })
   })
 
+  $('#accepted').on("click", function(e){
+    e.preventDefault();
+    var currentUser = $(document.URL.split('/')).last()[0];
+    $.ajax({
+      type: "GET",
+      url: "/users/"+currentUser+"/accepted"
+    }).done(function(data){
+      console.log(data)
+      $('.challenge').remove();
+      var testWidget = new ChallengeWidget();
+      testWidget.whenDone(data)
+    })
+  })
+
 
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
@@ -63,8 +77,8 @@ $(document).ready(function() {
 
   // from accepted_challenges.js
   fetcher = new Fetcher;
-  acceptedChallengesView = new AcceptedChallengesView;
-  new AcceptedChallengesController(acceptedChallengesView, fetcher)
+  // acceptedChallengesView = new AcceptedChallengesView;
+  // new AcceptedChallengesController(acceptedChallengesView, fetcher)
 
 
   // from lightboxes/controller.js
