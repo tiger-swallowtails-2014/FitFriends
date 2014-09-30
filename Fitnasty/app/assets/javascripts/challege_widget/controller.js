@@ -15,8 +15,9 @@ function ChallengeWidget() {
 
   this.bindListener = function(){
     $('.lifecycle').on('click', function(e){
-      e.preventDefault();
+      debugger
       console.log($(this).parent().attr('id'))
+      e.preventDefault();
       $.ajax({
         type: "POST",
         url: "/accept_challenge",

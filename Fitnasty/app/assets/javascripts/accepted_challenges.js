@@ -3,7 +3,6 @@
 var AcceptedChallengesController = function(view, fetcher){
 	this.view = view;
 	this.fetcher = fetcher;
-
 	this.fetcher.fetch('/users/current', function(currentUser){this.getAcceptedChallenges(new User(currentUser));
 	}.bind(this));
 
