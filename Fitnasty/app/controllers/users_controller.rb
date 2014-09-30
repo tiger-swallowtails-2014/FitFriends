@@ -61,10 +61,6 @@ class UsersController < ApplicationController
 		users << User.where('first_name LIKE ?', "%#{keyword}%")
 		users << User.where('last_name LIKE ?', "%#{keyword}%")
 		users << User.where('email LIKE ?', "%#{keyword}%")
-<<<<<<< HEAD
 		users.flatten.uniq
-=======
-		users.flatten
->>>>>>> Remove unnecessary var assignment in user controller
 	end
 end
