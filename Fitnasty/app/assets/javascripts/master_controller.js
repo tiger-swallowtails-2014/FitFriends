@@ -112,10 +112,6 @@ $(document).ready(function() {
   // var testWidget = new ChallengeWidget();
   // testWidget.whenDone()
 
-  // from search
-  bindSearchEvent();
-  bindSearchUserEvent('keyup');
-  bindSearchUserEvent('submit');
 
   // from tabs.js
   bindUsersTabEvent('#users_tab')
