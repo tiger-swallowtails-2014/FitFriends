@@ -35,25 +35,10 @@ class ChallengesController < ApplicationController
     render json: add_challenge_info([Challenge.find(params[:challenge_id])].flatten)
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   def search
-    keyword = params[:keyword]
-    matched_challenges = match_challenges(keyword)
-    p "MATCHED CHALLENGES:"
-    p matched_challenges
-
-    render json: add_challenge_info(matched_challenges)
+    render json: add_challenge_info(match_challenges(params[:keyword]).flatten)
   end
-
-
+  
   def trending
     render json: add_challenge_info(Challenge.top_ten_challenges)
   end
@@ -67,18 +52,24 @@ class ChallengesController < ApplicationController
     friends.map do |friend|
       sent_challenges = User.find(friend).user_challenges.create(:challenge_id => params[:challenge_id])
     end
-    user = User.find(session[:user_id])
-    redirect_to user
+    redirect_to session_user
   end
 
   def pending
-    pending_challenges = Challenge.pending_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(pending_challenges)
+    render json: add_challenge_info(Challenge.pending_challenges_for_user(params[:user_id]))
   end
 
   def completed
-    completed_challenges = Challenge.completed_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(completed_challenges)
+    render json: add_challenge_info(Challenge.completed_challenges_for_user(params[:user_id]))
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private
@@ -118,7 +109,7 @@ class ChallengesController < ApplicationController
         accepted = false
         completed = false
       else
-        accepted = true
+        accepted = matched_challenge.first.accepted?
         completed = matched_challenge.first.completed?
       end
       {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags, accepted: accepted, completed: completed}
