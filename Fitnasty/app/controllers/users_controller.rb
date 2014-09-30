@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@signed_in_user = User.find(session[:user_id])
 		@accepted_folowee_challenges = UserChallenge.accepted.where(user_id: User.first.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc)
-		@completed_folowee_challenges = UserChallenge.completed.where(user_id: User.first.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc)
 	end
 
 	def single_user
