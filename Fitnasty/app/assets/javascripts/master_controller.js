@@ -14,6 +14,8 @@ $(document).ready(function() {
       $('.challenge').fadeOut(500);
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      MapView.deleteMarkers()
+      MapView.setMarkers(challengeHolder.challenges)
     })
   })
 

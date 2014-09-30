@@ -25,17 +25,32 @@ MapView = {
     }
   },
 
+  // Sets the map on all markers in the array.
+  setAllMap: function(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  },
+
   // Removes the markers from the map, but keeps them in the array.
   clearMarkers: function() {
-    setAllMap(null);
+    MapView.setAllMap(null);
   },
 
   // Shows any markers currently in the array.
   showMarkers: function() {
-    setAllMap(map);
+    MapView.setAllMap(map);
+  },
+
+  // Deletes all markers in the array by removing references to them.
+  deleteMarkers: function() {
+    MapView.clearMarkers();
+    markers = [];
   }
 }
 
+
+// This is the function that resizes the map
 var MapSizer = function(widthProportion, heightProportion, maxHeight, map) {
   this.map = map
   this.maxHeight = maxHeight

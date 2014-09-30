@@ -9,7 +9,6 @@ function ChallengeWidget() {
     ChallengeFactory.createChallenges(data)
     var formatted_data = {challenges: challengeHolder.challenges}
     ChallengeWidgetView('#challenges-container .challenges_river', formatted_data)
-    challengeHolder.challenges = []
     self.bindListener();
   }
 
