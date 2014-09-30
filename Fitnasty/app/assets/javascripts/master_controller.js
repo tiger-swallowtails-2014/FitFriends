@@ -64,7 +64,7 @@ $(document).ready(function() {
       type: "GET",
       url: "/users/"+currentUser+"/accepted"
     }).done(function(data){
-      console.log(data)
+      clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
