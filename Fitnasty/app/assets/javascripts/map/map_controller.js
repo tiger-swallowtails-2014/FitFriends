@@ -18,12 +18,16 @@ function initialize() {
 
   // Place Geoloacted Pin upon button panel click and update form
   $('.map_button').click(function() {
-    console.log("clicked")
     MapModel.codeAddress();
     MapView.updateFormFields();
   });
 
-  // ajax call to create a new marker
+  // Adds a marker at the center of the map.
+  MapView.addMarker(haightAshbury);
+  getChallenges();
+}
+
+ // ajax call to create a new marker
   var getChallenges = function() {
     $.ajax({
       url: '/all_challenges',
@@ -32,8 +36,3 @@ function initialize() {
       MapView.setMarkers(challengesJSON)
     })
   }
-
-  // Adds a marker at the center of the map.
-  MapView.addMarker(haightAshbury);
-  getChallenges();
-}
