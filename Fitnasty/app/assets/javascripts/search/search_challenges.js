@@ -59,8 +59,6 @@ var appendObject = function(container, element) {
   $(container).append(element)
 }
 
-
-
 // Returns html elements for warning
 var renderWarning = function() {
   var MustacheWarningTemplate =

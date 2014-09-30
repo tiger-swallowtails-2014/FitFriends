@@ -80,14 +80,16 @@ $(document).ready(function() {
 
 
 
-var MapSizer = function(widthProportion, heightProportion, map) {
+var MapSizer = function(widthProportion, heightProportion, maxHeight, map) {
   this.map = map
+  this.maxHeight = maxHeight
   this.mapContainer = map.parent()
   this.mapWidthProportion = widthProportion
   this.mapHeightProportion = heightProportion
   this.initialMapWidth = Math.round(this.mapWidthProportion * this.mapContainer.width()) + 'px'
   this.initialMapHeight = Math.round(this.mapHeightProportion * this.mapContainer.height()) + 'px'
 }
+
 
 MapSizer.prototype = {
   setInitialDimensions: function() {
@@ -96,13 +98,19 @@ MapSizer.prototype = {
   },
 
   adjustDimensions: function(){
+    var currentHeight = parseInt(this.map.css("height").replace("px", ""))
+    if (currentHeight <= this.maxHeight) {
+      this.map.css("height", this.mapHeightProportion * this.mapContainer.height())
+    } else {
+      this.map.css("height", this.maxHeight + 'px')
+    }
     this.map.css("width", this.mapWidthProportion * this.mapContainer.width())
-    this.map.css("height", this.mapHeightProportion * this.mapContainer.height())
   }
 }
 
+
 var bindMapDimensionsEvent = function() {
-  mapSizer = new MapSizer(1, 0.7, $('#map-canvas'))
+  mapSizer = new MapSizer(1, 0.7, 300, $('#map-canvas'))
   mapSizer.setInitialDimensions()
 
   $(window).resize(function(){
