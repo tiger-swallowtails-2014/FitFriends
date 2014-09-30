@@ -93,7 +93,8 @@ $(document).ready(function() {
 
   // from search
   bindSearchEvent();
-  bindSearchUserEvent();
+  bindSearchUserEvent('keyup');
+  bindSearchUserEvent('submit');
 
   // from tabs.js
   bindUsersTabEvent('#users_tab')
