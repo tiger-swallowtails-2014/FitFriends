@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
   get '/users/:user_id/pending' => 'challenges#pending', as: :pending
+  get '/users/:user_id/completed' => 'challenges#completed', as: :completed
 
   get '/all_challenges' => 'challenges#all'
 end

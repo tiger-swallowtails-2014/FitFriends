@@ -27,4 +27,12 @@ class Challenge < ActiveRecord::Base
     end
     return pending_user_challenges
   end
+
+  def self.completed_challenges_for_user(user)
+    completed_user_challenges = UserChallenge.where(completed?: true, user_id: user).to_a
+    completed_user_challenges.map! do |user_challenge|
+      self.find(user_challenge.challenge_id)
+    end
+    return completed_user_challenges
+  end
 end
