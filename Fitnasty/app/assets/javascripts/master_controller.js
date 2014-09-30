@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
   $('#tabs').tabs();
+  google.maps.event.addDomListener(window, 'load', initialize);
 
   $('#most_recent').on("click", function(e){
     e.preventDefault();
@@ -93,7 +94,7 @@ $(document).ready(function() {
   bindSearchUserEvent();
 
   // from tabs.js
-  bindUsersTabEvent()
+  bindUsersTabEvent('#users_tab')
   bindChallengesTabEvent()
 
   // for gravatar
@@ -101,6 +102,9 @@ $(document).ready(function() {
 
   // from map.js
   bindMapDimensionsEvent();
+
+  // from users/follow.js
+  bindFriendEvents();
 
   // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
 

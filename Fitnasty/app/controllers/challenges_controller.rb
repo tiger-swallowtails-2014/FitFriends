@@ -1,75 +1,43 @@
 class ChallengesController < ApplicationController
 
-  def index
-    # returns specific users created challenges
-    accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(accepted_challenges.flatten)
+  def created
+    # returns specific user's created challenges
+    render json: add_challenge_info(User.find(params[:user_id]).challenges.to_a)
   end
 
   def accepted
-    #returns specific users accepted challenges
-    accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(accepted_challenges.flatten)
+    #returns specific user's accepted challenges
+    render json: add_challenge_info(Challenge.accepted_challenges_for_user(params[:user_id]))
   end
 
   def accept_challenge
-    user = User.find(session[:user_id])
-    comp = user.user_challenges.where(challenge_id: params[:challenge_id])
-    if comp != []
-      p comp
-      comp[0].update_attributes(completed?: true)
-      render json: {answer:'completed', texts: "Completed!"}
-      return
-    end
-    user.user_challenges.create(challenge_id: params[:challenge_id], accepted?: true)
-    render json: {answer: 'accepted', texts: "Challenge Accepted!"}
+    challenge = session_user.user_challenges.find_or_create_by(challenge_id: params[:challenge_id])
+    challenge.update_attributes(:accepted? => true)
+    render :nothing => true
   end
 
   def create
-    user = User.find(session[:user_id])
-    new_challenge = user.challenges.new(challenge_params)
+    new_challenge = session_user.challenges.new(challenge_params)
     if new_challenge.save
       create_challenge_tags(new_challenge, params["challenge_tags"])
-      user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
+      session_user.user_challenges.create(challenge_id: new_challenge.id, accepted?: true)
       render json: new_challenge
     else
       render json: "There was a problem with saving your challenge."
     end
   end
 
-  def create_challenge_tags(challenge, tags_string)
-    tags = tags_string.split(", ")
-    tags.each {|tag| challenge.tags.create(name: tag)}
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
   def recent
-    ordered_date = Challenge.order(:created_at).limit(10).flatten
-    render json: add_challenge_info(ordered_date)
+    render json: add_challenge_info(Challenge.order(:created_at).limit(10).flatten)
   end
 
   def show
-    challenge = Challenge.find(params[:id])
-    render json: challenge
-  end
-
-  def destroy
+    render json: add_challenge_info([Challenge.find(params[:challenge_id])].flatten)
   end
 
   def search
-    keyword = params[:keyword]
-    matched_challenges = match_challenges(keyword)
-    p "MATCHED CHALLENGES:"
-    p matched_challenges
-
-    render json: add_challenge_info(matched_challenges)
+    render json: add_challenge_info(match_challenges(params[:keyword]).flatten)
   end
-
 
   def trending
     render json: add_challenge_info(Challenge.top_ten_challenges)
@@ -84,23 +52,39 @@ class ChallengesController < ApplicationController
     friends.map do |friend|
       sent_challenges = User.find(friend).user_challenges.create(:challenge_id => params[:challenge_id])
     end
-    user = User.find(session[:user_id])
-    redirect_to user
+    redirect_to session_user
   end
 
   def pending
-    pending_challenges = Challenge.pending_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(pending_challenges.flatten)
+    render json: add_challenge_info(Challenge.pending_challenges_for_user(params[:user_id]))
   end
 
   def completed
-    completed_challenges = Challenge.completed_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(completed_challenges.flatten)
+    render json: add_challenge_info(Challenge.completed_challenges_for_user(params[:user_id]))
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private
+
   def challenge_params
     params.require(:challenge).permit(:title, :location, :description, :image_url, :latitude, :longitude)
+  end
+
+  def session_user
+    session_user = User.find(session[:user_id])
+  end
+
+  def create_challenge_tags(challenge, tags_string)
+    tags = tags_string.split(", ")
+    tags.each {|tag| challenge.tags.create(name: tag)}
   end
 
   def match_challenges(keyword)
@@ -125,7 +109,7 @@ class ChallengesController < ApplicationController
         accepted = false
         completed = false
       else
-        accepted = true
+        accepted = matched_challenge.first.accepted?
         completed = matched_challenge.first.completed?
       end
       {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags, accepted: accepted, completed: completed}
