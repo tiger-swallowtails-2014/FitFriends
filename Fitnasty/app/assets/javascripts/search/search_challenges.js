@@ -48,26 +48,26 @@
 // }
 
 
-// // Removes html elements with a given selector
-// var removeObject = function(selector) {
-//   $(selector).remove()
-// }
+// Removes html elements with a given selector
+var removeObject = function(selector) {
+  $(selector).remove()
+}
 
 
-// // appends an element to specified container
-// var appendObject = function(container, element) {
-//   $(container).append(element)
-// }
+// appends an element to specified container
+var appendObject = function(container, element) {
+  $(container).append(element)
+}
 
-// // Returns html elements for warning
-// var renderWarning = function() {
-//   var MustacheWarningTemplate =
-//     "<div class='warning'>" +
-//       "<p>There are no challenges that match that keyword.</p>" +
-//     "</div>"
+// Returns html elements for warning
+var renderWarning = function() {
+  var MustacheWarningTemplate =
+    "<div class='warning'>" +
+      "<p>There are no challenges that match that keyword.</p>" +
+    "</div>"
 
-//   return Mustache.to_html(MustacheWarningTemplate)
-// }
+  return Mustache.to_html(MustacheWarningTemplate)
+}
 
 
 // // Appends challenges to the page
