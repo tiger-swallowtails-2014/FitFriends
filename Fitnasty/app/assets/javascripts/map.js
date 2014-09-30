@@ -103,6 +103,7 @@ MapSizer.prototype = {
 
 var bindMapDimensionsEvent = function() {
   mapSizer = new MapSizer(1, 0.7, $('#map-canvas'))
+  mapSizer.setInitialDimensions()
 
   $(window).resize(function(){
     mapSizer.adjustDimensions()
