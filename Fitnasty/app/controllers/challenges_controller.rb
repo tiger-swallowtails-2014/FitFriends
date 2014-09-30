@@ -81,9 +81,13 @@ class ChallengesController < ApplicationController
   end
 
   def pending
-    p params[:user_id]
     pending_challenges = Challenge.pending_challenges_for_user(params[:user_id])
     render json: add_challenge_info(pending_challenges.flatten)
+  end
+
+  def completed
+    completed_challenges = Challenge.completed_challenges_for_user(params[:user_id])
+    render json: add_challenge_info(completed_challenges.flatten)
   end
 
   private
