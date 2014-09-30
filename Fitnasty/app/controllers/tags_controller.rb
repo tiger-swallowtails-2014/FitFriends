@@ -1,8 +1,7 @@
 class TagsController < ApplicationController
 
 def trends
-	trending_tags = Tag.top_ten_tags
-	render json: trending_tags
+	render json: Tag.top_ten_tags
 end
 
 end

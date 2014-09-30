@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+
+  root 'home#index'
+  
   post "/send_challenge" => 'challenges#send_challenge'
   get '/challenges/search/:keyword', to: 'challenges#search'
   get '/challenges/recent', to: 'challenges#recent'
   get '/challenges/trending', to: 'challenges#trending'
   get '/users/unfollow/:followee_id', to: 'users#unfollow'
   get '/users/follow/:followee_id', to: 'users#follow'
-
-  root 'home#index'
 
   get 'challenges/search/:keyword', to: 'challenges#search'
   get 'challenges/recent', to: 'challenges#recent'
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
 
 
   get '/trends' => "tags#trends", as: :trends
-  resources :challenges
+
+  post '/challenges' => "challenges#create"
+  # resources :challenges
   get '/users/current' => "users#current", as: :current
   get '/users/single_user/:id' => "users#single_user", as: :single_user
 
@@ -32,13 +35,12 @@ Rails.application.routes.draw do
 
   get '/map' => "home#map"
 
-  resources :users do
-    resources :challenges, only: :index
-  end
+  resources :users
 
+  get '/users/:user_id/created' => 'challenges#created', as: :created
   get '/users/:user_id/accepted' => 'challenges#accepted', as: :accepted
   get '/users/:user_id/pending' => 'challenges#pending', as: :pending
   get '/users/:user_id/completed' => 'challenges#completed', as: :completed
-
   get '/all_challenges' => 'challenges#all'
+  get '/challenges/:challenge_id' => 'challenges#show', as: :show
 end
