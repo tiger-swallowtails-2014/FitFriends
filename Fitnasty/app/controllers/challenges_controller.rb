@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
   def accepted
     #returns specific users accepted challenges
     accepted_challenges = Challenge.accepted_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(accepted_challenges.flatten)
+    render json: add_challenge_info(accepted_challenges)
   end
 
   def accept_challenge
@@ -83,12 +83,12 @@ class ChallengesController < ApplicationController
 
   def pending
     pending_challenges = Challenge.pending_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(pending_challenges.flatten)
+    render json: add_challenge_info(pending_challenges)
   end
 
   def completed
     completed_challenges = Challenge.completed_challenges_for_user(params[:user_id])
-    render json: add_challenge_info(completed_challenges.flatten)
+    render json: add_challenge_info(completed_challenges)
   end
 
   private
