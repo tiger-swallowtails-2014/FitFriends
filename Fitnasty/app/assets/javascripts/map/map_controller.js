@@ -5,8 +5,7 @@ function initialize() {
     zoom: 13
   };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   // This event listener will call MapView.addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
@@ -26,16 +25,16 @@ function initialize() {
   });
 
   // ajax call to create a new marker
-   var getChallenges = function() {
-     $.ajax({
-       url: '/all_challenges',
-       type: 'GET'
-     }).done(function(challengesJSON) {
-       MapView.setMarkers(challengesJSON)
-     })
-   };
+  var getChallenges = function() {
+    $.ajax({
+      url: '/all_challenges',
+      type: 'GET'
+    }).done(function(challengesJSON) {
+      MapView.setMarkers(challengesJSON)
+    })
+  };
 
-   getChallenges();
+  getChallenges();
 
   // Geolocation if the browser allows it
   if(navigator.geolocation) {
