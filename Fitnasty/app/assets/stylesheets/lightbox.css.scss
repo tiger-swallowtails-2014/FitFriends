@@ -13,17 +13,21 @@ body {
   background-color: $back_dark;
   opacity: .75;
   z-index: 100;
+  display: none;
 }
 
 .signup_lightbox, .login_lightbox, .friend_selector_lightbox {
   position: fixed;
   width: 40%;
-  margin: 15% 32%;
+  height: 40em;
+  margin: 10% 32%;
   background-color: $back_light;
   border-radius: 4px;
   text-align: center;
   padding: 3%;
   z-index: 101;
+  display: none;
+  overflow: scroll;
 }
 
 .form {

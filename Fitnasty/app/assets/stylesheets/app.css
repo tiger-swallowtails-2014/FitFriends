@@ -63,8 +63,12 @@ p {
 .left-nav {
   float:left;
   width: 15%;
-  padding: 1%;
-  border-right: 1px solid black;
+  height: 20%;
+  border-bottom: 1px solid black;
+}
+
+.username_profile {
+  text-align: center;
 }
 
 #profile-image-container {
@@ -74,8 +78,7 @@ p {
 }
 
 .profile_image {
-  height: 100%;
-  width:100%;
+  width: 80%;
 }
 
 #trends-container {

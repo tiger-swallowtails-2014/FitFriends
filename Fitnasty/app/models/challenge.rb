@@ -4,6 +4,7 @@ class Challenge < ActiveRecord::Base
   has_many :challenge_tags
   has_many :tags, through: :challenge_tags
   belongs_to :user
+  validates :title, :description, :location, :latitude, :longitude, presence: true
   before_save :set_default_image_url
 
   def set_default_image_url
