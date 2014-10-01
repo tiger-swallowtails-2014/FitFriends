@@ -11,10 +11,12 @@ class ChallengeSeeder
     40.times do
       lat = rand(38) + 1
       long = rand(123) + 1
-      challenge = User.find(rand(10) + 1).challenges.create(title: Faker::App.name, location: Faker::Address.street_address, description: Faker::Lorem.sentence(15), latitude: (lat), longitude: (long))
+      user = User.find(rand(10)+1)
+      challenge = user.challenges.create(title: Faker::App.name, location: Faker::Address.street_address, description: Faker::Lorem.sentence(15), latitude: (lat), longitude: (long))
       2.times do
         challenge.tags.create(name: Faker::App.name)
       end
+      user.user_challenges.create(challenge_id: challenge.id, accepted?: true)
     end
   end
 end
