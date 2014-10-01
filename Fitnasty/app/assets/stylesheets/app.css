@@ -1,6 +1,7 @@
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
 textarea {
@@ -74,11 +75,11 @@ p {
 #profile-image-container {
   text-align: center;
   background: #f6f6f6;
-  border-radius: 6px;
 }
 
 .profile_image {
   width: 100%;
+  border-radius: 6px;
 }
 
 #trends-container {
@@ -100,32 +101,45 @@ p {
   padding-left: 10px;
 }
 
+.challenge_buttons {
+  width: 13%;
+}
+
 .challenge {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   padding: 2%;
   background: white;
 }
 
-/*.challenge_image_figure {
-  width: 300px;
-  height: 300px;
-  border-radius: 5px;
-  background: url('http://norcalforensics.com/wp-content/uploads/2013/04/GG-Bridge.jpg') center center;
-}*/
+.challenge_image_figure {
+  float: left;
+  width: 50%;
+}
+
+.challenge_info_container {
+  clear: both;
+  width: 70%;
+}
+
+.charts {
+  position: relative;
+  float: right;
+}
+
+.challenge_image {
+}
 
 .challenge:hover {
   box-shadow: 2px 2px 2px orange;
   cursor: pointer;
 }
 
-.challenge:active{
+.challenge:active {
   background-color: orange;
 }
 
 .challenge-content {
-  display: inline-block;
-  vertical-align: top;
-  font-size: 13px;
+  font-size: 20px;
   max-width: 410px;
 }
 
@@ -182,11 +196,6 @@ p {
   font-size: 1.5em;
 }
 
-.lifecycle {
-  height:50px;
-  width: 50px;
-}
-
 .accepted {
   background-color: yellow;
 }
@@ -199,12 +208,14 @@ p {
   background-color: green;
 }
 
+.lifecycle {
+  height:50px;
+  width: 50px;
+  background-color: #666;
+}
+
 .friend_selector_button {
   height:50px;
   width:50px;
-  background-color: purple;
-}
-
-.challenge_buttons {
-  width: 14%;
+  background-color: #666;
 }
