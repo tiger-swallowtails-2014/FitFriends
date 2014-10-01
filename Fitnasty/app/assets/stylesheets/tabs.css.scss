@@ -11,7 +11,7 @@ $green: #0aa25a;
   .tabs_list {
     box-sizing: border-box;
     width: 90%;
-    margin: 0 auto;
+    margin: 5em auto;
 
     .tab {
       width: 25%;
@@ -45,7 +45,7 @@ $green: #0aa25a;
 
   .tab_area {
     border-radius: 4px;
-    min-height: 40em;
+    height: 100%;
   }
 }
 

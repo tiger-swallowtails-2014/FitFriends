@@ -36,37 +36,39 @@ function initialize() {
 
   getChallenges();
 
-  // Geolocation if the browser allows it
-  if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = new google.maps.LatLng(position.coords.latitude,
-                                         position.coords.longitude);
+  // // Geolocation if the browser allows it
+  // if(navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       var pos = new google.maps.LatLng(position.coords.latitude,
+  //                                        position.coords.longitude);
 
-        map.setCenter(pos);
-      }, function() {
-        handleNoGeolocation(true);
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleNoGeolocation(false);
-    }
-  };
+  //       map.setCenter(pos);
+  //     }, function() {
+  //       handleNoGeolocation(true);
+  //     });
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     handleNoGeolocation(false);
+  //   }
+  // };
 
-  // What to do if the browser doesn't handle GeoLocation.
-  function handleNoGeolocation(errorFlag) {
-    if (errorFlag) {
-      var content = 'Error: The Geolocation service failed.';
-    } else {
-      var content = 'Error: Your browser doesn\'t support geolocation.';
-    }
+  // // What to do if the browser doesn't handle GeoLocation.
+  // function handleNoGeolocation(errorFlag) {
+  //   if (errorFlag) {
+  //     var content = 'Error: The Geolocation service failed.';
+  //   } else {
+  //     var content = 'Error: Your browser doesn\'t support geolocation.';
+  //   }
 
-    var options = {
-      map: map,
-      position: new google.maps.LatLng(37.7699298, -122.4469157),
-      content: content
-    };
+  //   var options = {
+  //     map: map,
+  //     position: new google.maps.LatLng(37.7699298, -122.4469157),
+  //     content: content
+  //   };
 
-    map.setCenter(options.position);
+    var haightAshbury = new google.maps.LatLng(37.7699298, -122.4469157);
+    map.setCenter(haightAshbury)
+    // map.setCenter(options.position);
 }
 
 
