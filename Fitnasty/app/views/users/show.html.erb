@@ -14,29 +14,31 @@
 
   <!-- Tabs -->
   <div id="tabs">
-    <div class="left-nav">
-      <section id="profile-image-container avatar">
-        <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
-      </section>
-      <h3 class="username_profile"><%="#{@user.first_name} #{@user.last_name}" %></h3>
-      <% if @user != @signed_in_user %>
-        <% @follower_ids = @user.followers.select(:id).map(&:id) %>
-        <% if @follower_ids.include?(current_user.id) %>
-          <div class='unfollow'>
-            <%= link_to 'unfollow', "/users/unfollow/#{@user.id}", class: "unfollow_link" %>
-          </div>
-          <% else %>
-          <div class='follow'>
-            <%= link_to 'follow', "/users/follow/#{@user.id}", class: "follow_link"%>
-          </div>
+    <div class="top_tabs_nav_bar">
+      <div class="left-nav">
+        <section id="profile-image-container avatar">
+          <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
+        </section>
+        <h3 class="username_profile"><%="#{@user.first_name} #{@user.last_name}" %></h3>
+        <% if @user != @signed_in_user %>
+          <% @follower_ids = @user.followers.select(:id).map(&:id) %>
+          <% if @follower_ids.include?(current_user.id) %>
+            <div class='unfollow'>
+              <%= link_to 'unfollow', "/users/unfollow/#{@user.id}", class: "unfollow_link" %>
+            </div>
+            <% else %>
+            <div class='follow'>
+              <%= link_to 'follow', "/users/follow/#{@user.id}", class: "follow_link"%>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <ul class="tabs_list">
+        <li class="tab" id="challenges_tab"><a href="#challenges">challenges</a></li>
+        <li class="tab" id="users_tab"><a id="user_tab" href="#users">users</a></li>
+        <li class="tab" id="friend_activity_tab"><a id="friend_activity_tab" href="#friend_activity">Friend Activity</a></li>
+      </ul>
     </div>
-    <ul class="tabs_list">
-      <li class="tab" id="challenges_tab"><a href="#challenges">challenges</a></li>
-      <li class="tab" id="users_tab"><a id="user_tab" href="#users">users</a></li>
-      <li class="tab" id="friend_activity_tab"><a id="friend_activity_tab" href="#friend_activity">Friend Activity</a></li>
-    </ul>
 
     <div class="tab_area" id="challenges">
       <section id="challenges-container">
@@ -49,15 +51,17 @@
           <button id = "pending" class="challenge_buttons"> Pending </button>
           <button id = "submitted" class="challenge_buttons"> Submitted </button>
         </div>
-        <section class="map_container">
-          <div id="panel">
-            <input id="address" type="textbox" value="Sydney, NSW">
-            <input type="button" value="Geocode" class="map_button">
+        <div class="map_challenge_container">
+          <section class="map_container">
+            <div id="panel">
+              <input id="address" type="textbox" value="Sydney, NSW">
+              <input type="button" value="Geocode" class="map_button">
+            </div>
+            <div id="map-canvas">
+            </div>
+          </section>
+          <div class="challenges_river">
           </div>
-          <div id="map-canvas">
-          </div>
-        </section>
-        <div class="challenges_river">
         </div>
       </section>
     </div>
