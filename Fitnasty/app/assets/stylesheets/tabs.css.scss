@@ -5,22 +5,23 @@ $green: #0aa25a;
 #tabs {
   float: left;
   width: 100%;
-  display: inline;
   margin: 0 auto;
 
   .tabs_list {
     box-sizing: border-box;
     width: 90%;
     margin: 0 auto;
-    bottom: 0;
 
     .tab {
+      position: relative;
       width: 25%;
       height: 6.75em;
       text-align: center;
       display: inline-block;
       border-radius: 4px;
       margin-left: 5%;
+      margin-top: 5%;
+      margin-bottom: 5%;
 
       a {
         position: relative;
