@@ -12,10 +12,11 @@ $green: #0aa25a;
     box-sizing: border-box;
     width: 90%;
     margin: 0 auto;
+    height: 17em;
 
     .tab {
       width: 25%;
-      height: 4em;
+      height: 100%;
       text-align: center;
       display: inline-block;
       border-radius: 4px;
@@ -23,10 +24,10 @@ $green: #0aa25a;
 
       a {
         position: relative;
-        top: 32%;
+        top: 40%;
         color: white;
         text-decoration: none;
-        font-size: 1.25em;
+        font-size: 2em;
       }
     }
 
@@ -45,13 +46,14 @@ $green: #0aa25a;
 
   .tab_area {
     border-radius: 4px;
-    min-height: 40em;
+    height: 40em;
   }
 }
 
 
 #challenge_buttons {
   text-align: center;
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
+  float: right;
 }
