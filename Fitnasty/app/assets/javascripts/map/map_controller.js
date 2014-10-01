@@ -12,8 +12,12 @@ function initialize() {
   // This event listener will call MapView.addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     position = new google.maps.LatLng(event.latLng.k, event.latLng.B);
+    if (MapModel.beenClicked) {
+      MapView.deleteLastMarker()
+    }
     MapView.addMarker(position);
-    MapView.updateFormFields()
+    MapView.updateFormFields();
+    MapModel.beenClicked = true
   });
 
   // Place Geoloacted Pin upon button panel click and update form

@@ -46,6 +46,11 @@ MapView = {
   deleteMarkers: function() {
     MapView.clearMarkers();
     markers = [];
+  },
+
+  deleteLastMarker: function() {
+    markers[markers.length - 1].setMap(null)
+    markers.pop();
   }
 }
 

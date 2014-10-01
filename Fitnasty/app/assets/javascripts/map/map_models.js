@@ -34,5 +34,7 @@ var MapModel = {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-  }
+  },
+
+  beenClicked: false
 }

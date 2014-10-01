@@ -16,6 +16,7 @@ $(document).ready(function() {
       testWidget.whenDone(data)
       MapView.deleteMarkers()
       MapView.setMarkers(challengeHolder.challenges)
+      MapModel.beenClicked = false;
     })
   })
 
@@ -34,6 +35,7 @@ $(document).ready(function() {
         $('.challenge:first').prepend($("<h1>Challenges matching keyword '" + keyword + "'</h1>"))
         MapView.deleteMarkers()
         MapView.setMarkers(challengeHolder.challenges)
+        MapModel.beenClicked = false;
       })
     })
   }
@@ -55,6 +57,7 @@ $(document).ready(function() {
       testWidget.whenDone(data)
       MapView.deleteMarkers()
       MapView.setMarkers(challengeHolder.challenges)
+      MapModel.beenClicked = false;
     })
   })
 
@@ -69,6 +72,7 @@ $(document).ready(function() {
       testWidget.whenDone(data)
       MapView.deleteMarkers()
       MapView.setMarkers(challengeHolder.challenges)
+      MapModel.beenClicked = false;
     })
   })
 
@@ -84,6 +88,7 @@ $(document).ready(function() {
       testWidget.whenDone(data)
       MapView.deleteMarkers()
       MapView.setMarkers(challengeHolder.challenges)
+      MapModel.beenClicked = false;
     })
   })
 
@@ -99,6 +104,7 @@ $(document).ready(function() {
       testWidget.whenDone(data)
       MapView.deleteMarkers()
       MapView.setMarkers(challengeHolder.challenges)
+      MapModel.beenClicked = false;
     })
   })
 
