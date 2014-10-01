@@ -2,13 +2,7 @@ require 'rails_helper'
 
 describe Challenge do
   it "is valid with a title, location, latitude, longitude, longitude, description" do
-    challenge = Challenge.new(
-          title: 'Test',
-          description: 'Test Description',
-          location: '633 Folsom St., San Francisco, CA',
-          latitude: 32,
-          longitude: 123
-          )
+    challenge = build(:challenge)
     expect(challenge).to be_valid
   end
 

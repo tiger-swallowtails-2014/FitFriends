@@ -8,7 +8,7 @@ describe UsersController do
     end
   end
 
-  let(:user) {User.create(first_name: "Nick", last_name: "C", email: "who_cares@gmail.com", password: "Pass1")}
+  let(:user) {create(:user)}
   describe "POST #create" do
     context "with valid attributes" do
       it "saves a new user" do
