@@ -121,7 +121,22 @@ class ChallengesController < ApplicationController
         accepted = matched_challenge.first.accepted?
         completed = matched_challenge.first.completed?
       end
-      {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags, accepted: accepted, completed: completed}
+
+      chart_data = UserChallenge.where(challenge_id: challenge.id)
+      accepted_number = 0
+      completed_number = 0
+      pending_number = 0
+      chart_data.each do |instance|
+        if instance.accepted? == false && instance.completed? == false
+          pending += 1
+        elsif instance.accepted? && instance.completed?
+          completed += 1
+        elsif instance.accepted? && instance.completed? == false
+          accepted += 1
+        end
+      end
+    rendered_data = {accepted: accepted_number, completed: completed_number, pending: pending_number}
+    {challenge_object: challenge, challenge_user: challenge.user, challenge_tags: challenge.tags, accepted: accepted, completed: completed, chart_stats: rendered_data}
     end
     challenge_array
   end

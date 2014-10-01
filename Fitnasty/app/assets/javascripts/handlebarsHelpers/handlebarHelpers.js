@@ -13,6 +13,7 @@ Handlebars.registerHelper('tagsHelper', function(options){
 });
 
 Handlebars.registerHelper( "checkStatus", function(options) {
+  console.log(this)
   if (this.accepted && this.completed === false)
   {
     return "<div class = 'lifecycle accepted'>Challenge Accepted!</div>"
