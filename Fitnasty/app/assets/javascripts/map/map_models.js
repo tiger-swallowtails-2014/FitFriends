@@ -10,11 +10,7 @@ var MapModel = {
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
-          map.setZoom(14);
-          marker = new google.maps.Marker({
-              position: latlng,
-              map: map
-          });
+          var marker = markers[markers.length - 1]
           infowindow.setContent(results[1].formatted_address);
           infowindow.open(map, marker);
           $('#challenge_location').val(results[1].formatted_address)

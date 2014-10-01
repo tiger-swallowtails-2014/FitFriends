@@ -135,7 +135,7 @@ $(document).ready(function() {
   var currentUser = $(document.URL.split('/')).last()[0]
 
 // search for users
-  bindSearchUserEvent('keyup');    
+  bindSearchUserEvent('keyup');
   bindSearchUserEvent('submit');
 
   // from accepted_challenges.js
