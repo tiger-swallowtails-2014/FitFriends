@@ -78,7 +78,7 @@ p {
 }
 
 .profile_image {
-  width: 80%;
+  width: 100%;
 }
 
 #trends-container {
@@ -127,6 +127,17 @@ p {
   vertical-align: top;
   font-size: 13px;
   max-width: 410px;
+}
+
+.challenges_river {
+  width: 50%;
+  height: 40em;
+  float: right;
+  overflow: scroll;
+}
+
+#new_challenge {
+  height: 100%;
 }
 
 .avatar {
@@ -188,4 +199,8 @@ p {
   height:50px;
   width:50px;
   background-color: purple;
+}
+
+.challenge_buttons {
+  width: 14%;
 }
