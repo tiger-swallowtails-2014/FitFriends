@@ -16,6 +16,18 @@
     <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
   </section>
     <h3><%="#{@user.first_name} #{@user.last_name}" %></h3>
+    <% if @user != @signed_in_user %>
+      <% @follower_ids = @user.followers.select(:id).map(&:id) %>
+      <% if @follower_ids.include?(current_user.id) %>
+        <div class='unfollow'>
+          <%= link_to 'unfollow', "/users/unfollow/#{@user.id}", class: "unfollow_link" %>
+        </div>
+        <% else %>
+        <div class='follow'>
+          <%= link_to 'follow', "/users/follow/#{@user.id}", class: "follow_link"%>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <!-- Tabs -->
