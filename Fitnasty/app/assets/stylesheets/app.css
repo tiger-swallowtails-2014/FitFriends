@@ -200,3 +200,7 @@ p {
   width:50px;
   background-color: purple;
 }
+
+.challenge_buttons {
+  width: 14%;
+}

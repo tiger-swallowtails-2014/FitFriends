@@ -23,8 +23,7 @@
   width: 9em;
 }
 
-.signup_button, .login_button, #create_challenge, #most_recent, #trending, #completed, #pending, #accepted, #submitted {
-  margin: 1%;
+.signup_button, .login_button, .challenge_buttons {
   min-width: 10%;
   font-size: 1em;
   padding: 1%;
@@ -35,7 +34,7 @@
   transition: background-color, .5s;
 }
 
-.signup_button:hover, .login_button:hover {
+.signup_button:hover, .login_button:hover, .challenge_buttons:hover {
   background-color: #666;
 }
 
