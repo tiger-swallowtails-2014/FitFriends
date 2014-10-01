@@ -40,7 +40,8 @@
 }
 
 #vbar-div {
-  width: 20%;
+  width: 15%;
+  float: left;
 }
 
 .vbar-pic {

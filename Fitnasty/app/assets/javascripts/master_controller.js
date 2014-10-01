@@ -64,6 +64,10 @@ $(document).ready(function() {
     pause: "hover"
   })
 
+  $(document).on('click', function(){
+    $('.carousel').carousel('next')
+  })
+
   $('.carousel').on('slid.bs.carousel', function () {
     $('.carousel').carousel('cycle')
   })

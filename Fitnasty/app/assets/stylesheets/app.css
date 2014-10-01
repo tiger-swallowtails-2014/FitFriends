@@ -40,7 +40,6 @@ p {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 3em;
   color: white;
-  width: 20%;
   margin-left: 5%;
 }
 
@@ -207,4 +206,8 @@ p {
 
 .challenge_buttons {
   width: 14%;
+}
+
+.top_tabs_nav_bar {
+  overflow: hidden;
 }
