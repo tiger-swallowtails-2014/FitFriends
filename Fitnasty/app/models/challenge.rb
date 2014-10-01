@@ -4,9 +4,14 @@ class Challenge < ActiveRecord::Base
   has_many :challenge_tags
   has_many :tags, through: :challenge_tags
   belongs_to :user
+  before_save :set_default_image_url
+
+  def set_default_image_url
+    if self.image_url == "" then self.image_url = "http://www.ipr365.com/wp-content/uploads/2014/03/weightLiftingIcon.png"; end
+  end
 
   def self.accepted_challenges_for_user(user)
-  	accepted_user_challenges = UserChallenge.where(accepted?: true, user_id: user).to_a
+  	accepted_user_challenges = UserChallenge.where(accepted?: true, completed?: false, user_id: user).to_a
   	accepted_user_challenges.map! do |user_challenge|
   	 self.find(user_challenge.challenge_id)
   	end
@@ -21,7 +26,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.pending_challenges_for_user(user)
-    pending_user_challenges = UserChallenge.where(accepted?: false, user_id: user).to_a
+    pending_user_challenges = UserChallenge.where(accepted?: false, completed?: false, user_id: user).to_a
     pending_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
@@ -29,10 +34,15 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.completed_challenges_for_user(user)
-    completed_user_challenges = UserChallenge.where(completed?: true, user_id: user).to_a
+    completed_user_challenges = UserChallenge.where(accepted?: true, completed?: true, user_id: user).to_a
     completed_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
     return completed_user_challenges.flatten
+  end
+
+  def self.submitted_challenges_for_user(user)
+    submitted_user_challenges = Challenge.where(user_id: user).to_a
+    return submitted_user_challenges.flatten
   end
 end

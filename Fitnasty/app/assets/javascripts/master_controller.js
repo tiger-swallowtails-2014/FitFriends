@@ -1,83 +1,43 @@
 // MUST BE REFACTORED FOR MVC
 
 $(document).ready(function() {
+  fetcher = new Fetcher;
+  binder = new Binder;
+
   $('#tabs').tabs();
+
   google.maps.event.addDomListener(window, 'load', initialize);
 
-  $('#most_recent').on("click", function(e){
-    e.preventDefault();
-    $.ajax({
-      type: "GET",
-      url: '/challenges/recent'
-    }).done(function(data){
-      clearHolder()
-      $('.challenge').fadeOut(500);
-      var testWidget = new ChallengeWidget();
-      testWidget.whenDone(data)
-    })
-  })
+  binder.bind('#most_recent', 'click', 'GET', '/challenges/recent');
+  binder.bind('#submitted', 'click', 'GET', document.URL+"/submitted");
+  binder.bind('#trending', 'click', 'GET', '/challenges/trending');
+  binder.bind('#pending', 'click', 'GET', document.URL+"/pending");
+  binder.bind('#completed', 'click', 'GET', document.URL+"/completed");
+  binder.bind('#accepted', 'click', 'GET', document.URL+"/accepted");
+  bindTagSearchEvent("click", '.tag')
 
-  $('#trending').on("click", function(e){
+  $("#search-form").on("submit", function(e){
     e.preventDefault();
+    var keyword = $("#search").val()
     $.ajax({
       type: "GET",
-      url: '/challenges/trending'
-    }).done(function(data){
-      clearHolder()
-      var testWidget = new ChallengeWidget();
-      testWidget.whenDone(data)
-    })
-  })
-
-  $('#pending').on("click", function(e){
-    e.preventDefault();
-    var currentUser = $(document.URL.split('/')).last()[0];
-    $.ajax({
-      type: "GET",
-      url: "/users/"+currentUser+"/pending"
-    }).done(function(data){
-      clearHolder()
-      var testWidget = new ChallengeWidget();
-      testWidget.whenDone(data)
-    })
-  })
-
-  $('#completed').on("click", function(e){
-    e.preventDefault();
-    var currentUser = $(document.URL.split('/')).last()[0];
-    $.ajax({
-      type: "GET",
-      url: "/users/"+currentUser+"/completed"
-    }).done(function(data){
-      clearHolder()
-      var testWidget = new ChallengeWidget();
-      testWidget.whenDone(data)
-    })
-  })
-
-  $('#accepted').on("click", function(e){
-    e.preventDefault();
-    var currentUser = $(document.URL.split('/')).last()[0];
-    $.ajax({
-      type: "GET",
-      url: "/users/"+currentUser+"/accepted"
+      url: '/challenges/search/' + keyword,
+      data: keyword,
     }).done(function(data){
       clearHolder()
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      $('.challenge:first').prepend($("<h1>Challenges matching keyword '" + keyword + "'</h1>"))
     })
   })
 
   //currentUser being pulled from the URL which should be localhost:3000/users/:id
   var currentUser = $(document.URL.split('/')).last()[0]
 
-
-  // from accepted_challenges.js
-  fetcher = new Fetcher;
-  // acceptedChallengesView = new AcceptedChallengesView;
-  // new AcceptedChallengesController(acceptedChallengesView, fetcher)
-
+  // search for users
+  bindSearchUserEvent('keyup');
+  bindSearchUserEvent('submit');
 
   // from lightboxes/controller.js
   initializeLightBoxController()
@@ -85,13 +45,6 @@ $(document).ready(function() {
   // from create_challenge/controller.js
   var controller = new ChallengeController
   controller.challengeFormCreate('.test_show', '#challenges-container .challenges_river')
-
-  // var testWidget = new ChallengeWidget();
-  // testWidget.whenDone()
-
-  // from search
-  bindSearchEvent();
-  bindSearchUserEvent();
 
   // from tabs.js
   bindUsersTabEvent('#users_tab')
@@ -106,17 +59,13 @@ $(document).ready(function() {
   // from users/follow.js
   bindFriendEvents();
 
-  // SORRY TRAVIS, HAD TO COMMENT THIS OUT IN EXCHANGE FOR bindChallengesTabEvent
+  $('.carousel').carousel({
+    interval: 5000,
+    pause: "hover"
+  })
 
-  // $(document).on("click", '#challenges_tab', function(e){
-  //   e.preventDefault();
-  //   $.ajax({
-  //     type: "GET",
-  //     url: this.getElementsByTagName('a')[0].href
-  //   }).done(function(data){
-  //     $('.challenge').remove();
-  //     var testWidget = new ChallengeWidget();
-  //     testWidget.whenDone(data)
-  //   })
-  // })
+  $('.carousel').on('slid.bs.carousel', function () {
+    $('.carousel').carousel('cycle')
+  })
+
 });

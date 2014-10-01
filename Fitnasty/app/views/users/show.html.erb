@@ -16,13 +16,6 @@
     <img class='profile_image' src="http://simpleicon.com/wp-content/uploads/user1.png">
   </section>
     <h3><%="#{@user.first_name} #{@user.last_name}" %></h3>
-
-    <section id="trends-container">
-      <h3 class="center_text">Trends</h3>
-      <ul>
-
-      </ul>
-    </section>
   </div>
 
   <!-- Tabs -->
@@ -42,6 +35,7 @@
           <button id = "trending"> Trending </button>
           <button id = "completed"> Completed </button>
           <button id = "pending"> Pending </button>
+          <button id = "submitted"> Submitted </button>
         </div>
         <div id="panel">
           <input id="address" type="textbox" value="Sydney, NSW">
@@ -59,6 +53,7 @@
 
 
     <div class="tab_area" id="friend_activity">
+      <%= render :partial => 'friend_activity', locals: {user: @user, accepted: @accepted_folowee_challenges, completed: @completed_folowee_challenges} %>
     </div>
   </div>
 </main>

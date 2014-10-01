@@ -25,48 +25,59 @@ MapView = {
     }
   },
 
+  // Sets the map on all markers in the array.
+  setAllMap: function(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  },
+
   // Removes the markers from the map, but keeps them in the array.
   clearMarkers: function() {
-    setAllMap(null);
+    MapView.setAllMap(null);
   },
 
   // Shows any markers currently in the array.
   showMarkers: function() {
-    setAllMap(map);
+    MapView.setAllMap(map);
+  },
+
+  // Deletes all markers in the array by removing references to them.
+  deleteMarkers: function() {
+    MapView.clearMarkers();
+    markers = [];
+  },
+
+  deleteLastMarker: function() {
+    markers[markers.length - 1].setMap(null)
+    markers.pop();
   }
 }
 
-var MapSizer = function(widthProportion, heightProportion, maxHeight, map) {
+
+
+// This is the function that resizes the map width
+var MapSizer = function(widthProportion, map) {
   this.map = map
-  this.maxHeight = maxHeight
   this.mapContainer = map.parent()
   this.mapWidthProportion = widthProportion
-  this.mapHeightProportion = heightProportion
   this.initialMapWidth = Math.round(this.mapWidthProportion * this.mapContainer.width()) + 'px'
-  this.initialMapHeight = Math.round(this.mapHeightProportion * this.mapContainer.height()) + 'px'
 }
 
 
 MapSizer.prototype = {
   setInitialDimensions: function() {
     this.map.css("width", this.initialMapWidth)
-    this.map.css("height", this.initialMapHeight)
   },
 
   adjustDimensions: function(){
-    var currentHeight = parseInt(this.map.css("height").replace("px", ""))
-    if (this.mapContainer.height() <= (this.maxHeight / this.mapHeightProportion)) {
-      this.map.css("height", this.mapHeightProportion * this.mapContainer.height())
-    } else {
-      this.map.css("height", this.maxHeight + 'px')
-    }
     this.map.css("width", this.mapWidthProportion * this.mapContainer.width())
   }
 }
 
 
 var bindMapDimensionsEvent = function() {
-  mapSizer = new MapSizer(1, 0.7, 300, $('#map-canvas'))
+  mapSizer = new MapSizer(1, $('#map-canvas'))
   mapSizer.setInitialDimensions()
 
   $(window).resize(function(){

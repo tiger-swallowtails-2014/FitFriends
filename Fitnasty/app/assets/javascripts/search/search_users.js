@@ -1,5 +1,5 @@
-var bindSearchUserEvent = function() {
-  $('#users').on('keyup','#user_search', function(e){
+var bindSearchUserEvent = function(event) {
+  $('#users').on(event,'#user_search', function(e){
     e.preventDefault()
     var keyword = $("#user_search_input").val()
     console.log(keyword)
@@ -18,4 +18,25 @@ var bindSearchUserEvent = function() {
       console.log("fail")
     })
   })
+}
+
+// Removes html elements with a given selector
+var removeObject = function(selector) {
+  $(selector).remove()
+}
+
+
+// appends an element to specified container
+var appendObject = function(container, element) {
+  $(container).append(element)
+}
+
+// Returns html elements for warning
+var renderWarning = function() {
+  var MustacheWarningTemplate =
+    "<div class='warning'>" +
+      "<p>There are no challenges that match that keyword.</p>" +
+    "</div>"
+
+  return Mustache.to_html(MustacheWarningTemplate)
 }

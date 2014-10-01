@@ -7,7 +7,7 @@ Handlebars.registerHelper('tagsHelper', function(options){
   for(var i = 0; i < this.tags.length; i++) {
         var tag_word = this.tags[i].name
         var link = "/challenges/search/" + tag_word
-        ret = ret + "<a href = " + link + ">" + tag_word + "</a>" + " ";
+        ret = ret + "<a class='tag' href = " + link + ">" + tag_word + "</a>" + " ";
   }
     return ret + "</div>"
 });
