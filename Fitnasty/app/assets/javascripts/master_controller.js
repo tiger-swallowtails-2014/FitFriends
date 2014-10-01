@@ -134,6 +134,7 @@ $(document).ready(function() {
       $('.challenge').remove();
       var testWidget = new ChallengeWidget();
       testWidget.whenDone(data)
+      $('.challenge:first').prepend($("<h1>Challenges matching keyword '" + keyword + "'</h1>"))
     })
   })
 
