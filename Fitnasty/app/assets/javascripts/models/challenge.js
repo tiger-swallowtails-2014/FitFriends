@@ -13,4 +13,5 @@ var Challenge = function(challengeHash){
   this.tags = challengeHash.challenge_tags
   this.completed = challengeHash.completed
   this.accepted = challengeHash.accepted
+  this.chart_stats = challengeHash.chart_stats
 }
