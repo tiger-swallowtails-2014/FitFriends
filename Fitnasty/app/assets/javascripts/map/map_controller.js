@@ -2,7 +2,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var haightAshbury = new google.maps.LatLng(37.7699298, -122.4469157);
   var mapOptions = {
-    zoom: 14,
+    zoom: 13,
     center: haightAshbury,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
@@ -12,8 +12,12 @@ function initialize() {
   // This event listener will call MapView.addMarker() when the map is clicked.
   google.maps.event.addListener(map, 'click', function(event) {
     position = new google.maps.LatLng(event.latLng.k, event.latLng.B);
+    if (MapModel.beenClicked) {
+      MapView.deleteLastMarker()
+    }
     MapView.addMarker(position);
-    MapView.updateFormFields()
+    MapView.updateFormFields();
+    MapModel.beenClicked = true
   });
 
   // Place Geoloacted Pin upon button panel click and update form

@@ -103,6 +103,13 @@ p {
   background: white;
 }
 
+/*.challenge_image_figure {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  background: url('http://norcalforensics.com/wp-content/uploads/2013/04/GG-Bridge.jpg') center center;
+}*/
+
 .challenge:hover {
   box-shadow: 2px 2px 2px orange;
   cursor: pointer;

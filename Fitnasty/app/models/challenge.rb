@@ -4,6 +4,11 @@ class Challenge < ActiveRecord::Base
   has_many :challenge_tags
   has_many :tags, through: :challenge_tags
   belongs_to :user
+  before_save :set_default_image_url
+
+  def set_default_image_url
+    if self.image_url == "" then self.image_url = "http://www.ipr365.com/wp-content/uploads/2014/03/weightLiftingIcon.png"; end
+  end
 
   def self.accepted_challenges_for_user(user)
   	accepted_user_challenges = UserChallenge.where(accepted?: true, completed?: false, user_id: user).to_a
