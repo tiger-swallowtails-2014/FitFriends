@@ -45,7 +45,7 @@ class ChallengesController < ApplicationController
   end
 
   def search
-    render json: add_challenge_info(match_challenges(params[:keyword]).flatten)
+    render json: add_challenge_info((match_challenges(params[:keyword]) + match_challenges(params[:keyword].downcase) + match_challenges(params[:keyword].capitalize)).flatten.uniq)
   end
 
   def trending
