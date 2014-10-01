@@ -41,7 +41,6 @@ p {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 3em;
   color: white;
-  width: 20%;
   margin-left: 5%;
 }
 
@@ -218,4 +217,8 @@ p {
   height:50px;
   width:50px;
   background-color: #666;
+}
+
+.top_tabs_nav_bar {
+  overflow: hidden;
 }

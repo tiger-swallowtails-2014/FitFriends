@@ -7,18 +7,21 @@
           <!-- Carousel items -->
 
           <!-- Carousel nav -->
-          <a id="vbar-control-left" class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-          <a id="vbar-control-right" class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
-
+<!--           <a id="vbar-control-left" class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+          <a id="vbar-control-right" class="carousel-control right" href="#myCarousel" data-slide="next">›</a> -->
+          <p>Want to follow?</p>
           <div class="carousel-inner">
               <div class="active item">
                   <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[0]} %>
-              </div>
-              <div class="item">
                   <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[1]} %>
               </div>
               <div class="item">
                   <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[2]} %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[3]} %>
+              </div>
+              <div class="item">
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[4]} %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[5]} %>
               </div>
           </div>
 
