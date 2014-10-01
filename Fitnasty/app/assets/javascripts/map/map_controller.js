@@ -2,7 +2,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder();
   var haightAshbury = new google.maps.LatLng(37.7699298, -122.4469157);
   var mapOptions = {
-    zoom: 14,
+    zoom: 13,
     center: haightAshbury,
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
