@@ -1,6 +1,7 @@
 // MUST BE REFACTORED FOR MVC
 
 $(document).ready(function() {
+
   $('#tabs').tabs();
   google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -187,4 +188,14 @@ $(document).ready(function() {
   //     testWidget.whenDone(data)
   //   })
   // })
+
+  $('.carousel').carousel({
+    interval: 5000,
+    pause: "hover"
+  })
+
+  $('.carousel').on('slid.bs.carousel', function () {
+    $('.carousel').carousel('cycle')
+  })
+
 });
