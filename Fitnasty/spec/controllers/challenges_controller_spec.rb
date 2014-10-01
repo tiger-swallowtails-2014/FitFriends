@@ -26,5 +26,11 @@ describe ChallengesController do
     #   result = JSON.parse(response.body)[0]
     #   expect(result["challenge_object"]["title"]).to eq(challenge.title)
     # end
+
+    describe "challenge#create" do
+        it "creates a new challenge with valid params" do
+
+        end
+    end
   end
 end

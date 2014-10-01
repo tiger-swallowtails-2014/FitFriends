@@ -8,22 +8,23 @@ describe UsersController do
     end
   end
 
+  let(:user) {User.create(first_name: "Nick", last_name: "C", email: "who_cares@gmail.com", password: "Pass1")}
   describe "POST #create" do
     context "with valid attributes" do
       it "saves a new user" do
-        expect {post :create, user: {first_name: "Nick", last_name: "C", email: "who_cares@gmail.com", password: "Pass1"}}.to change {User.count}.by (1)
+        expect {user}.to change {User.count}.by (1)
       end
 
       it "sets a new session for the user" do
         expect {
-                post :create, user: {first_name: "Gary", last_name: "H", email: "gar_bear@gmail.com", password: "Pass1"}
+                post :create, user
                 session[:user_id].to eq(user.id)
               }
       end
 
       it "redirects to the user's profile page" do
         expect {
-                post :create, user: {first_name: "Gary", last_name: "H", email: "gar_bear@gmail.com", password: "Pass1"}
+                post :create, user
                 should redirect_to user_path(user)
               }
       end
