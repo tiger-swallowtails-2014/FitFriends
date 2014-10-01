@@ -1,8 +1,3 @@
-// $(document).ready(function(){
-//   var testWidget = new ChallengeWidget();
-//   testWidget.whenDone(stubbed_data)
-// })
-
 function ChallengeWidget() {
   var self = this;
   this.whenDone = function(data) {
