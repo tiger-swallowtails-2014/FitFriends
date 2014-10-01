@@ -38,3 +38,22 @@
 .carousel.vertical .item {
     left: 0;
 }
+
+#myCarousel {
+  width: 20%;
+}
+
+.vbar-pic {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#vbar-control-left {
+  top: auto;
+  bottom: auto;
+}
+
+#vbar-control-right {
+  top: auto;
+  bottom: auto;
+}
