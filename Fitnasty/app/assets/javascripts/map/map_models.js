@@ -28,7 +28,6 @@ var MapModel = {
     var address = document.getElementById('address').value;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        console.log(results)
         map.setCenter(results[0].geometry.location);
         MapView.addMarker(results[0].geometry.location)
       } else {
