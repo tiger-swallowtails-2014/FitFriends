@@ -1,5 +1,9 @@
 <div id="followees_accepted_challenges">
-  <h3>Get inspired by your firends!</h3>
+	<% if @user == current_user %>
+  <h3>Get inspired by your friends!</h3>
+  <% else %>
+  <h3>Get inspired by <%=@user.first_name%>'s friends!</h3>
+  <% end %>
 
   <% @accepted_folowee_challenges.each do |user_challenge| %>
       <%= render :partial => 'friend_activity_challenge', locals: {user_challenge: user_challenge, user: user_challenge.user, challenge: user_challenge.challenge} %>
