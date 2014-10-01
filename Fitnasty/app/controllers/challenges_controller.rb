@@ -135,7 +135,7 @@ class ChallengesController < ApplicationController
           pending_number += 1
         elsif instance.accepted? && instance.completed?
           completed_number += 1
-        elsif instance.accepted? && instance.completed? == false
+        elsif instance.accepted?
           accepted_number += 1
         end
       end
