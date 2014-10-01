@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chart
 //= require underscore-min
 //= require handlebars-min
 //= require backbone

@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   get '/users/search/:keyword', to: 'users#search'
   get '/users/show_follow', to: 'users#show_follow'
 
-
-
+  get '/user_challenges/:challenge_id', to: 'user_challenges#show'
   get '/trends' => "tags#trends", as: :trends
 
   post '/challenges' => "challenges#create"
