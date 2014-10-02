@@ -174,7 +174,9 @@ p {
 }
 
 .challenge_image {
-  width: 30%;
+  max-height: 40%;
+  max-width: auto;
+  width: auto;
 }
 
 .challenge_title {
