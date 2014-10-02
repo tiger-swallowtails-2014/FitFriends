@@ -78,7 +78,6 @@ p {
 
 .profile_image {
   width: 100%;
-  border-radius: 6px;
 }
 
 #trends-container {
@@ -125,17 +124,6 @@ p {
   float: right;
 }
 
-.challenge_image {
-}
-
-.challenge:hover {
-  box-shadow: 2px 2px 2px orange;
-  cursor: pointer;
-}
-
-.challenge:active {
-  background-color: orange;
-}
 
 .challenge-content {
   font-size: 20px;
