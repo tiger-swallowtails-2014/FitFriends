@@ -53,7 +53,7 @@ class ChallengesController < ApplicationController
   end
 
   def all
-    render json: Challenge.all
+    render json: add_challenge_info(Challenge.all.to_a)
   end
 
   def send_challenge
