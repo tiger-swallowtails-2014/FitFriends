@@ -3,11 +3,30 @@ require 'rails_helper'
 describe ChallengesController do
   let(:user) {create(:user)}
   let(:challenge) {create(:challenge)}
+  let(:tag) {create(:tag)}
 
-  # Couldn't find User without an ID
+
+  describe "POST #create" do
+
+    # it "should create a new challenge with valid params" do
+    #   session[:user_id] = user.id
+    #   expect {
+    #     post :create,
+    #     :challenge => attributes_for(:challenge),
+    #     :tag => {name: "run"}
+    #     }.to change{Challenge.count}.by(1)
+    # end
+
+    it "should not create a new challenge with invalid params" do
+      session[:user_id] = user.id
+      expect {
+        post :create, challenge: {title: nil}
+      }.to_not change{Challenge.count}
+    end
+  end
+
   describe "GET #created" do
     it "responds with a okay status" do
-      # p User.find(user.id)
       session[:user_id] = user.id
       get :created, :user_id => user.id
     end
