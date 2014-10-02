@@ -86,10 +86,13 @@
   bottom: 0;
   width: 85%;
   text-align: center;
+  height: 40em;
+  overflow: scroll;
 }
 
 #users {
   overflow: hidden;
+  padding-top: 3.4%;
 }
 
 #checkout_button {
@@ -100,4 +103,9 @@
   color: white;
   margin-bottom: 10px;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+#checkout_button:hover {
+  background: #666;
 }
