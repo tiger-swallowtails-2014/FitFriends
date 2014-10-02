@@ -46,4 +46,19 @@ var bindChallengesTabEvent = function() {
   })
 }
 
+var bindFriendActivityTabEvent = function() {
+  var shownUser = $(document.URL.split('/')).last()[0]
+  $('#friend_activity_tab').on('click', function(e) {
+    e.preventDefault()
+    $.ajax({
 
+
+    })
+    .done(function(){
+      console.log("success")
+    })
+    .fail(function() {
+      console.log("fail")
+    })
+  }
+}

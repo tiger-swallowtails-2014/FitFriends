@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@signed_in_user = User.find(session[:user_id])
-		@accepted_folowee_challenges = UserChallenge.accepted.where(user_id: @user.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc)
+		@accepted_followee_challenges = UserChallenge.accepted.where(user_id: @user.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc).flatten
 		@recent_challenges = Challenge.order('created_at DESC').limit(10)
     @first_recent = @recent_challenges[0]
 	end

@@ -19,9 +19,14 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-      <% @accepted_folowee_challenges[1..-1].each_with_index do |user_challenge, index| %>
+      <% if accepted != [] %>
+        <% accepted[1..-1].each_with_index do |user_challenge, index| %>
           <%= render :partial => 'friend_activity_challenge', locals: {user_challenge: user_challenge, user: user_challenge.user, challenge: user_challenge.challenge, index: index} %>
+        <% end %>
+      <% else %>
+        <h3>You have no friends.</h3>
       <% end %>
+
 
 
     <!-- Controls -->
