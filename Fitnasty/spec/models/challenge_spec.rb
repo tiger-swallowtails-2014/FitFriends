@@ -30,4 +30,10 @@ describe Challenge do
     challenge = Challenge.new()
     expect(challenge).to have(1).errors_on(:description)
   end
+
+  it { should belong_to(:user) }
+  it { should have_many(:user_challenges) }
+  it { should have_many(:users) }
+  it { should have_many(:challenge_tags) }
+  it { should have_many(:tags) }
 end
