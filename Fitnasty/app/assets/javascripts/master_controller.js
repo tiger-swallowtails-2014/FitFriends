@@ -14,7 +14,8 @@ $(document).ready(function() {
   binder.bind('#pending', 'click', 'GET', document.URL+"/pending");
   binder.bind('#completed', 'click', 'GET', document.URL+"/completed");
   binder.bind('#accepted', 'click', 'GET', document.URL+"/accepted");
-  bindTagSearchEvent("click", '.tag')
+  bindTagSearchEvent("click", '.tag');
+  bindFriendActivityTabEvent();
 
   $("#search-form").on("submit", function(e){
     e.preventDefault();
@@ -73,6 +74,19 @@ $(document).ready(function() {
 
   $('.carousel').on('slid.bs.carousel', function () {
     $('.carousel').carousel('cycle')
+  })
+
+  $.ajax({
+    type: 'get',
+    url: '/all_challenges',
+  }).done(function(data){
+    clearHolder()
+    $('.challenge').fadeOut(500);
+    var testWidget = new ChallengeWidget();
+    testWidget.whenDone(data)
+    MapView.deleteMarkers()
+    MapView.setMarkers(challengeHolder.challenges)
+    MapModel.beenClicked = false;
   })
 
 });

@@ -8,49 +8,8 @@
   <button class="login_button">Login</button>
 </header>
 
+
 <%= image_tag "road_track_cropped.jpg", class: "img-responsive" %>
-
-
-
-<div id="carousel-example-generic" class="carousel slide">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <% @recent_challenges[1..9].each do |challenge| %>
-      <%= render partial: 'challenge_example', locals: {challenge: challenge} %>
-    <% end %>
-
-    <!-- need to have one item listed as 'active' -->
-    <div class="item active">
-      <img src=<%="#{@first_recent.image_url}"%> class="challenge_image">
-      <h1><%= @first_recent.title %></h1>
-      <h3>By <%= @first_recent.user.first_name %></h3>
-      <p><%= @first_recent.location %></p>
-      <p><%= @first_recent.description %></p>
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="icon-next"></span>
-  </a>
-</div>
-
-
-
-
-
-
 
 
 <div class="container marketing">
