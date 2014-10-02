@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140928073736) do
     t.string   "location"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "description"
+    t.text     "description"
     t.string   "image_url",   default: "http://www.ipr365.com/wp-content/uploads/2014/03/weightLiftingIcon.png"
     t.datetime "created_at"
     t.datetime "updated_at"
