@@ -16,7 +16,7 @@ Handlebars.registerHelper( "checkStatus", function(options) {
   console.log(this)
   if (this.accepted && this.completed === false)
   {
-    return "<button class = 'lifecycle accepted bootans'>Challenge Accepted!</button>"
+    return "<button class = 'lifecycle accepted bootans'>Accepted!</button>"
   }
   else if (this.accepted && this.completed)
   {
