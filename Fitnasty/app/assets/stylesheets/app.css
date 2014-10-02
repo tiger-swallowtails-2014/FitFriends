@@ -51,7 +51,7 @@ p {
   padding: 1%;
   font-size: 1vw;
   float: right;
-  margin: .25% 5%;
+  margin: 0.1% 5%;
 }
 
 .fa-search {
@@ -191,7 +191,6 @@ p {
 
 .challenge_title {
   display: inline;
-  vertical-align: top;
   font-size: 1.5em;
 }
 
@@ -205,20 +204,19 @@ p {
 
 .completed {
   background-color: green;
-}
-
-.lifecycle {
-  height:50px;
-  width: 50px;
-  background-color: #666;
-}
-
-.friend_selector_button {
-  height:50px;
-  width:50px;
-  background-color: #666;
+  height: 3em;
+  width: 20%;
 }
 
 .top_tabs_nav_bar {
   overflow: hidden;
+}
+
+.bootans {
+  background-color: #444444;
+  color: white;
+  height: 3em;
+  width: 20%;
+  border-radius: 6px;
+  border: 3px solid black;
 }
