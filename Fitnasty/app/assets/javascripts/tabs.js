@@ -51,14 +51,16 @@ var bindFriendActivityTabEvent = function() {
   $('#friend_activity_tab').on('click', function(e) {
     e.preventDefault()
     $.ajax({
-
-
+      url: "/users/" + shownUser + "/friend_activity",
+      method: "GET",
+      data: {user_id: shownUser}
     })
-    .done(function(){
-      console.log("success")
+    .done(function(data){
+      $('#friend_activity').empty()
+      $('#friend_activity').append(data)
     })
     .fail(function() {
       console.log("fail")
     })
-  }
+  })
 }

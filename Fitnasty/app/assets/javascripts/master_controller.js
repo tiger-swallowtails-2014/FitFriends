@@ -14,7 +14,8 @@ $(document).ready(function() {
   binder.bind('#pending', 'click', 'GET', document.URL+"/pending");
   binder.bind('#completed', 'click', 'GET', document.URL+"/completed");
   binder.bind('#accepted', 'click', 'GET', document.URL+"/accepted");
-  bindTagSearchEvent("click", '.tag')
+  bindTagSearchEvent("click", '.tag');
+  bindFriendActivityTabEvent();
 
   $("#search-form").on("submit", function(e){
     e.preventDefault();
