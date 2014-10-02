@@ -1,3 +1,8 @@
+#username {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 2em;
+}
+
 .center_text {
   text-align: center;
 }
@@ -8,18 +13,16 @@
   height: 2em;
 }
 
-#users {
-  padding: 2%;
-}
-
 .followers {
   width: 45%;
   float: left;
+  margin: 10px;
 }
 
 .followees {
   width: 45%;
   float: right;
+  margin: 10px;
 }
 
 .user {
@@ -40,21 +43,20 @@
 
 .unfollow {
   background: #d74136;
-  /*width: 25%;*/
-  margin: 0 auto;
+  width: 30%;
   border-radius: 5px;
   padding: 1%;
-  margin: 10px;
+  margin: 10px auto;
+  text-align: center;
 }
 
 .follow {
   background: #4486f7;
-  /*width: 25%;*/
-  margin: 0 auto;
+  width: 30%;
   border-radius: 5px;
   padding: 1%;
-  margin: 10px;
-
+  margin: 10px auto;
+  text-align: center;
 }
 
 .unfollow a {
@@ -68,26 +70,42 @@
   color: white;
 }
 
-#user_search {
-  margin:2%;
-}
-
 #user_search_input {
-  font-size: 2vw;
-
+  font-size: 1.5vw;
 }
 
-.followers {
-  margin: 10px;
-  padding: 2%;
-}
-
-.followees {
-  margin: 10px;
-  padding: 2%;
-}
 
 .user_info {
   position: relative;
-  top: 15px;
+  width: 100%;
+}
+
+#user_main {
+  float: right;
+  overflow: hidden;
+  bottom: 0;
+  width: 85%;
+  text-align: center;
+  height: 40em;
+  overflow: scroll;
+}
+
+#users {
+  overflow: hidden;
+  padding-top: 3.4%;
+}
+
+#checkout_button {
+  padding:5%;
+  word-wrap: break-word;
+  text-align: center;
+  background: #333;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#checkout_button:hover {
+  background: #666;
 }

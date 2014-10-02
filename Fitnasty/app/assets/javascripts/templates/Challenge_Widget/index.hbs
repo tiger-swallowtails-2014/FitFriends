@@ -3,7 +3,9 @@
   <figure class="challenge_image_figure">
     <img class="challenge_image" src={{image_url}}>
   </figure>
-    <h1>{{title}}</h1>
+  <canvas id="myChart-{{id}}" class="charts" width="200" height="200"></canvas>
+  <article class="challenge_info_container">
+    <h1 class="challenge_title">{{title}}</h1>
   <span class="challenge_location">
     {{location}}
   </span>
@@ -12,12 +14,13 @@
   </p>
     <span class="created_by">Posted By: <a href = '/users/{{user.id}}'> {{user.first_name}}</a>
     </span>
+  </article>
     {{#tagsHelper}}
     {{/tagsHelper}}
       {{#checkStatus}}
       {{/checkStatus}}
-      <div class= 'friend_selector_button' id={{id}}>
-      </div>
-      <canvas id="myChart-{{id}}" width="200" height="200"></canvas>
+      <button class= 'friend_selector_button bootans' id={{id}}>
+        Send Challenge
+      </button>
 </div>
 {{/challenges}}
