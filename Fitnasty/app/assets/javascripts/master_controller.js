@@ -64,9 +64,12 @@ $(document).ready(function() {
     pause: "hover"
   })
 
-  $(document).on('click', function(){
+
+  $(document).on('click', '#checkout_button', function(){
+    console.log("Checkout button clicked")
     $('.carousel').carousel('next')
   })
+
 
   $('.carousel').on('slid.bs.carousel', function () {
     $('.carousel').carousel('cycle')

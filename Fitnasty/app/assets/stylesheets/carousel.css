@@ -40,8 +40,14 @@
 }
 
 #vbar-div {
+  /*overflow: auto;*/
+  /*white-space: nowrap;*/
+  /*position:absolute;*/
+  /*bottom:0;*/
   width: 15%;
   float: left;
+  background: white;
+  /*top:265px;*/
 }
 
 .vbar-pic {
@@ -57,4 +63,16 @@
 #vbar-control-right {
   top: auto;
   bottom: auto;
+}
+
+
+.span6 offset3 {
+  overflow: auto;
+  white-space: nowrap;
+  position:absolute;
+  bottom:0;
+  width: 15%;
+  float: left;
+  background: white;
+  top:265px;
 }

@@ -1,4 +1,4 @@
-<% @non_friends = User.all.select {|follow| follow.followers.exclude?(user)} %>
+<% @non_friends = User.all.select {|follow| follow.followers.exclude?(current_user)} %>
 
 <div id="vbar-div">
   <div class="row-fluid">
@@ -9,7 +9,10 @@
           <!-- Carousel nav -->
 <!--           <a id="vbar-control-left" class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
           <a id="vbar-control-right" class="carousel-control right" href="#myCarousel" data-slide="next">›</a> -->
-          <p>Want to follow?</p>
+          <div id="checkout_button">
+            <p>Checkout some</p>
+            <p> more users!</p>
+          </div>
           <div class="carousel-inner">
               <div class="active item">
                   <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[0]} %>
