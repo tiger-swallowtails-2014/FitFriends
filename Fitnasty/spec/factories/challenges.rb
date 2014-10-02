@@ -6,4 +6,8 @@ FactoryGirl.define do
     latitude Faker::Address.latitude
     longitude Faker::Address.longitude
   end
+
+  factory :tag do
+    name Faker::Lorem.word
+  end
 end
