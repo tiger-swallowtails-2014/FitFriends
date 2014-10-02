@@ -75,4 +75,17 @@ $(document).ready(function() {
     $('.carousel').carousel('cycle')
   })
 
+  $.ajax({
+    type: 'get',
+    url: '/all_challenges',
+  }).done(function(data){
+    clearHolder()
+    $('.challenge').fadeOut(500);
+    var testWidget = new ChallengeWidget();
+    testWidget.whenDone(data)
+    MapView.deleteMarkers()
+    MapView.setMarkers(challengeHolder.challenges)
+    MapModel.beenClicked = false;
+  })
+
 });

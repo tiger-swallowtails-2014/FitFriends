@@ -12,7 +12,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.accepted_challenges_for_user(user)
-  	accepted_user_challenges = UserChallenge.where(accepted?: true, completed?: false, user_id: user).to_a
+  	accepted_user_challenges = UserChallenge.where(accepted?: true, completed?: false, user_id: user).order(updated_at: :desc).to_a
   	accepted_user_challenges.map! do |user_challenge|
   	 self.find(user_challenge.challenge_id)
   	end
@@ -35,7 +35,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.completed_challenges_for_user(user)
-    completed_user_challenges = UserChallenge.where(accepted?: true, completed?: true, user_id: user).to_a
+    completed_user_challenges = UserChallenge.where(accepted?: true, completed?: true, user_id: user).order(updated_at: :desc).to_a
     completed_user_challenges.map! do |user_challenge|
       self.find(user_challenge.challenge_id)
     end
@@ -43,7 +43,7 @@ class Challenge < ActiveRecord::Base
   end
 
   def self.submitted_challenges_for_user(user)
-    submitted_user_challenges = Challenge.where(user_id: user).to_a
+    submitted_user_challenges = Challenge.where(user_id: user).order(updated_at: :desc).to_a
     return submitted_user_challenges.flatten
   end
 end
