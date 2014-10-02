@@ -9,22 +9,27 @@
           <!-- Carousel nav -->
 <!--           <a id="vbar-control-left" class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
           <a id="vbar-control-right" class="carousel-control right" href="#myCarousel" data-slide="next">›</a> -->
+
           <div id="checkout_button">
             <p>Checkout some</p>
             <p> more users!</p>
           </div>
+
           <div class="carousel-inner">
               <div class="active item">
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[0]} %>
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[1]} %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[0]} if @non_friends[0] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[1]} if @non_friends[1] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[2]} if @non_friends[2] %>
               </div>
               <div class="item">
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[2]} %>
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[3]} %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[3]} if @non_friends[3] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[4]} if @non_friends[4] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[5]} if @non_friends[5] %>
               </div>
               <div class="item">
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[4]} %>
-                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[5]} %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[6]} if @non_friends[6] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[7]} if @non_friends[7] %>
+                  <%= render partial: 'vert_bar_user_info', locals: {user: @non_friends[8]} if @non_friends[8] %>
               </div>
           </div>
 
