@@ -19,4 +19,11 @@ describe User do
     user = User.new(first_name: "Sally", last_name: "Fields", password: "pass", email: "test@gmail.com")
     expect(user.error_on(:email).size).to eq(1)
   end
+
+  it { should have_many(:user_challenges) }
+  it { should have_many(:challenges) }
+  it { should have_many(:followers) }
+  it { should have_many(:follower_follows) }
+  it { should have_many(:followees) }
+  it { should have_many(:followee_follows) }
 end
