@@ -64,6 +64,7 @@ describe UsersController do
 
   describe "GET #show" do
     it "responds with a okay status" do
+      session[:user_id] = user.id
       get :show,
       :id => user.id
       expect(response.status).to eq(200)
@@ -96,6 +97,7 @@ describe UsersController do
 
   describe "GET #show_follow" do
     it "responds with a okay status" do
+      session[:user_id] = user.id
       get :show_follow,
       :user_id => user.id
       expect(response.status).to eq(200)
