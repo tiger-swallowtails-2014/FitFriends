@@ -53,7 +53,7 @@ class ChallengesController < ApplicationController
   end
 
   def all
-    render json: Challenge.all
+    render json: add_challenge_info(Challenge.all.order(updated_at: :desc).to_a)
   end
 
   def send_challenge

@@ -64,7 +64,6 @@ p {
   float:left;
   width: 15%;
   height: 20%;
-  border-bottom: 1px solid black;
 }
 
 .username_profile {
@@ -111,9 +110,7 @@ p {
 }
 
 .friend_activity {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   padding: 2%;
-  background: white;
   font-size: 1.15em;
 }
 

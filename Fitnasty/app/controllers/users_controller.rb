@@ -21,7 +21,8 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@signed_in_user = User.find(session[:user_id])
-		@accepted_folowee_challenges = UserChallenge.accepted.where(user_id: @user.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc)
+		@recent_challenges = Challenge.order('created_at DESC').limit(10)
+    @first_recent = @recent_challenges[0]
 	end
 
 	def single_user
@@ -50,6 +51,12 @@ class UsersController < ApplicationController
 		followee = User.find(params[:followee_id])
 		user.followees << followee
 		redirect_to user
+	end
+
+	def friend_activity
+		@user = User.find(params[:user_id])
+		@accepted_followee_challenges = UserChallenge.accepted.where(user_id: @user.followees.to_a.map! do |followee| followee.id end).order(updated_at: :desc).flatten
+		render :partial => 'friend_activity', locals: {user: @user, accepted: @accepted_followee_challenges, completed: @completed_folowee_challenges}
 	end
 
 	private

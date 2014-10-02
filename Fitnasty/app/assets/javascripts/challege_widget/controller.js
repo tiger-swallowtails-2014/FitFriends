@@ -31,19 +31,19 @@ function ChallengeWidget() {
     {
         value: 1,
         color:"#4486f7",
-        highlight: "#FF5A5E",
+        highlight: "#8FB6FA",
         label: "Accepted"
     },
     {
         value: 2,
         color: "#0aa25a",
-        highlight: "#5AD3D1",
+        highlight: "#6CC79C",
         label: "Completed"
     },
     {
         value: 7,
         color: "#d74136",
-        highlight: "#FFC870",
+        highlight: "#E37A72",
         label: "Pending"
     }
 ]

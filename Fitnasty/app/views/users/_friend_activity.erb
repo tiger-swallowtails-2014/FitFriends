@@ -1,11 +1,41 @@
 <div id="followees_accepted_challenges">
-	<% if @user == current_user %>
+	<% if user == current_user %>
   <h3>Get inspired by your friends!</h3>
   <% else %>
-  <h3>Get inspired by <%=@user.first_name%>'s friends!</h3>
+  <h3>Get inspired by <%=user.first_name%>'s friends!</h3>
   <% end %>
 
-  <% @accepted_folowee_challenges.each do |user_challenge| %>
-      <%= render :partial => 'friend_activity_challenge', locals: {user_challenge: user_challenge, user: user_challenge.user, challenge: user_challenge.challenge} %>
-  <% end %>
+
+
+
+  <div id="carousel-example-generic" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% if accepted != [] %>
+        <% accepted[1..-1].each_with_index do |user_challenge, index| %>
+          <%= render :partial => 'friend_activity_challenge', locals: {user_challenge: user_challenge, user: user_challenge.user, challenge: user_challenge.challenge, index: index} %>
+        <% end %>
+      <% else %>
+        <h3>You have no friends.</h3>
+      <% end %>
+
+
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="icon-next"></span>
+    </a>
+  </div>
+
 </div>
