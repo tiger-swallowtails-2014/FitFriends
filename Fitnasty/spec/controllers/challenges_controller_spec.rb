@@ -1,46 +1,69 @@
 require 'rails_helper'
 
 describe ChallengesController do
-  describe 'challenge#search' do
+  let(:user) {create(:user)}
+  let(:challenge) {create(:challenge)}
 
-    # it 'returns a challenge matched by title' do
-    #   get :search, keyword: challenge.title
-    #   result = JSON.parse(response.body)[0]
-    #   expect(result["challenge_object"]["title"]).to eq(challenge.title)
-    # end
-
-    # it 'returns a challenge matched by description' do
-    #   get :search, keyword: challenge.description
-    #   result = JSON.parse(response.body)[0]
-    #   expect(result["challenge_object"]["description"]).to eq(challenge.description)
-    # end
-
-    # it 'returns a challenge matched by a tag' do
-    #   get :search, keyword: tag.name
-    #   result = JSON.parse(response.body)[0]
-    #   expect(result["challenge_object"]["title"]).to eq(challenge.title)
-    # end
-  end
-
-  describe "POST #create" do
-
-    let(:user) {create(:user)}
-    let(:challenge) {build(:challenge)}
-    let(:tag) {challenge.tags.create(name: "test_tag")}
-
-    describe "with valid params" do
-      it "creates a new challenge" do
-        session[:user_id] = user.id
-        expect{
-            post :create, challenge
-          }.to change {Challenge.count}.by(1)
-      end
+  # Couldn't find User without an ID
+  describe "GET #created" do
+    it "responds with a okay status" do
+      # p User.find(user.id)
+      session[:user_id] = user.id
+      get :created, :user_id => user.id
     end
 
-    describe "with invalid params" do
-      it "does not create a new challenge"
+    it "renders an array of challenge objects" do
+      session[:user_id] = user.id
+      get :created, :user_id => user.id
+      expect(response.body).to include("[")
+    end
+  end
+  describe "GET #accepted" do
+    it "responds with a okay status" do
+      session[:user_id] = user.id
+      get :accepted, :user_id => user.id
+    end
 
-      it "renders a message warning that the challenge could not be created"
+    it "renders an array of challenge objects" do
+      session[:user_id] = user.id
+      get :accepted, :user_id => user.id
+      expect(response.body).to include("[")
+    end
+  end
+  describe "GET #recent" do
+    it "responds with a okay status" do
+      session[:user_id] = user.id
+      get :recent, :user_id => user.id
+    end
+
+    it "renders an array of challenge objects" do
+      session[:user_id] = user.id
+      get :recent, :user_id => user.id
+      expect(response.body).to include("[")
+    end
+  end
+  describe "GET #show" do
+    it "responds with a okay status" do
+      session[:user_id] = user.id
+      get :show, :user_id => user.id, :challenge_id => challenge.id
+    end
+
+    it "renders an array of challenge objects" do
+      session[:user_id] = user.id
+      get :show, :user_id => user.id, :challenge_id => challenge.id
+      expect(response.body).to include("[")
+    end
+  end
+  describe "GET #search" do
+    it "responds with a okay status" do
+      session[:user_id] = user.id
+      get :search, :user_id => user.id, :keyword => challenge.title
+    end
+
+    it "renders an array of challenge objects" do
+      session[:user_id] = user.id
+      get :search, :user_id => user.id, :keyword => challenge.title
+      expect(response.body).to include("[")
     end
   end
 end
